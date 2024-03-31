@@ -91,7 +91,7 @@ for i = 1, 10, 1 do
       space:set({ popup = { drawing = "toggle" } })
     else
       local op = (env.BUTTON == "right") and "--destroy" or "--focus"
-      sbar.exec("amethyst -m space " .. op .. " " .. env.SID)
+      sbar.exec("finder -m space " .. op .. " " .. env.SID)
     end
   end)
 
@@ -119,7 +119,7 @@ local spaces_indicator = sbar.add("item", {
     padding_left = 0,
     padding_right = 8,
     string = "Spaces",
-    color = colors.yellow,
+    color = colors.bg2,
   },
   background = {
     color = colors.with_alpha(colors.yellow, 0.0),

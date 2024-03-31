@@ -4,7 +4,8 @@ local settings = require("settings")
 
 -- Execute the event provider binary which provides the event "network_update"
 -- for the network interface "en0", which is fired every 2.0 seconds.
-sbar.exec("killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0")
+sbar.exec("killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en1 network_update 2.0")
+sbar.exec("networksetup -getairportnetwork en1 | cut -c 25-")
 
 local popup_width = 250
 
@@ -26,8 +27,8 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
       style = settings.font.style_map["Bold"],
       size = 9.0,
     },
-    color = colors.red,
-    string = "??? Bps",
+    color = colors.yellow,
+    string = "en1 Bps",
   },
   y_offset = 4,
 })
@@ -50,7 +51,7 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
       size = 9.0,
     },
     color = colors.blue,
-    string = "??? Bps",
+    string = "en1 Bps",
   },
   y_offset = -4,
 })
@@ -66,7 +67,7 @@ local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
   wifi_up.name,
   wifi_down.name
 }, {
-  background = { color = colors.bg1 },
+  background = { color = colors.transparent },
   popup = { align = "center", height = 30 }
 })
 
@@ -86,7 +87,7 @@ local ssid = sbar.add("item", {
       style = settings.font.style_map["Bold"]
     },
     max_chars = 18,
-    string = "????????????",
+    string = ("????????????????"),
   },
   background = {
     height = 2,
@@ -155,7 +156,7 @@ local router = sbar.add("item", {
 sbar.add("item", { position = "right", width = settings.group_paddings })
 
 wifi_up:subscribe("network_update", function(env)
-  local up_color = (env.upload == "000 Bps") and colors.grey or colors.red
+  local up_color = (env.upload == "000 Bps") and colors.grey or colors.yellow
   local down_color = (env.download == "000 Bps") and colors.grey or colors.blue
   wifi_up:set({
     icon = { color = up_color },
@@ -196,10 +197,10 @@ local function toggle_details()
     sbar.exec("networksetup -getcomputername", function(result)
       hostname:set({ label = result })
     end)
-    sbar.exec("ipconfig getifaddr en0", function(result)
+    sbar.exec("ipconfig getifaddr en1", function(result)
       ip:set({ label = result })
     end)
-    sbar.exec("ipconfig getsummary en0 | awk -F ' SSID : '  '/ SSID : / {print $2}'", function(result)
+    sbar.exec("ipconfig getsummary en1 | awk -F ' SSID : '  '/ SSID : / {print $2}'", function(result)
       ssid:set({ label = result })
     end)
     sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Subnet mask: ' '/^Subnet mask: / {print $2}'", function(result)

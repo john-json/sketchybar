@@ -8,7 +8,7 @@ sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_
 
 local cpu = sbar.add("graph", "widgets.cpu" , 42, {
   position = "right",
-  graph = { color = colors.orange },
+  graph = { color = colors.yellow, },
   background = {
     height = 28,
     color = colors.transparent,
