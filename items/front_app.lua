@@ -8,16 +8,16 @@ local front_app = sbar.add("item", "front_app", {
         padding_left = 8,
         font = {
             style = settings.font.style_map["Black"],
-            size = 14.0
+            size = 16.0
         }
     },
     label = {
-        color = colors.bg2,
+        color = colors.grey,
         padding_right = 12,
-        min_width = 80,
+        min_width = "",
         align = "center",
         font = {
-            family = settings.font.numbers
+            family = settings.font.text
         }
     },
     position = "center",
@@ -25,10 +25,10 @@ local front_app = sbar.add("item", "front_app", {
     padding_left = 1,
     padding_right = 1,
     background = {
-        color = colors.yellow,
+        color = colors.bg1,
         border_color = colors.border2,
         border_width = 1,
-        height = 28
+        hieght = 20
     }
 })
 
@@ -41,5 +41,6 @@ front_app:subscribe("front_app_switched", function(env)
 end)
 
 front_app:subscribe("mouse.clicked", function(env)
-    sbar.trigger("swap_menus_and_spaces")
+    sbar.exec(
+        'osascript -e "tell application \\"System Events\\" to keystroke \\"N\\" using {control down, command down}"')
 end)

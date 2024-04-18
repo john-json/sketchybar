@@ -1,30 +1,37 @@
 return {
-  black = 0xff080808,
-  white = 0x99D9E0E3,
-  red = 0xffBF616A,
-  green = 0xffA3BE8C,
-  blue = 0xff8798A1,
-  yellow = 0xff9F7F37,
-  orange = 0xff3b3f46,
-  magenta = 0xffB48EAD,
-  grey = 0xff606060,
-  transparent = 0x00000000,
-  border = 0x3bD9E0E3,
-  border2 = 0x3b000000,
+    black = 0xff080808,
+    white = 0x99ffffff,
+    red = 0xffd87e7e,
+    green = 0xffb1da9e,
+    yellow = 0xffbfddb1,
+    orange = 0xffde9d70,
+    blue = 0xffb6c6d2,
+    magenta = 0xffB48EAD,
+    grey = 0xff545454,
+    transparent = 0x00000000,
+    border = 0xffe0e1e1,
+    border2 = 0x3De0e1e1,
+    fontColor = 0xff212121,
+    hiLight = 0xff212121,
+    inactive = 0xffd0d0d0,
+    active = 0xff919fa3,
+    hover = 0xff292f31,
 
-  bar = {
-    bg = 0xfa1e1e1e,
-    border = 0xffD9E0E3,
-  },
-  popup = {
-    bg = 0xff2e2e2e,
-    border = 0x3bD9E0E3,
-  },
-  bg1 = 0xff1e1e1e,
-  bg2 = 0xff2e2e2e,
+    bar = {
+        bg = 0x66ffffff,
+        border = 0xD9e0e1e1
+    },
+    popup = {
+        bg = 0xffffffff,
+        border = 0xD9e0e1e1
+    },
+    bg1 = 0xffdbdbdb,
+    bg2 = 0xffffffff,
 
-  with_alpha = function(color, alpha)
-    if alpha > 1.0 or alpha < 0.0 then return color end
-    return (color & 0x00ffffff) | (math.floor(alpha * 255.0) << 24)
-  end,
+    with_alpha = function(color, alpha)
+        if alpha > 1.0 or alpha < 0.0 then
+            return color
+        end
+        return (color & 0x00ffffff) | (math.floor(alpha * 255.0) << 24)
+    end
 }

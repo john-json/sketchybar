@@ -3,6 +3,18 @@ local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
+-- Define SF icons for spaces
+local sf_icons_active = {"􀝷", "􀝷", "􀝷", "􀝷", "􀝷", "􀝷", "􀝷", "􀝷", "􀝷", "􀝷"} -- Icons for active spaces
+local sf_icons_inactive = {"􀀁", "􀍂", "􀍃", "􀍄", "􀍅", "􀍆", "􀍇", "􀍈", "􀍉", "􀍊"} -- Icons for inactive spaces
+
+local function getSpaceIcon(space, active)
+    if active then
+        return sf_icons_active[space]
+    else
+        return sf_icons_inactive[space]
+    end
+end
+
 local spaces = {}
 
 for i = 1, 10, 1 do
@@ -10,34 +22,33 @@ for i = 1, 10, 1 do
         space = i,
         icon = {
             font = {
-                family = settings.font.numbers
+                family = settings.font.icons
             },
-            string = i,
+            string = getSpaceIcon(i, false), -- Use inactive icon by default
             padding_left = 15,
             padding_right = 8,
-            color = colors.grey,
-            highlight_color = colors.bg2
+            color = colors.white,
+            highlight_color = colors.red
         },
         label = {
             padding_right = 20,
             color = colors.grey,
-            highlight_color = colors.bg2,
+            highlight_color = colors.grey,
             font = "sketchybar-app-font:Regular:16.0",
             y_offset = -1
         },
-        padding_right = 0,
-        padding_left = 0,
+        padding_right = 1,
+        padding_left = 1,
         background = {
             color = colors.transparent,
-            highlight_color = colors.bg1,
             border_width = 0,
-            height = 28,
-            border_color = colors.bg2
+            height = 22,
+            border_color = colors.transparent
         },
         popup = {
             background = {
-                border_width = 0,
-                border_color = colors.transparent
+                border_width = 1,
+                border_color = colors.inactive
             }
         }
     })
@@ -46,13 +57,11 @@ for i = 1, 10, 1 do
 
     -- Single item bracket for space items to achieve double border on highlight
     local space_bracket = sbar.add("bracket", {space.name}, {
-        label = {
-            color = colors.bg2
-        },
         background = {
-            border_color = colors.bg1,
-            height = 28,
-            border_width = 1
+            color = colors.transparent,
+            border_color = colors.transparent,
+            height = 22,
+            border_width = 0
         }
     })
 
@@ -70,7 +79,7 @@ for i = 1, 10, 1 do
         background = {
             drawing = true,
             image = {
-                corner_radius = 25,
+                corner_radius = 9,
                 scale = 0.2
             }
         }
@@ -78,27 +87,21 @@ for i = 1, 10, 1 do
 
     space:subscribe("space_change", function(env)
         local selected = env.SELECTED == "true"
-        local color = selected and colors.bg2 or colors.bg2
+        local color = selected and colors.grey or colors.bg2
         space:set({
             icon = {
-                highlight = selected
-            },
+                string = getSpaceIcon(env.INFO.space, selected)
+            }, -- Set appropriate icon based on space state
             label = {
-                highlight = selected
+                highlight = selected and colors.grey
             },
             background = {
-                border_color = selected and colors.transparent or colors.bg2
+                border_color = selected and colors.inactive or colors.transparent
             }
         })
         space_bracket:set({
             background = {
-                color = selected and colors.yellow,
-                border_color = selected and colors.black,
-                border_width = selected and 1,
-                border_radius = selected and 6
-            },
-            label = {
-                color = selected and colors.bg1
+                border_color = selected and colors.grey or colors.bg2
             }
         })
     end)
@@ -116,8 +119,9 @@ for i = 1, 10, 1 do
                 }
             })
         else
-            local op = (env.BUTTON == "right") and "--destroy" or "--focus"
-            sbar.exec("finder -m space " .. op .. " " .. env.SID)
+            -- Switch to the specified space using Mission Control
+            os.execute('osascript -e "tell application \\"System Events\\" to keystroke \\"' .. i ..
+                           '\\" using {control down, option down}"')
         end
     end)
 
@@ -141,19 +145,19 @@ local spaces_indicator = sbar.add("item", {
     icon = {
         padding_left = 8,
         padding_right = 9,
-        color = colors.yellow,
+        color = colors.inactive,
         string = icons.switch.on
     },
     label = {
         width = 0,
         padding_left = 0,
         padding_right = 8,
-        string = "Spaces",
-        color = colors.bg2
+        string = "Menu",
+        color = colors.grey
     },
     background = {
-        color = colors.with_alpha(colors.yellow, 0.0),
-        border_color = colors.with_alpha(colors.border, 0.0)
+        color = colors.with_alpha(colors.inactive, 0.0),
+        border_color = colors.with_alpha(colors.bg1, 0.0)
     }
 })
 
@@ -168,7 +172,7 @@ space_window_observer:subscribe("space_windows_change", function(env)
     end
 
     if (no_app) then
-        icon_line = " —"
+        icon_line = "􁋞"
     end
     sbar.animate("tanh", 10, function()
         spaces[env.INFO.space]:set({
@@ -196,7 +200,7 @@ spaces_indicator:subscribe("mouse.entered", function(env)
                 }
             },
             icon = {
-                color = colors.bg1
+                color = colors.grey
             },
             label = {
                 width = "dynamic"
@@ -217,7 +221,7 @@ spaces_indicator:subscribe("mouse.exited", function(env)
                 }
             },
             icon = {
-                color = colors.grey
+                color = colors.inactive
             },
             label = {
                 width = 0
