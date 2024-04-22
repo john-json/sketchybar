@@ -12,7 +12,7 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
         color = colors.green
     },
     background = {
-        height = 18,
+        height = 20,
         color = colors.inactive,
         border_color = {
             alpha = 0
@@ -30,7 +30,7 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
         font = {
             family = settings.font.numbers,
             style = settings.font.style_map["Bold"],
-            size = 9.0
+            size = 10
         },
         align = "right",
         width = 10,

@@ -9,7 +9,7 @@ local front_app = sbar.add("item", "front_app", {
     --     padding_left = 10,
     --     font = {
     --         style = settings.font.style_map["Regular"],
-    --         size = 14.0
+    --         14.0
     --     }
     -- },
     label = {
@@ -18,14 +18,15 @@ local front_app = sbar.add("item", "front_app", {
         padding_left = 5,
         align = "center",
         font = {
-            family = settings.font.text
+            family = settings.font.text,
+            size = 10
         }
     },
     position = "left",
     update_freq = 30,
     background = {
         color = colors.inactive,
-        height = 18
+        height = 20
     }
 })
 

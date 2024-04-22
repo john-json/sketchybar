@@ -14,6 +14,7 @@ local volume_percent = sbar.add("item", "widgets.volume1", {
         padding_left = -1,
         color = colors.grey,
         font = {
+            size = 10,
             family = settings.font.text,
             color = colors.inactive
         }
@@ -30,7 +31,7 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
         color = colors.grey,
         font = {
             style = settings.font.style_map["Regular"],
-            size = 14.0
+            size = 10
         }
     },
     label = {
@@ -39,7 +40,7 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
         color = colors.grey,
         font = {
             style = settings.font.style_map["Regular"],
-            size = 14.0,
+            size = 10,
             color = colors.grey
         }
     }

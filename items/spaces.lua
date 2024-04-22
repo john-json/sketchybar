@@ -47,7 +47,7 @@ for i = 1, 10, 1 do
             padding_right = 10,
             color = colors.inactive,
             border_width = 0,
-            height = 18,
+            height = 20,
             border_color = colors.inactive
         },
         popup = {
@@ -65,7 +65,7 @@ for i = 1, 10, 1 do
         background = {
             padding_left = 10,
             color = colors.transparent,
-            height = 18,
+            height = 20,
             border_width = 0
         },
         icon = {
@@ -101,7 +101,7 @@ for i = 1, 10, 1 do
                 font = {
                     family = settings.font.text,
                     style = settings.font.style_map["Regular"],
-                    size = 16.0
+                    size = 10
                 },
                 string = env.INFO
             },
@@ -186,7 +186,8 @@ local spaces_indicator = sbar.add("item", {
         padding_left = 5,
         padding_right = 5,
         color = colors.grey,
-        string = icons.switch.on
+        string = icons.switch.on,
+        size = 10
     },
     label = {
         width = 8,
@@ -250,7 +251,7 @@ spaces_indicator:subscribe("mouse.entered", function(env)
 end)
 
 spaces_indicator:subscribe("mouse.exited", function(env)
-    sbar.animate("sin", 30, function()
+    sbar.animate("exp", 30, function()
         spaces_indicator:set({
             background = {
                 color = {
@@ -261,7 +262,8 @@ spaces_indicator:subscribe("mouse.exited", function(env)
                 }
             },
             icon = {
-                color = colors.grey
+                color = colors.grey,
+                size = 9
             },
             label = {
                 width = 8

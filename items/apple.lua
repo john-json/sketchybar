@@ -16,7 +16,7 @@ local apple = sbar.add("item", {
         padding_right = 10,
         padding_left = 8,
         color = colors.grey,
-        height = 18
+        height = 20
     },
     label = {
         drawing = false
@@ -25,7 +25,7 @@ local apple = sbar.add("item", {
         color = colors.inactive,
         border_color = colors.transparent,
         border_width = 0,
-        height = 18
+        height = 20
 
     },
     padding_left = 5,

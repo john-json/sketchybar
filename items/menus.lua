@@ -16,18 +16,18 @@ local max_items = 15
 local menu_items = {}
 for i = 1, max_items, 1 do
     local menu = sbar.add("item", "menu." .. i, {
-        padding_left = settings.paddings,
-        padding_right = settings.paddings,
+        padding_left = 10,
+        padding_right = 10,
         drawing = false,
         icon = {
             drawing = false
         },
         label = {
             font = {
+                size = 10,
                 style = settings.font.style_map[i == 1 and "Regular" or "Regular"]
-            },
-            padding_left = 10,
-            padding_right = 10
+            }
+
         },
         click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i
     })
@@ -43,7 +43,7 @@ sbar.add("bracket", {'/menu\\..*/'}, {
 
 local menu_padding = sbar.add("item", "menu.padding", {
     drawing = false,
-    width = 10
+    width = 5
 })
 
 local function update_menus(env)
@@ -93,7 +93,7 @@ space_menu_swap:subscribe("swap_menus_and_spaces", function(env)
             updates = true
         })
         sbar.set("front_app\\", {
-            drawing = true
+            drawing = false
         })
         sbar.set("/space\\..*/", {
             drawing = false

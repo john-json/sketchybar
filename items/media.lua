@@ -41,7 +41,7 @@ local media_artist = sbar.add("item", {
     label = {
         width = 0,
         font = {
-            size = 9
+            size = 10
         },
         color = colors.with_alpha(colors.bg1, 0.6),
         max_chars = 18,
@@ -59,7 +59,7 @@ local media_title = sbar.add("item", {
     },
     label = {
         font = {
-            size = 11
+            size = 10
         },
         width = 0,
         max_chars = 16,
