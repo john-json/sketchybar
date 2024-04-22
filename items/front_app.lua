@@ -1,34 +1,32 @@
 local colors = require("colors")
 local settings = require("settings")
 local icons = require("icons")
+local app_icons = require("helpers.app_icons")
 
 local front_app = sbar.add("item", "front_app", {
-    icon = {
-        color = colors.bg2,
-        padding_left = 8,
-        font = {
-            style = settings.font.style_map["Black"],
-            size = 14.0
-        }
-    },
+    -- icon = {
+    --     color = colors.bg2,
+    --     padding_left = 10,
+    --     font = {
+    --         style = settings.font.style_map["Regular"],
+    --         14.0
+    --     }
+    -- },
     label = {
-        color = colors.bg2,
-        padding_right = 12,
-        min_width = 80,
+        color = colors.grey,
+        padding_right = 10,
+        padding_left = 5,
         align = "center",
         font = {
-            family = settings.font.numbers
+            family = settings.font.text,
+            size = 10
         }
     },
-    position = "center",
+    position = "left",
     update_freq = 30,
-    padding_left = 1,
-    padding_right = 1,
     background = {
-        color = colors.yellow,
-        border_color = colors.border2,
-        border_width = 1,
-        height = 28
+        color = colors.inactive,
+        height = 20
     }
 })
 
