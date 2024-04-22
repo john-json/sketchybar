@@ -1,34 +1,31 @@
 local colors = require("colors")
 local settings = require("settings")
 local icons = require("icons")
+local app_icons = require("helpers.app_icons")
 
 local front_app = sbar.add("item", "front_app", {
-    icon = {
-        color = colors.bg2,
-        padding_left = 8,
-        font = {
-            style = settings.font.style_map["Black"],
-            size = 16.0
-        }
-    },
+    -- icon = {
+    --     color = colors.bg2,
+    --     padding_left = 10,
+    --     font = {
+    --         style = settings.font.style_map["Regular"],
+    --         size = 14.0
+    --     }
+    -- },
     label = {
         color = colors.grey,
-        padding_right = 12,
-        min_width = "",
+        padding_right = 10,
+        padding_left = 5,
         align = "center",
         font = {
             family = settings.font.text
         }
     },
-    position = "center",
+    position = "left",
     update_freq = 30,
-    padding_left = 1,
-    padding_right = 1,
     background = {
-        color = colors.bg1,
-        border_color = colors.border2,
-        border_width = 1,
-        hieght = 20
+        color = colors.inactive,
+        height = 18
     }
 })
 
@@ -41,6 +38,5 @@ front_app:subscribe("front_app_switched", function(env)
 end)
 
 front_app:subscribe("mouse.clicked", function(env)
-    sbar.exec(
-        'osascript -e "tell application \\"System Events\\" to keystroke \\"N\\" using {control down, command down}"')
+    sbar.trigger("swap_menus_and_spaces")
 end)

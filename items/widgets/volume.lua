@@ -12,9 +12,10 @@ local volume_percent = sbar.add("item", "widgets.volume1", {
     label = {
         string = "??%",
         padding_left = -1,
+        color = colors.grey,
         font = {
             family = settings.font.text,
-            color = colors.grey
+            color = colors.inactive
         }
     }
 })
@@ -46,7 +47,7 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 
 local volume_bracket = sbar.add("bracket", "widgets.volume.bracket", {volume_icon.name, volume_percent.name}, {
     background = {
-        color = none
+        color = colors.inactive
     },
     popup = {
         align = "left"
@@ -63,7 +64,7 @@ local volume_slider = sbar.add("slider", popup_width, {
     slider = {
         highlight_color = colors.grey,
         background = {
-            height = 6,
+            height = 10,
             corner_radius = 4,
             color = colors.bg1
         },
@@ -74,7 +75,7 @@ local volume_slider = sbar.add("slider", popup_width, {
     },
     background = {
         color = colors.bg1,
-        hieght = 20,
+        height = 10,
         y_offset = -20
     },
     click_script = 'osascript -e "set volume output volume $PERCENTAGE"'
@@ -153,14 +154,14 @@ local function volume_toggle_details(env)
                     sbar.add("item", "volume.device." .. counter, {
                         position = "popup." .. volume_bracket.name,
                         width = popup_width,
-                        align = "center",
+                        align = "left",
                         label = {
                             string = device,
-                            color = color
+                            color = colors.grey
                         },
                         click_script = 'SwitchAudioSource -s "' .. device ..
                             '" && sketchybar --set /volume.device\\.*/ label.color=' .. colors.grey ..
-                            ' --set $NAME label.color=' .. colors.white
+                            ' --set $NAME label.color=' .. colors.grey
 
                     })
                     counter = counter + 1

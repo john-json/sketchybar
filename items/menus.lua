@@ -26,8 +26,8 @@ for i = 1, max_items, 1 do
             font = {
                 style = settings.font.style_map[i == 1 and "Regular" or "Regular"]
             },
-            padding_left = 8,
-            padding_right = 8
+            padding_left = 10,
+            padding_right = 10
         },
         click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i
     })
@@ -37,7 +37,7 @@ end
 
 sbar.add("bracket", {'/menu\\..*/'}, {
     background = {
-        color = colors.bg1
+        color = colors.inactive
     }
 })
 
@@ -77,25 +77,28 @@ space_menu_swap:subscribe("swap_menus_and_spaces", function(env)
         menu_watcher:set({
             updates = false
         })
+
         sbar.set("/menu\\..*/", {
             drawing = false
+        })
+        sbar.set("front_app\\", {
+            drawing = true
         })
         sbar.set("/space\\..*/", {
             drawing = true
         })
-        sbar.set("front_app", {
-            drawing = true
-        })
+
     else
         menu_watcher:set({
             updates = true
         })
+        sbar.set("front_app\\", {
+            drawing = true
+        })
         sbar.set("/space\\..*/", {
             drawing = false
         })
-        sbar.set("front_app", {
-            drawing = false
-        })
+
         update_menus()
     end
 end)

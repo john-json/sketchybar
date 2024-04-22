@@ -13,12 +13,13 @@ return {
     border2 = 0x3De0e1e1,
     fontColor = 0xff212121,
     hiLight = 0xff212121,
-    inactive = 0xffd0d0d0,
+    inactive = 0xfff9f9f9,
+    inactive2 = 0x66f9f9f9,
     active = 0xff919fa3,
     hover = 0xff292f31,
 
     bar = {
-        bg = 0x66ffffff,
+        bg = 0x03ffffff,
         border = 0xD9e0e1e1
     },
     popup = {

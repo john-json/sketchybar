@@ -22,15 +22,15 @@ local icons = {
         rotate_circle = "􁱀",
         arrow_down = "􀆈",
         menu_bar2 = "􀾚",
-        menu_bar = "􀞀",
-        active_space = "􀝷",
-        inactive_space = "􀀁",
+        menu_bar = "􀾩",
+        active_space = "􀯺",
+        inactive_space = "􀯺",
         spaces = "􁏮",
         menu = "􁏯",
 
         switch = {
-            on = "􁏮",
-            off = "􁏯"
+            on = "􀯻",
+            off = "􀯶"
         },
         volume = {
             _100 = "􀊩",
@@ -71,8 +71,8 @@ local icons = {
         clipboard = "Missing Icon",
 
         switch = {
-            on = "󱨥",
-            off = "󱨦"
+            on = "􁏮",
+            off = "􁏯"
         },
         volume = {
             _100 = "",
