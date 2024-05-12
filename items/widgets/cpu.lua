@@ -9,11 +9,11 @@ sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_
 local cpu = sbar.add("graph", "widgets.cpu", 42, {
     position = "right",
     graph = {
-        color = colors.green
+        color = colors.blue
     },
     background = {
-        height = 20,
-        color = colors.inactive,
+
+        color = colors.bg1,
         border_color = {
             alpha = 0
         },
@@ -22,7 +22,12 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
     icon = {
         string = icons.cpu,
         padding_right = 5,
-        color = colors.grey
+        padding_left = 5,
+        align = "center",
+        color = colors.white,
+        font = {
+            size = 12,
+        },
     },
     label = {
         padding_right = 10,

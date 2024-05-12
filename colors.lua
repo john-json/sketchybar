@@ -1,38 +1,45 @@
 return {
-    black = 0xff080808,
-    white = 0x99ffffff,
-    red = 0xffd87e7e,
-    green = 0xffb1da9e,
-    yellow = 0xffbfddb1,
-    orange = 0xffde9d70,
-    blue = 0xffb6c6d2,
+    black = 0xff121212,
+    white = 0xffffffff,
+    red = 0xffbf616a,
+    green = 0xffA3BE8C,
+    yellow = 0xffEBCB8B,
+    orange = 0xffD08770,
+    blue = 0xff4988ca,
     magenta = 0xffB48EAD,
-    grey = 0xff545454,
+    grey = 0xffb2b2b2,
     transparent = 0x00000000,
     border = 0xffe0e1e1,
     border2 = 0x3De0e1e1,
-    fontColor = 0xff212121,
+    fontColor = 0xffc4c4c4,
     hiLight = 0xff212121,
-    inactive = 0xfff9f9f9,
-    inactive2 = 0x66f9f9f9,
+    inactive = 0xfffb8e3f,
     active = 0xff919fa3,
     hover = 0xff292f31,
+    text_active = 0xffb9bdc1,
+    shadow_blue = 0xff698ba2,
+    frost_blue1 = 0xff8FBCBB,
+    frost_blue2 = 0xff88C0D0,
+    frost_blue3 = 0xff81A1C1,
+    frost_blue4 = 0xff5E81AC,
 
     bar = {
-        bg = 0x03ffffff,
-        border = 0xD9e0e1e1
+        bg = 0xff1e1e1e,
+        bg2 = 0xff252526,
+        transparent = 0xd91e1e1e,
+        border = 0xD92525276
     },
     popup = {
-        bg = 0xffffffff,
-        border = 0xD9e0e1e1
+        bg = 0x661e1e1e,
+        border = 0xD9252526
     },
-    bg1 = 0xffdbdbdb,
-    bg2 = 0xffffffff,
+    bg1 = 0xff1e1e1e,
+    bg2 = 0xff252526,
 
     with_alpha = function(color, alpha)
         if alpha > 1.0 or alpha < 0.0 then
             return color
         end
-        return (color & 0x00ffffff) | (math.floor(alpha * 255.0) << 24)
+        return (color and 0x00ffffff) or (math.floor(alpha * 255.0) < 24)
     end
 }

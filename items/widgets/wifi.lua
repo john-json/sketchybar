@@ -10,6 +10,8 @@ sbar.exec("networksetup -getairportnetwork en1 | cut -c 25-")
 
 local popup_width = 250
 
+
+
 local wifi_up = sbar.add("item", "widgets.wifi1", {
     position = "right",
     padding_left = -5,
@@ -57,6 +59,27 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
     y_offset = -4
 })
 
+local wifi_icon = sbar.add("item", "wifi.icon", {
+
+    position = "right",
+    padding_left = -20,
+    padding_right = -0,
+    icon = {
+        string = icons.wifi.connected,
+        font = {
+              color = colors.magenta,
+            size = 10,
+        },
+    label = {
+  
+    font = {
+        size = 8
+    }
+},
+
+    },
+})
+
 local wifi = sbar.add("item", "widgets.wifi.padding", {
     position = "right",
     label = {
@@ -64,14 +87,16 @@ local wifi = sbar.add("item", "widgets.wifi.padding", {
     }
 })
 
+
+
 -- Background around the item
 local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {wifi.name, wifi_up.name, wifi_down.name}, {
     background = {
-        color = colors.inactive
+        color = colors.bg1
     },
     popup = {
         align = "center",
-        height = 20
+        height = 28
     }
 })
 
@@ -94,8 +119,8 @@ local ssid = sbar.add("item", {
         string = ("????????????????")
     },
     background = {
-        height = 20,
-        color = colors.inactive,
+        height = 28,
+        color = colors.text_active,
         y_offset = -15
     }
 })
@@ -163,8 +188,8 @@ sbar.add("item", {
 })
 
 wifi_up:subscribe("network_update", function(env)
-    local up_color = (env.upload == "000 Bps") and colors.grey or colors.active
-    local down_color = (env.download == "000 Bps") and colors.grey or colors.inactive
+    local up_color = (env.upload == "000 Bps") and colors.grey or colors.text_active
+    local down_color = (env.download == "000 Bps") and colors.grey or colors.text_active
     wifi_up:set({
         icon = {
             color = up_color
