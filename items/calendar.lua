@@ -18,27 +18,26 @@ local cal = sbar.add("item", {
         }
     },
     label = {
-        color = colors.grey,
+        color = colors.white,
         padding_right = 10,
-        padding_left = 10,
-        width = 80,
+        width = 55,
         align = "right",
         font = {
             family = settings.font.text,
-            size = 10
+            style = settings.font.style_map["Black"],
+            size = 12
         }
 
     },
     position = "right",
     update_freq = 30,
-    padding_left = 1,
-    padding_right = 1,
+    padding_left = 5,
+    padding_right = 5,
     background = {
-        color = colors.inactive,
-        border_color = colors.inactive,
+        color = colors.bg1,
+        border_color = colors.text_active,
         border_width = 0,
-        height = 20,
-        corner_radius = 6
+        corner_radius = 8
     }
 })
 
@@ -50,8 +49,8 @@ sbar.add("item", {
 
 cal:subscribe({"forced", "routine", "system_woke"}, function(env)
     cal:set({
-        icon = os.date("%a. %d."),
-        label = os.date("􀐫 %H:%M")
+        icon = os.date("%a.%d "),
+        label = os.date("%H:%M")
     })
 end)
 

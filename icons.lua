@@ -27,7 +27,22 @@ local icons = {
         inactive_space = "􀯺",
         spaces = "􁏮",
         menu = "􁏯",
-
+        space_control2 = "􁻻",
+        space_control = "􀇴",
+        space_control3 = "􀚅",
+        m_control = "􁻻",
+        menu_alt = "􀱢",
+        menu_alt_dots = "􀈏",
+        settings = "􀍠",
+        plus1 = "􀅼",
+        MC1 = "􀏪",
+        stack1 = "􀏲",
+        line_menu = "􀌇",
+        line_menu_circle = "􀧲",
+        new_space = "􀑎",
+        MC_round = "􀤾",
+        
+        
         switch = {
             on = "􀯻",
             off = "􀯶"

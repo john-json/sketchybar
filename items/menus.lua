@@ -24,11 +24,12 @@ for i = 1, max_items, 1 do
         },
         label = {
             font = {
-                size = 10,
-                style = settings.font.style_map[i == 1 and "Regular" or "Regular"]
+                size = 12,
+                style = settings.font.style_map[i == 1 and "Regular" or "SemiBold"]
             }
 
         },
+
         click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i
     })
 
@@ -37,13 +38,13 @@ end
 
 sbar.add("bracket", {'/menu\\..*/'}, {
     background = {
-        color = colors.inactive
+        color = colors.bg1
     }
 })
 
 local menu_padding = sbar.add("item", "menu.padding", {
     drawing = false,
-    width = 5
+    width = "dynamic"
 })
 
 local function update_menus(env)

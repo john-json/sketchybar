@@ -1,7 +1,7 @@
 require("items.apple")
 require("items.menus")
 require("items.spaces")
-require("items.front_app")
+require("items.space_control")
 require("items.calendar")
 require("items.widgets")
 require("items.media")
