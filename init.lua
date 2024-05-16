@@ -9,13 +9,13 @@ sbar.begin_config()
 require("bar")
 
 sbar.end_config()
--- Bundle the entire initial configuration into a single message to sketchybar
+
 sbar.begin_config()
 
 require("default")
 
 sbar.end_config()
--- Bundle the entire initial configuration into a single message to sketchybar
+
 sbar.begin_config()
 
 require("items")
