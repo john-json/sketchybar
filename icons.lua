@@ -21,15 +21,19 @@ local icons = {
         direct_current = "􀯝",
         rotate_circle = "􁱀",
         arrow_down = "􀆈",
+        arrow_left = "􀁙",
+        arrow_right = "􀆊",
+        arrow_up = "􀆇",
         menu_bar2 = "􀾚",
         menu_bar = "􀾩",
         active_space = "􀯺",
         inactive_space = "􀯺",
         spaces = "􁏮",
-        menu = "􁏯",
+        menu = "􀘶",
         space_control2 = "􁻻",
-        space_control = "􀇴",
+        space_control = "􀣽",
         space_control3 = "􀚅",
+        space_add = "􀁍",
         m_control = "􁻻",
         menu_alt = "􀱢",
         menu_alt_dots = "􀈏",
@@ -40,19 +44,29 @@ local icons = {
         line_menu = "􀌇",
         line_menu_circle = "􀧲",
         new_space = "􀑎",
-        MC_round = "􀤾",
-        
-        
+        MC_round = "􀚅",
+        MC_round3 = "􂁁",
+        MC_add = "􂁁",
+        MC_round2 = "􀍢",
+        drop = "􁹡",
+        drop_start = "􀌝",
+        drop_start_riv = "􀶡",
+        cpu2 = "􀎴",
+        circle_options = "􀍢",
+        circle_menu = "􀌉",
+        circle_quit = "􀁑",
+        options = "􀍠",
+        play = "􀊖",
         switch = {
             on = "􀯻",
             off = "􀯶"
         },
         volume = {
-            _100 = "􀊩",
-            _66 = "􀊧",
-            _33 = "􀊥",
-            _10 = "􀊡",
-            _0 = "􀊣"
+            _100 = "􀥒",
+            _66 = "􀥒",
+            _33 = "􀥒",
+            _10 = "􀻂",
+            _0 = "􀫡"
         },
         battery = {
             _100 = "􀛨",
@@ -65,7 +79,7 @@ local icons = {
         wifi = {
             upload = "􀄨",
             download = "􀄩",
-            connected = "􀙇",
+            connected = "􀷗",
             disconnected = "􀙈",
             router = "􁓤"
         },
@@ -75,7 +89,6 @@ local icons = {
             play_pause = "􀊈"
         }
     },
-
     -- Alternative NerdFont icons
     nerdfont = {
         plus = "",
@@ -84,7 +97,6 @@ local icons = {
         gear = "",
         cpu = "",
         clipboard = "Missing Icon",
-
         switch = {
             on = "􁏮",
             off = "􁏯"
@@ -124,4 +136,3 @@ if not (settings.icons == "NerdFont") then
 else
     return icons.nerdfont
 end
-

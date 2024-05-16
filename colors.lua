@@ -22,11 +22,11 @@ return {
     frost_blue2 = 0xff88C0D0,
     frost_blue3 = 0xff81A1C1,
     frost_blue4 = 0xff5E81AC,
-
+    frost_light = 0xffECEFF4,
     bar = {
         bg = 0xff1e1e1e,
         bg2 = 0xff252526,
-        transparent = 0xd91e1e1e,
+        transparent = 0x4dffffff,
         border = 0xD92525276
     },
     popup = {
@@ -35,11 +35,10 @@ return {
     },
     bg1 = 0xff1e1e1e,
     bg2 = 0xff252526,
-
     with_alpha = function(color, alpha)
         if alpha > 1.0 or alpha < 0.0 then
             return color
         end
-        return (color and 0x00ffffff) or (math.floor(alpha * 255.0) < 24)
+        return (color and 0x001e1e1e) or (math.floor(alpha * 255.0) < 24)
     end
 }

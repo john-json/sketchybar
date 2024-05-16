@@ -2,106 +2,293 @@ local colors = require("colors")
 local icons = require("icons")
 local settings = require("settings")
 
-local menu_watcher = sbar.add("item", {
-    drawing = false,
-    updates = false
-})
-local space_menu_swap = sbar.add("item", {
-    drawing = false,
-    updates = true
-})
+local menu_watcher =
+    sbar.add(
+    "item",
+    {
+        drawing = false,
+        updates = false
+    }
+)
+local space_menu_swap =
+    sbar.add(
+    "item",
+    {
+        drawing = false,
+        updates = true
+    }
+)
 sbar.add("event", "swap_menus_and_spaces")
 
 local max_items = 15
 local menu_items = {}
 for i = 1, max_items, 1 do
-    local menu = sbar.add("item", "menu." .. i, {
-        padding_left = 10,
-        padding_right = 10,
-        drawing = false,
-        icon = {
-            drawing = false
-        },
-        label = {
-            font = {
-                size = 12,
-                style = settings.font.style_map[i == 1 and "Regular" or "SemiBold"]
-            }
-
-        },
-
-        click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i
-    })
+    local menu =
+        sbar.add(
+        "item",
+        "menu." .. i,
+        {
+            padding_left = 10,
+            padding_right = 10,
+            drawing = false,
+            icon = {
+                drawing = false
+            },
+            label = {
+                font = {
+                    size = 12,
+                    style = settings.font.style_map[i == 1 and "Regular" or "SemiBold"]
+                }
+            },
+            click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i
+        }
+    )
 
     menu_items[i] = menu
 end
 
-sbar.add("bracket", {'/menu\\..*/'}, {
-    background = {
-        color = colors.bg1
+sbar.add(
+    "bracket",
+    {"/menu\\..*/"},
+    {
+        background = {
+            color = colors.bg1,
+            corner_radius = 25
+        }
     }
-})
+)
 
-local menu_padding = sbar.add("item", "menu.padding", {
-    drawing = false,
-    width = "dynamic"
-})
+local menu_padding =
+    sbar.add(
+    "item",
+    "menu.padding",
+    {
+        drawing = false,
+        width = "dynamic"
+    }
+)
 
 local function update_menus(env)
-    sbar.exec("$CONFIG_DIR/helpers/menus/bin/menus -l", function(menus)
-        sbar.set('/menu\\..*/', {
-            drawing = false
-        })
-        menu_padding:set({
-            drawing = true
-        })
-        id = 1
-        for menu in string.gmatch(menus, '[^\r\n]+') do
-            if id < max_items then
-                menu_items[id]:set({
-                    label = menu,
+    sbar.exec(
+        "$CONFIG_DIR/helpers/menus/bin/menus -l",
+        function(menus)
+            sbar.set(
+                "/menu\\..*/",
+                {
+                    drawing = false
+                }
+            )
+            menu_padding:set(
+                {
                     drawing = true
-                })
-            else
-                break
+                }
+            )
+            id = 1
+            for menu in string.gmatch(menus, "[^\r\n]+") do
+                if id < max_items then
+                    menu_items[id]:set(
+                        {
+                            label = menu,
+                            drawing = true
+                        }
+                    )
+                else
+                    break
+                end
+                id = id + 1
             end
-            id = id + 1
         end
-    end)
+    )
 end
 
 menu_watcher:subscribe("front_app_switched", update_menus)
 
-space_menu_swap:subscribe("swap_menus_and_spaces", function(env)
-    local drawing = menu_items[1]:query().geometry.drawing == "on"
-    if drawing then
-        menu_watcher:set({
-            updates = false
-        })
+space_menu_swap:subscribe(
+    "swap_menus_and_spaces",
+    function(env)
+        local drawing = menu_items[1]:query().geometry.drawing == "on"
+        if drawing then
+            menu_watcher:set(
+                {
+                    updates = false
+                }
+            )
 
-        sbar.set("/menu\\..*/", {
-            drawing = false
-        })
-        sbar.set("front_app\\", {
-            drawing = true
-        })
-        sbar.set("/space\\..*/", {
-            drawing = true
-        })
+            sbar.set(
+                "/menu\\..*/",
+                {
+                    drawing = false
+                }
+            )
+            sbar.set(
+                "front_app\\",
+                {
+                    drawing = true
+                }
+            )
+            sbar.set(
+                "/space\\..*/",
+                {
+                    drawing = true
+                }
+            )
+        else
+            menu_watcher:set(
+                {
+                    updates = true
+                }
+            )
+            sbar.set(
+                "front_app\\",
+                {
+                    drawing = false
+                }
+            )
+            sbar.set(
+                "/space\\..*/",
+                {
+                    drawing = false
+                }
+            )
 
-    else
-        menu_watcher:set({
-            updates = true
-        })
-        sbar.set("front_app\\", {
-            drawing = false
-        })
-        sbar.set("/space\\..*/", {
-            drawing = false
-        })
-
-        update_menus()
+            update_menus()
+        end
     end
-end)
+)
+
+local space_window_observer =
+    sbar.add(
+    "item",
+    {
+        drawing = false,
+        updates = true
+    }
+)
+local spaces_indicator =
+    sbar.add(
+    "item",
+    {
+        position = "left",
+        align = "center",
+        label = {
+            padding_right = 15,
+            padding_left = 10,
+            width = "dynamic",
+            color = colors.frost_light,
+            string = "Menu",
+            font = {
+                size = 12
+            }
+        },
+        background = {
+            color = colors.bg1,
+            height = 30,
+            corner_radius = 50
+        }
+    }
+)
+spaces_indicator:subscribe(
+    "swap_menus_and_spaces",
+    function(env)
+        local currently_on = (spaces_indicator:query()).icon.value == icons.arrow_right
+        spaces_indicator:set(
+            {
+                icon = currently_on and icons.arrow_left or ""
+            }
+        )
+    end
+)
+spaces_indicator:subscribe(
+    "mouse.entered",
+    function(env)
+        local selected = env.SELECTED == "true"
+        sbar.animate(
+            "elastic",
+            20,
+            function()
+                spaces_indicator:set(
+                    {
+                        background = {
+                            width = "dynamic",
+                            color = {
+                                alpha = 1
+                            }
+                        },
+                        label = {
+                            padding_right = 15,
+                            padding_left = 5,
+                            color = colors.frost_blue1,
+                            string = "Menu",
+                            font = {
+                                size = 14
+                            }
+                        },
+                        icon = {
+                            color = selected and colors.frost_light or "",
+                            string = selected and icons.arrow_right or "",
+                            font = {
+                                size = 20
+                            }
+                        }
+                    }
+                )
+            end
+        )
+    end
+)
+spaces_indicator:subscribe(
+    "mouse.exited",
+    function(env)
+        local selected = env.SELECTED == "true"
+        sbar.animate(
+            "elastic",
+            20,
+            function()
+                spaces_indicator:set(
+                    {
+                        background = {
+                            width = "dynamic",
+                            color = {
+                                alpha = 1
+                            }
+                        },
+                        label = {
+                            padding_right = 15,
+                            padding_left = 10,
+                            color = colors.frost_light,
+                            string = "Menu",
+                            font = {
+                                size = 12
+                            }
+                        }
+                    }
+                )
+            end
+        )
+    end
+)
+
+spaces_indicator:subscribe(
+    "mouse.clicked",
+    function(env)
+        local selected = env.SELECTED == "true"
+        sbar.trigger("swap_menus_and_spaces")
+        sbar.animate(
+            "elastic",
+            20,
+            function()
+                spaces_indicator:set(
+                    {
+                        icon = {
+                            width = 10,
+                            color = colors.frost_light,
+                            string = icons.arrow_left
+                        }
+                    }
+                )
+            end
+        )
+    end
+)
 
 return menu_watcher
