@@ -8,15 +8,7 @@ sbar = require("sketchybar")
 sbar.begin_config()
 require("bar")
 
-sbar.end_config()
-
-sbar.begin_config()
-
 require("default")
-
-sbar.end_config()
-
-sbar.begin_config()
 
 require("items")
 sbar.end_config()

@@ -17,6 +17,7 @@ local wifi_up =
 		width = 0,
 		icon = {
 			padding_right = 0,
+			paddding_left = 15,
 			font = {
 				style = settings.font.style_map.Bold,
 				size = 10
@@ -43,7 +44,7 @@ local wifi_down =
 	{
 		position = "right",
 		align = "left",
-		padding_left = -5,
+		padding_left = -10,
 		icon = {
 			padding_right = 0,
 			font = {
@@ -77,13 +78,13 @@ local wifi_icon =
 			string = icons.wifi.connected,
 			color = colors.frost_blue2,
 			font = {
-				color = colors.bg1,
+				color = colors.frost_blue1,
 				size = 25
 			},
 			label = {
 				font = {
-					color = colors.bg1,
-					size = 8
+					color = colors.frost_light,
+					size = 10
 				}
 			}
 		}
@@ -97,7 +98,8 @@ local wifi =
 		position = "right",
 		label = {
 			drawing = false,
-			style = settings.font.style_map.Bold
+			style = settings.font.style_map.Bold,
+			aize = 10
 		}
 	}
 )
@@ -112,7 +114,7 @@ local wifi_bracket =
 	},
 	{
 		background = {
-			color = colors.transparent
+			color = colors.bg1
 		},
 		popup = {
 			align = "center",
@@ -127,6 +129,7 @@ local ssid =
 		position = "popup." .. wifi_bracket.name,
 		icon = {
 			font = {
+				size = 8,
 				style = settings.font.style_map.Bold
 			},
 			string = icons.wifi.router
@@ -137,13 +140,13 @@ local ssid =
 			font = {
 				size = 10,
 				style = settings.font.style_map.Bold,
-				color = colors.bg1
+				color = colors.frost_light
 			},
 			max_chars = 18,
 			string = "????????????????"
 		},
 		background = {
-			height = 28,
+			height = 40,
 			color = colors.transparent,
 			y_offset = -15
 		}
@@ -223,7 +226,10 @@ sbar.add(
 	"item",
 	{
 		position = "left",
-		width = settings.group_paddings
+		width = settings.group_paddings,
+		label = {
+			size = 8
+		}
 	}
 )
 wifi_up:subscribe(
@@ -240,7 +246,7 @@ wifi_up:subscribe(
 				label = {
 					string = env.upload,
 					style = settings.font.style_map.Bold,
-					color = colors.bg1
+					color = colors.frost_blue1
 				}
 			}
 		)
@@ -252,7 +258,7 @@ wifi_up:subscribe(
 				},
 				label = {
 					string = env.download,
-					color = colors.b1
+					color = colors.frost_blue2
 				}
 			}
 		)
@@ -295,7 +301,12 @@ local function toggle_details()
 		wifi_bracket:set(
 			{
 				popup = {
-					drawing = true
+					drawing = true,
+					label = {
+						font = {
+							size = 8
+						}
+					}
 				}
 			}
 		)
@@ -365,7 +376,8 @@ local function copy_label_to_clipboard(env)
 		{
 			label = {
 				string = icons.clipboard,
-				align = "center"
+				align = "center",
+				size = 8
 			}
 		}
 	)
@@ -377,7 +389,8 @@ local function copy_label_to_clipboard(env)
 				{
 					label = {
 						string = label,
-						align = "right"
+						align = "right",
+						size = 8
 					}
 				}
 			)

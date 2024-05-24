@@ -23,7 +23,14 @@ local apple =
 			color = colors.frost_light
 		},
 		label = {
-			drawing = false
+			width = "dynamic",
+			drawing = true,
+			string = "system",
+			padding_right = 15,
+			font = {
+				size = 12,
+				color = colors.frost_blue1
+			}
 		},
 		background = {
 			align = "center",
@@ -63,32 +70,29 @@ apple:subscribe(
 	"mouse.entered",
 	function(env)
 		sbar.animate(
-			"circ",
-			25,
+			"elastic",
+			15,
 			function()
 				apple:set(
 					{
 						background = {
-							align = "center",
-							position = "center",
 							color = {
 								alpha = 1
 							}
 						},
 						icon = {
-							align = "center",
-							position = "center",
-							padding_right = 10,
-							pading_left = 10,
 							string = icons.apple,
-							color = colors.frost_red,
+							color = colors.frost_blue1,
 							font = {
-								size = 25
+								size = 16
 							}
 						},
 						label = {
-							width = 10,
-							string = "Settings"
+							string = "s y s t e m",
+							font = {
+								size = 10,
+								color = colors.frost_blue1
+							}
 						}
 					}
 				)
@@ -100,29 +104,29 @@ apple:subscribe(
 	"mouse.exited",
 	function(env)
 		sbar.animate(
-			"circ",
-			25,
+			"elastic",
+			15,
 			function()
 				apple:set(
 					{
 						background = {
-							align = "center",
-							position = "center",
 							color = {
 								alpha = 1
 							}
 						},
 						icon = {
-							align = "center",
-							position = "center",
 							font = {
-								size = 16
+								size = 14
 							},
 							string = icons.apple,
 							color = colors.frost_light
 						},
 						label = {
-							width = 10
+							string = "system",
+							padding_right = 15,
+							font = {
+								size = 12
+							}
 						}
 					}
 				)
@@ -134,8 +138,8 @@ apple:subscribe(
 	"mouse.clicked",
 	function(env)
 		sbar.animate(
-			"circ",
-			25,
+			"elastic",
+			20,
 			function()
 				apple:set(
 					{
