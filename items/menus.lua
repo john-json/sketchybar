@@ -173,12 +173,18 @@ local spaces_indicator =
         label = {
             padding_right = 15,
             padding_left = 10,
-            width = "dynamic",
             color = colors.frost_light,
-            string = "Menu",
+            string = "menu",
             font = {
                 size = 12
             }
+        },
+        icon = {
+            padding_left = 10,
+            string = icons.options,
+            width = "dynamic",
+            color = colors.frost_blue1,
+            size = 10
         },
         background = {
             color = colors.bg1,
@@ -204,7 +210,7 @@ spaces_indicator:subscribe(
         local selected = env.SELECTED == "true"
         sbar.animate(
             "elastic",
-            20,
+            15,
             function()
                 spaces_indicator:set(
                     {
@@ -215,19 +221,19 @@ spaces_indicator:subscribe(
                             }
                         },
                         label = {
-                            padding_right = 15,
+                            padding_right = 10,
                             padding_left = 5,
                             color = colors.frost_blue1,
-                            string = "Menu",
+                            string = "m e n u",
                             font = {
-                                size = 14
+                                size = 12
                             }
                         },
                         icon = {
-                            color = selected and colors.frost_light or "",
-                            string = selected and icons.arrow_right or "",
+                            padding_left = 10,
+                            color = colors.frost_light,
                             font = {
-                                size = 20
+                                size = 12
                             }
                         }
                     }
@@ -242,7 +248,7 @@ spaces_indicator:subscribe(
         local selected = env.SELECTED == "true"
         sbar.animate(
             "elastic",
-            20,
+            15,
             function()
                 spaces_indicator:set(
                     {
@@ -256,7 +262,15 @@ spaces_indicator:subscribe(
                             padding_right = 15,
                             padding_left = 10,
                             color = colors.frost_light,
-                            string = "Menu",
+                            string = "menu",
+                            font = {
+                                size = 12
+                            }
+                        },
+                        icon = {
+                            padding_left = 10,
+                            string = icons.options,
+                            color = colors.frost_blue1,
                             font = {
                                 size = 12
                             }
@@ -275,7 +289,7 @@ spaces_indicator:subscribe(
         sbar.trigger("swap_menus_and_spaces")
         sbar.animate(
             "elastic",
-            20,
+            15,
             function()
                 spaces_indicator:set(
                     {

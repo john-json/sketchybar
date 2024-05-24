@@ -14,7 +14,7 @@ local space_control =
             align = "center",
             position = "center",
             font = {
-                size = 15,
+                size = 22,
                 style = settings.font.style_map["Bold"]
             }
         },
@@ -53,7 +53,7 @@ space_control:subscribe(
                             style = settings.font.style_map.Bold,
                             string = icons.space_add,
                             font = {
-                                size = 20
+                                size = 24
                             }
                         }
                     }
@@ -81,7 +81,7 @@ space_control:subscribe(
                     position = "center",
                     font = {
                         style = settings.font.style_map["Bold"],
-                        size = 15
+                        size = 22
                     }
                 },
                 label = {

@@ -17,7 +17,7 @@ local cpu =
             color = colors.blue
         },
         background = {
-            color = colors.transparent,
+            color = colors.bg1,
             border_color = {
                 alpha = 0
             },
@@ -26,7 +26,7 @@ local cpu =
         icon = {
             string = icons.cpu2,
             padding_right = 20,
-            padding_left = 5,
+            padding_left = 0,
             align = "center",
             color = colors.frost_blue1,
             font = {
@@ -34,7 +34,8 @@ local cpu =
             }
         },
         label = {
-            color = colors.bg1,
+            position = "center",
+            color = colors.frost_light,
             padding_right = 10,
             string = "cpu ??%",
             font = {
@@ -59,11 +60,11 @@ cpu:subscribe(
         local color = colors.green
         if load > 30 then
             if load < 60 then
-                color = colors.bg1
+                color = colors.frost_light
             elseif load < 80 then
-                color = colors.bg1
+                color = colors.frost_blue1
             else
-                color = colors.red
+                color = colors.frost_blue4
             end
         end
 
