@@ -17,24 +17,23 @@ local cal =
     sbar.add(
     "item",
     {
-        icon = {
+        label = {
             align = "center",
-            color = colors.frost_blue3,
-            padding_left = 15,
+            color = colors.frost_light,
+            padding_left = 0,
+            padding_right = 15,
             font = {
                 style = settings.font.style_map["SemiBold"],
-                size = 12
+                size = 14
             }
         },
-        label = {
-            color = colors.frost_light,
-            padding_right = 5,
-            width = 60,
+        icon = {
             align = "center",
+            color = colors.frost_blue4,
+            padding_left = 15,
             font = {
-                family = settings.font.text,
-                style = settings.font.style_map["Bold"],
-                size = 14
+                style = settings.font.style_map["Regular"],
+                size = 12
             }
         },
         position = "right",
@@ -63,8 +62,8 @@ cal:subscribe(
     function(env)
         cal:set(
             {
-                icon = os.date("%a.%d %b"),
-                label = os.date("%H:%M")
+                icon = os.date("%a.%d %b.  %H"),
+                label = os.date("%M")
             }
         )
     end

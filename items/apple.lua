@@ -33,6 +33,7 @@ local apple =
 			}
 		},
 		background = {
+			padding_right = 10,
 			align = "center",
 			position = "center",
 			color = colors.bg1,
@@ -84,13 +85,13 @@ apple:subscribe(
 							string = icons.apple,
 							color = colors.frost_blue1,
 							font = {
-								size = 16
+								size = 14
 							}
 						},
 						label = {
 							string = "s y s t e m",
 							font = {
-								size = 10,
+								size = 12,
 								color = colors.frost_blue1
 							}
 						}
@@ -139,7 +140,7 @@ apple:subscribe(
 	function(env)
 		sbar.animate(
 			"elastic",
-			20,
+			15,
 			function()
 				apple:set(
 					{

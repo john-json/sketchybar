@@ -12,7 +12,8 @@ local media_cover =
     {
         position = "left",
         background = {
-            color = colors.transparent
+            color = "none",
+            width = 20
         },
         label = {
             drawing = true
@@ -21,9 +22,9 @@ local media_cover =
             drawing = true,
             string = icons.play,
             padding_right = 0,
-            color = colors.bg1,
+            color = colors.frost_blue1,
             font = {
-                size = 30
+                size = 20
             }
         },
         drawing = true,
@@ -40,7 +41,7 @@ local media_artist =
     "item",
     {
         position = "left",
-        padding_left = -13,
+        padding_left = -10,
         drawing = true,
         width = 0,
         icon = {
@@ -53,7 +54,7 @@ local media_artist =
             },
             color = colors.bg1,
             max_chars = 40,
-            y_offset = 6
+            y_offset = 8
         }
     }
 )
@@ -70,7 +71,7 @@ local media_title =
         },
         label = {
             font = {
-                size = 12
+                size = 10
             },
             y_offset = -6
         }
