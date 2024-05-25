@@ -21,15 +21,15 @@ local cal =
             align = "center",
             color = colors.frost_light,
             padding_left = 0,
-            padding_right = 15,
+            padding_right = 10,
             font = {
-                style = settings.font.style_map["SemiBold"],
+                style = settings.font.style_map["Bold"],
                 size = 14
             }
         },
         icon = {
             align = "center",
-            color = colors.frost_blue4,
+            color = colors.frost_blue3,
             padding_left = 15,
             font = {
                 style = settings.font.style_map["Regular"],

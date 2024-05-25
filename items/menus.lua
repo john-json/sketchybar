@@ -211,7 +211,7 @@ spaces_indicator:subscribe(
         local selected = env.SELECTED == "true"
         sbar.animate(
             "elastic",
-            15,
+            10,
             function()
                 spaces_indicator:set(
                     {
