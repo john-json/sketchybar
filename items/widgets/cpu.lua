@@ -35,17 +35,17 @@ local cpu =
         },
         label = {
             position = "center",
-            color = colors.frost_light,
-            padding_right = 10,
+            color = colors.frost_blue1,
+            padding_right = 15,
             string = "cpu ??%",
             font = {
-                family = settings.font.numbers,
+                family = settings.font.text,
                 style = settings.font.style_map["SemiBold"],
                 size = 12
             },
             align = "right",
             width = 10,
-            y_offset = 4
+            y_offset = 0
         }
     }
 )

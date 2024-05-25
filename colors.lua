@@ -14,7 +14,7 @@ return {
     fontColor = 0xffc4c4c4,
     hiLight = 0xff212121,
     inactive = 0xfffb8e3f,
-    active = 0xff919fa3,
+    active = 0xffaeaeae,
     hover = 0xff292f31,
     text_active = 0xffb9bdc1,
     shadow_blue = 0xff698ba2,

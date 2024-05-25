@@ -37,7 +37,7 @@ for i = 1, max_items, 1 do
             label = {
                 font = {
                     size = 12,
-                    style = settings.font.style_map[i == 1 and "Regular" or "SemiBold"]
+                    style = settings.font.style_map[i == 1 and "SemiBold" or "Regular"]
                 }
             },
             click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i
@@ -63,8 +63,7 @@ local menu_padding =
     "item",
     "menu.padding",
     {
-        drawing = false,
-        width = "dynamic"
+        drawing = false
     }
 )
 
@@ -171,7 +170,7 @@ local spaces_indicator =
         position = "left",
         align = "center",
         label = {
-            padding_right = 15,
+            padding_right = 10,
             padding_left = 10,
             color = colors.frost_light,
             string = "menu",
@@ -181,15 +180,17 @@ local spaces_indicator =
         },
         icon = {
             padding_left = 10,
+            padding_right = 5,
             string = icons.options,
-            width = "dynamic",
             color = colors.frost_blue1,
-            size = 10
+            font = {
+                size = 12
+            }
         },
         background = {
             color = colors.bg1,
             height = 30,
-            corner_radius = 50
+            corner_radius = 25
         }
     }
 )
@@ -215,13 +216,12 @@ spaces_indicator:subscribe(
                 spaces_indicator:set(
                     {
                         background = {
-                            width = "dynamic",
                             color = {
                                 alpha = 1
                             }
                         },
                         label = {
-                            padding_right = 10,
+                            padding_right = 15,
                             padding_left = 5,
                             color = colors.frost_blue1,
                             string = "m e n u",
@@ -231,6 +231,7 @@ spaces_indicator:subscribe(
                         },
                         icon = {
                             padding_left = 10,
+                            padding_right = 10,
                             color = colors.frost_light,
                             font = {
                                 size = 12
@@ -269,6 +270,7 @@ spaces_indicator:subscribe(
                         },
                         icon = {
                             padding_left = 10,
+                            padding_right = 5,
                             string = icons.options,
                             color = colors.frost_blue1,
                             font = {
@@ -291,15 +293,7 @@ spaces_indicator:subscribe(
             "elastic",
             15,
             function()
-                spaces_indicator:set(
-                    {
-                        icon = {
-                            width = 10,
-                            color = colors.frost_light,
-                            string = icons.arrow_left
-                        }
-                    }
-                )
+                spaces_indicator:set({})
             end
         )
     end

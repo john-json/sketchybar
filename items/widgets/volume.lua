@@ -10,17 +10,17 @@ local volume_percent =
     "widgets.volume1",
     {
         position = "right",
-        padding_right = 5,
+        padding_right = 10,
         icon = {
             drawing = false
         },
         label = {
-            align = "center",
+            align = "left",
             string = "??%",
-            color = colors.frost_light,
+            color = colors.frost_blue3,
             font = {
                 size = 12,
-                style = settings.font.style_map["Bold"],
+                style = settings.font.style_map["SemiBold"],
                 family = settings.font.text,
                 color = colors.bg1
             }
@@ -34,7 +34,7 @@ local volume_icon =
     "widgets.volume2",
     {
         position = "right",
-        padding_right = 0,
+        padding_right = -5,
         padding_left = -10,
         icon = {
             width = "dynamic",
