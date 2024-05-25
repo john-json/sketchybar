@@ -18,6 +18,7 @@ local cal =
     "item",
     {
         label = {
+            position = "center",
             align = "center",
             color = colors.frost_light,
             padding_left = 0,
