@@ -62,7 +62,7 @@ cal:subscribe(
     function(env)
         cal:set(
             {
-                icon = os.date("%a.%d %b.  %H"),
+                icon = os.date("%a.%d %b.   %H"),
                 label = os.date("%M")
             }
         )
