@@ -1,5 +1,6 @@
 local settings = require("settings")
 local colors = require("colors")
+
 sbar.default(
 	{
 		updates = "when_shown",
@@ -7,7 +8,7 @@ sbar.default(
 			font = {
 				family = settings.font.text,
 				style = settings.font.style_map.Bold,
-				size = 14
+				size = 18
 			},
 			padding_left = settings.paddings,
 			padding_right = settings.paddings,

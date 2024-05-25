@@ -1,4 +1,8 @@
 {
     "notebook.editorOptionsCustomizations": {},
-    "workbench.colorCustomizations": {}
+    "workbench.colorCustomizations": {
+        "[Nord Dark Contrast]": {
+            
+        }
+    }
 }
