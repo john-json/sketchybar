@@ -3,6 +3,14 @@ local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 local sf_icons_active = {
+	"􀆊",
+	"􀆊",
+	"􀆊",
+	"􀆊",
+	"􀆊",
+	"􀆊",
+	"􀆊",
+	"􀆊",
 	"􀆊"
 }
 local sf_icons_inactive = {
@@ -41,18 +49,17 @@ for i = 1, 10, 1 do
 			space = i,
 			label = {
 				color = colors.active,
-				padding_left = 10,
-				paddings_right = 10,
-				style = settings.font.style_map.Regular,
-				align = "center",
+				align = "left",
+				padding_left = 5,
 				font = {
-					size = 10
+					style = settings.font.style_map.SemiBold,
+					size = 12
 				}
 			},
 			icon = {
 				font = {
 					family = settings.font.icons,
-					size = 14
+					padding_right = 5
 				},
 				string = getSpaceIcon(i, false),
 				color = colors.bg1
@@ -69,44 +76,28 @@ for i = 1, 10, 1 do
 		"front_app_switched",
 		function(env)
 			local selected = env.SELECTED == "true"
-			space:set(
-				{
-					background = {
-						width = selected and "dynamic" or "",
-						corner_radius = 25,
-						height = 30
-					},
-					icon = {
-						string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-						font = {
-							size = selected and 14 or 18
-						},
-						padding_left = selected and 10 or "",
-						padding_right = selected and 5 or ""
-					},
-					label = {
-						padding_left = selected and 10 or "",
-						padding_right = selected and 15 or "",
-						color = colors.frost_light,
-						string = selected and env.INFO or ""
-					}
-				}
-			)
 			sbar.animate(
 				"elastic",
-				15,
+				10,
 				function()
 					space:set(
 						{
 							label = {
-								style = settings.font.style_map.Bold,
+								padding_right = selected and 15 or 0,
+								padding_left = selected and 5 or 0,
+								style = settings.font.style_map.SemiBold,
+								string = selected and env.INFO or "",
 								color = {
 									alpha = 1
 								}
 							},
 							icon = {
-								style = settings.font.style_map.Bold,
-								size = 22,
+								padding_left = selected and 10 or 0,
+								paddings_right = selected and 10 or 0,
+								style = settings.font.style_map.SemiBold,
+								font = {
+									size = selected and 14 or 18
+								},
 								-- string = selected and "" or getSpaceIcon(i, false),
 								string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
 								color = selected and colors.frost_blue1 or colors.bg1
@@ -136,6 +127,7 @@ for i = 1, 10, 1 do
 								}
 							},
 							icon = {
+								string = selected and icons.MC_add or getSpaceIcon(i, false),
 								style = settings.font.style_map.Regular,
 								color = selected and colors.frost_blue1 or colors.bg1,
 								font = {
@@ -143,10 +135,10 @@ for i = 1, 10, 1 do
 								}
 							},
 							label = {
-								string = env.info,
+								string = env.INFO,
 								color = colors.frost_blue1,
 								font = {
-									size = 12
+									size = 2
 								}
 							}
 						}
@@ -166,23 +158,33 @@ for i = 1, 10, 1 do
 					space:set(
 						{
 							icon = {
+								style = settings.font.style_map.SemiBold,
 								font = {
-									size = 18
-								}
+									size = selected and 14 or 18
+								},
+								-- string = selected and "" or getSpaceIcon(i, false),
+								string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
+								color = selected and colors.frost_blue1 or colors.bg1
 							},
 							label = {
-								string = env.INFO,
-								padding_left = selected and 5 or "",
+								style = settings.font.style_map.Regular,
+								padding_right = selected and 15 or 0,
 								color = colors.frost_light,
-								padding_right = selected and 10 or "",
 								font = {
-									size = 10
+									size = selected and 12 or 0
 								}
 							}
 						}
 					)
 				end
 			)
+		end
+	)
+
+	space:subscribe(
+		"mouse.clicked",
+		function(env)
+			sbar.exec("open -a 'Mission Control'")
 		end
 	)
 

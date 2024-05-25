@@ -171,9 +171,9 @@ local spaces_indicator =
         align = "center",
         label = {
             padding_right = 15,
-            padding_left = 10,
+            padding_left = 5,
             color = colors.frost_light,
-            string = "menu",
+            string = "Menu",
             font = {
                 size = 12
             }
@@ -224,17 +224,20 @@ spaces_indicator:subscribe(
                             padding_right = 15,
                             padding_left = 5,
                             color = colors.frost_blue1,
-                            string = "m e n u",
+                            string = "Menu",
                             font = {
-                                size = 12
+                                size = 2
                             }
                         },
                         icon = {
                             padding_left = 10,
                             padding_right = 10,
                             color = colors.frost_light,
+                            position = "center",
+                            align = "center",
+                            string = "􀰗",
                             font = {
-                                size = 12
+                                size = 16
                             }
                         }
                     }
@@ -260,10 +263,10 @@ spaces_indicator:subscribe(
                             }
                         },
                         label = {
-                            padding_right = 15,
-                            padding_left = 10,
+                            padding_right = 10,
+                            padding_left = 5,
                             color = colors.frost_light,
-                            string = "menu",
+                            string = "Menu",
                             font = {
                                 size = 12
                             }

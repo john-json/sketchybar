@@ -17,7 +17,7 @@ local apple =
 			font = {
 				size = 14
 			},
-			padding_right = 10,
+			padding_right = 5,
 			padding_left = 10,
 			string = icons.apple,
 			color = colors.frost_light
@@ -25,8 +25,8 @@ local apple =
 		label = {
 			width = "dynamic",
 			drawing = true,
-			string = "system",
-			padding_right = 10,
+			string = "System",
+			padding_right = 15,
 			font = {
 				size = 12,
 				color = colors.frost_blue1
@@ -82,16 +82,16 @@ apple:subscribe(
 							}
 						},
 						icon = {
-							string = icons.apple,
+							string = icons.menu,
 							color = colors.frost_blue1,
 							font = {
-								size = 14
+								size = 16
 							}
 						},
 						label = {
-							string = "s y s t e m",
+							string = "System",
 							font = {
-								size = 12,
+								size = 2,
 								color = colors.frost_blue1
 							}
 						}
@@ -123,7 +123,7 @@ apple:subscribe(
 							color = colors.frost_light
 						},
 						label = {
-							string = "system",
+							string = "System",
 							padding_right = 15,
 							font = {
 								size = 12
