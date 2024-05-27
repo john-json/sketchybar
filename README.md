@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="images/Sbar.svg" />
-</p>
+
 
 <p align="center">
 <a href="https://felixkratz.github.io/SketchyBar/setup">Install</a>
