@@ -28,16 +28,19 @@ for i = 1, max_items, 1 do
         "item",
         "menu." .. i,
         {
-            padding_left = 10,
-            padding_right = 10,
             drawing = false,
             icon = {
                 drawing = false
             },
+            background = {
+                drawing = false
+            },
             label = {
+                color = colors.frost_light,
                 font = {
-                    size = 12,
-                    style = settings.font.style_map[i == 1 and "SemiBold" or "Regular"]
+                    color = colors.frost_light,
+                    size = 10,
+                    style = settings.font.style_map[i == 1 and "Bold" or "SemiBold"]
                 }
             },
             click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i
@@ -52,13 +55,12 @@ sbar.add(
     {"/menu\\..*/"},
     {
         background = {
-            color = colors.bg1,
-            corner_radius = 25
+            color = colors.bg1
         }
     }
 )
 
-local menu_padding =
+local menu =
     sbar.add(
     "item",
     "menu.padding",
@@ -77,12 +79,12 @@ local function update_menus(env)
                     drawing = false
                 }
             )
-            menu_padding:set(
+            menu:set(
                 {
                     drawing = true
                 }
             )
-            id = 1
+            local id = 1
             for menu in string.gmatch(menus, "[^\r\n]+") do
                 if id < max_items then
                     menu_items[id]:set(
@@ -106,6 +108,7 @@ space_menu_swap:subscribe(
     "swap_menus_and_spaces",
     function(env)
         local drawing = menu_items[1]:query().geometry.drawing == "on"
+
         if drawing then
             menu_watcher:set(
                 {
@@ -155,98 +158,89 @@ space_menu_swap:subscribe(
     end
 )
 
-local space_window_observer =
-    sbar.add(
-    "item",
-    {
-        drawing = false,
-        updates = true
-    }
-)
-local spaces_indicator =
+local menu_indicator =
     sbar.add(
     "item",
     {
         position = "left",
         align = "center",
-        label = {
-            padding_right = 15,
-            padding_left = 5,
-            color = colors.frost_light,
-            string = "Menu",
-            font = {
-                size = 12
-            }
-        },
         icon = {
-            padding_left = 10,
-            padding_right = 5,
             string = icons.options,
             color = colors.frost_blue1,
             font = {
-                size = 12
+                size = 14
             }
         },
         background = {
-            color = colors.bg1,
-            height = 30,
-            corner_radius = 25
+            color = colors.bg1
         }
     }
 )
-spaces_indicator:subscribe(
+menu_indicator:subscribe(
     "swap_menus_and_spaces",
     function(env)
-        local currently_on = (spaces_indicator:query()).icon.value == icons.arrow_right
-        spaces_indicator:set(
+        local currently_on = (menu_indicator:query()).icon.value == icons.arrow_right
+        menu_indicator:set(
             {
-                icon = currently_on and icons.arrow_left or ""
+                icon = {
+                    string = currently_on and icons.arrow_right or icons.options2
+                }
             }
         )
     end
 )
-spaces_indicator:subscribe(
+menu_indicator:subscribe(
     "mouse.entered",
     function(env)
+        sbar.trigger("swap_menus_and_spaces")
         local selected = env.SELECTED == "true"
         sbar.animate(
             "elastic",
-            10,
+            15,
             function()
-                spaces_indicator:set(
+                menu_indicator:set(
                     {
                         background = {
                             color = {
                                 alpha = 1
                             }
                         },
-                        label = {
-                            padding_right = 15,
-                            padding_left = 5,
-                            color = colors.frost_blue1,
-                            string = "Menu",
-                            font = {
-                                size = 2
-                            }
-                        },
                         icon = {
-                            padding_left = 10,
-                            padding_right = 10,
-                            color = colors.frost_light,
-                            position = "center",
-                            align = "center",
-                            string = "􀰗",
+                            color = colors.frost_blue1,
                             font = {
-                                size = 16
+                                size = 14
                             }
                         }
                     }
                 )
             end
         )
+        -- Animate the menu items when they show up
+        for i = 1, max_items do
+            local menu_item = menu_items[i]
+            if menu_item:query().geometry.drawing == "on" then
+                sbar.animate(
+                    "elastic",
+                    15,
+                    function()
+                        menu_item:set(
+                            {
+                                label = {
+                                    color = selected and colors.red or colors.frost_light,
+                                    font = {
+                                        size = 12,
+                                        style = settings.font.style_map.Bold
+                                    }
+                                }
+                            }
+                        )
+                    end
+                )
+            end
+        end
     end
 )
-spaces_indicator:subscribe(
+menu_indicator:subscribe(
     "mouse.exited",
     function(env)
         local selected = env.SELECTED == "true"
@@ -254,27 +248,9 @@ spaces_indicator:subscribe(
             "elastic",
             15,
             function()
-                spaces_indicator:set(
+                menu_indicator:set(
                     {
-                        background = {
-                            width = "dynamic",
-                            color = {
-                                alpha = 1
-                            }
-                        },
                         label = {
-                            padding_right = 10,
-                            padding_left = 5,
-                            color = colors.frost_light,
-                            string = "Menu",
-                            font = {
-                                size = 12
-                            }
-                        },
-                        icon = {
-                            padding_left = 10,
-                            padding_right = 5,
-                            string = icons.options,
                             color = colors.frost_blue1,
                             font = {
                                 size = 12
@@ -284,10 +260,33 @@ spaces_indicator:subscribe(
                 )
             end
         )
+        -- Animate the menu items when they show up
+        for i = 1, max_items do
+            local menu_item = menu_items[i]
+            if menu_item:query().geometry.drawing == "on" then
+                sbar.animate(
+                    "elastic",
+                    15,
+                    function()
+                        menu_item:set(
+                            {
+                                label = {
+                                    color = colors.frost_light,
+                                    font = {
+                                        size = 12,
+                                        style = settings.font.style_map.SemiBold
+                                    }
+                                }
+                            }
+                        )
+                    end
+                )
+            end
+        end
     end
 )
 
-spaces_indicator:subscribe(
+menu_indicator:subscribe(
     "mouse.clicked",
     function(env)
         local selected = env.SELECTED == "true"
@@ -296,7 +295,7 @@ spaces_indicator:subscribe(
             "elastic",
             15,
             function()
-                spaces_indicator:set({})
+                menu_indicator:set({})
             end
         )
     end

@@ -7,14 +7,13 @@ sbar.default(
 		icon = {
 			font = {
 				family = settings.font.text,
-				style = settings.font.style_map.Bold,
-				size = 18
+				style = settings.font.style_map.Bold
 			},
-			padding_left = settings.paddings,
-			padding_right = settings.paddings,
+			padding_left = settings.icon_paddings,
+			padding_right = settings.icon_paddings,
 			background = {
 				image = {
-					corner_radius = 15
+					corner_radius = 8
 				}
 			}
 		},
@@ -30,14 +29,20 @@ sbar.default(
 		},
 		background = {
 			height = 30,
-			corner_radius = 15,
+			corner_radius = 6,
 			border_width = 0,
 			border_color = colors.border2
 		},
 		popup = {
+			margin = 50,
+			label = {
+				font = {
+					size = 10
+				}
+			},
 			background = {
 				border_width = 1,
-				corner_radius = 8,
+				corner_radius = 12,
 				border_color = colors.popup.border,
 				color = colors.popup.bg,
 				shadow = {

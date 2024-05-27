@@ -24,18 +24,18 @@ local cpu =
             drawing = true
         },
         icon = {
-            string = icons.cpu2,
-            padding_right = 20,
-            padding_left = 0,
+            string = "􀼣",
+            padding_right = 25,
+            padding_left = 5,
             align = "center",
             color = colors.frost_blue1,
             font = {
-                size = 25
+                size = 12
             }
         },
         label = {
             position = "center",
-            color = colors.frost_blue1,
+            color = colors.frost_light,
             padding_right = 15,
             string = "cpu ??%",
             font = {

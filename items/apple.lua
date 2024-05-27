@@ -15,7 +15,7 @@ local apple =
 			align = "center",
 			position = "center",
 			font = {
-				size = 14
+				size = 12
 			},
 			padding_right = 5,
 			padding_left = 10,
@@ -23,12 +23,12 @@ local apple =
 			color = colors.frost_light
 		},
 		label = {
-			width = "dynamic",
 			drawing = true,
-			string = "System",
+			string = "Menu",
 			padding_right = 15,
+			padding_left = 5,
 			font = {
-				size = 12,
+				size = 10,
 				color = colors.frost_blue1
 			}
 		},
@@ -38,7 +38,6 @@ local apple =
 			position = "center",
 			color = colors.bg1,
 			border_width = 0,
-			corner_radius = 25,
 			width = 20
 		},
 		click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
@@ -89,9 +88,9 @@ apple:subscribe(
 							}
 						},
 						label = {
-							string = "System",
+							string = icons.arrow_down,
 							font = {
-								size = 2,
+								size = 10,
 								color = colors.frost_blue1
 							}
 						}
@@ -116,17 +115,18 @@ apple:subscribe(
 							}
 						},
 						icon = {
-							font = {
-								size = 14
-							},
 							string = icons.apple,
-							color = colors.frost_light
-						},
-						label = {
-							string = "System",
-							padding_right = 15,
+							color = colors.frost_light,
 							font = {
 								size = 12
+							}
+						},
+						label = {
+							string = "Menu",
+							padding_right = 15,
+							padding_left = 5,
+							font = {
+								size = 10
 							}
 						}
 					}

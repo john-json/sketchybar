@@ -10,15 +10,16 @@ local volume_percent =
     "widgets.volume1",
     {
         position = "right",
-        padding_right = 10,
+        padding_right = 5,
         icon = {
             drawing = false
         },
         label = {
             align = "left",
             string = "??%",
-            color = colors.frost_blue3,
+            color = colors.frost_light,
             font = {
+                align = "center",
                 size = 12,
                 style = settings.font.style_map["SemiBold"],
                 family = settings.font.text,
@@ -34,17 +35,17 @@ local volume_icon =
     "widgets.volume2",
     {
         position = "right",
-        padding_right = -5,
+        padding_right = 0,
         padding_left = -10,
         icon = {
-            width = "dynamic",
-            color = colors.frost_blue3
+            color = colors.frost_blue1,
+            size = 10
         },
         label = {
             align = "center",
-            color = colors.frost_blue3,
+            color = colors.frost_blue1,
             font = {
-                size = 25
+                size = 12
             }
         }
     }
@@ -83,7 +84,6 @@ local volume_slider =
             highlight_color = colors.grey,
             background = {
                 height = 5,
-                corner_radius = 25,
                 color = colors.transparent
             },
             knob = {

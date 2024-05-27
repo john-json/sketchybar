@@ -2,39 +2,39 @@ local colors = require("colors")
 local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
+
 local sf_icons_active = {
-	"􀆊",
-	"􀆊",
-	"􀆊",
-	"􀆊",
-	"􀆊",
-	"􀆊",
-	"􀆊",
-	"􀆊",
-	"􀆊"
+	"􀃋",
+	"􀃍",
+	"􀃏",
+	"􀃑",
+	"􀃓",
+	"􀃕",
+	"􀃗",
+	"􀃙",
+	"􀃛"
 }
 local sf_icons_inactive = {
-	"􀀻",
-	"􀀽",
-	"􀀿",
-	"􀘘",
-	"􀁃",
-	"􀁅",
-	"􀁇",
-	"􀁉",
-	"􀁋"
+	"􀂓",
+	"􀂓",
+	"􀂓",
+	"􀂓",
+	"􀂓",
+	"􀂓",
+	"􀂓",
+	"􀂓",
+	"􀂓"
 }
 local function getSpaceIcon(space, active)
 	if active then
 		return sf_icons_active[space]
 	else
-		return sf_icons_inactive[space]
+		return sf_icons_inactive[space] or "􀂓"
 	end
 end
 local spaces = {
 	background = {
-		colors = colors.bg1,
-		corner_radius = 25
+		colors = colors.bg1
 	}
 }
 
@@ -48,26 +48,22 @@ for i = 1, 10, 1 do
 			align = "center",
 			space = i,
 			label = {
-				color = colors.active,
-				align = "left",
+				color = colors.frost_light,
+				align = "center",
 				padding_left = 5,
 				font = {
-					style = settings.font.style_map.SemiBold,
-					size = 12
+					family = settings.font.text,
+					size = 10
 				}
 			},
 			icon = {
-				font = {
-					family = settings.font.icons,
-					padding_right = 5
-				},
 				string = getSpaceIcon(i, false),
+				size = 20,
 				color = colors.bg1
 			},
 			background = {
 				color = colors.bg1,
-				border_color = colors.bg1,
-				corner_radius = 20
+				border_color = colors.bg1
 			}
 		}
 	)
@@ -83,24 +79,26 @@ for i = 1, 10, 1 do
 					space:set(
 						{
 							label = {
-								padding_right = selected and 15 or 0,
+								padding_right = selected and 10 or 0,
 								padding_left = selected and 5 or 0,
 								style = settings.font.style_map.SemiBold,
 								string = selected and env.INFO or "",
 								color = {
 									alpha = 1
+								},
+								font = {
+									size = selected and 12 or 20
 								}
 							},
 							icon = {
-								padding_left = selected and 10 or 0,
-								paddings_right = selected and 10 or 0,
+								padding_left = selected and 5 or 0,
+								paddings_right = selected and 5 or 0,
 								style = settings.font.style_map.SemiBold,
+								string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
+								color = selected and colors.frost_blue1 or colors.bg1,
 								font = {
 									size = selected and 14 or 18
-								},
-								-- string = selected and "" or getSpaceIcon(i, false),
-								string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-								color = selected and colors.frost_blue1 or colors.bg1
+								}
 							},
 							background = {
 								drawing = selected and true or false
@@ -127,11 +125,11 @@ for i = 1, 10, 1 do
 								}
 							},
 							icon = {
-								string = selected and icons.MC_add or getSpaceIcon(i, false),
+								string = selected and icons.space_control3 or getSpaceIcon(i, true),
 								style = settings.font.style_map.Regular,
 								color = selected and colors.frost_blue1 or colors.bg1,
 								font = {
-									size = selected and 14 or 22
+									size = selected and 18 or 25
 								}
 							},
 							label = {
@@ -188,28 +186,26 @@ for i = 1, 10, 1 do
 		end
 	)
 
-	-- space:subscribe(
-	-- 	"mouse.exited",
-	-- 	function(env)
-	-- 		local selected = env.SELECTED == "true"
-	-- 		space:set(
-	-- 			{
-	-- 				icon = {
-	-- 					font = {
-	-- 						size = 14
-	-- 					}
-	-- 				},
-	-- 				label = {
-	-- 					string = env.INFO,
-	-- 					padding_left = selected and 5 or "",
-	-- 					color = colors.frost_light,
-	-- 					padding_right = selected and 10 or "",
-	-- 					font = {
-	-- 						size = 10
+	-- 	space:subscribe(
+	-- 		"mouse.exited",
+	-- 		function(env)
+	-- 			local selected = env.SELECTED == "true"
+	-- 			space:set(
+	-- 				{
+	-- 					icon = {
+	-- 						drawing = selected and false or true
+	-- 					},
+	-- 					label = {
+	-- 						string = env.INFO,
+	-- 						padding_left = selected and 5 or "",
+	-- 						color = colors.frost_light,
+	-- 						padding_right = selected and 10 or "",
+	-- 						font = {
+	-- 							size = 10
+	-- 						}
 	-- 					}
 	-- 				}
-	-- 			}
-	-- 		)
-	-- 	end
-	-- )
+	-- 			)
+	-- 		end
+	-- 	)
 end

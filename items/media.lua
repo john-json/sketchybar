@@ -1,79 +1,93 @@
-local icons = require("icons")
 local colors = require("colors")
+local icons = require("icons")
+local settings = require("settings")
 
 local whitelist = {
     ["Spotify"] = true,
     ["Music"] = true
 }
 
-local media_cover =
-    sbar.add(
-    "item",
-    {
-        position = "left",
-        background = {
-            color = "none",
-            width = 20
-        },
-        label = {
-            drawing = true
-        },
-        icon = {
+local function setup_media_items()
+    local media_cover =
+        sbar.add(
+        "item",
+        {
+            position = "left",
+            align = "left",
+            label = {
+                drawing = true
+            },
+            icon = {
+                drawing = true,
+                string = whitelist.Spotify and "" or icons.play,
+                color = colors.frost_blue1,
+                font = {
+                    size = 12
+                }
+            },
             drawing = true,
-            string = icons.play,
-            padding_right = 0,
-            color = colors.frost_blue1,
-            font = {
-                size = 20
+            updates = true,
+            popup = {
+                align = "center",
+                horizontal = true
             }
-        },
-        drawing = true,
-        updates = true,
-        popup = {
-            align = "center",
-            horizontal = true
         }
-    }
-)
+    )
 
-local media_artist =
-    sbar.add(
-    "item",
-    {
-        position = "left",
-        padding_left = -10,
-        drawing = true,
-        width = 0,
-        icon = {
-            drawing = true
-        },
-        label = {
-            width = "dynamic",
-            font = {
-                size = 10
+    local media_artist =
+        sbar.add(
+        "item",
+        {
+            drawing = true,
+            width = 0,
+            icon = {
+                drawing = false
             },
+            label = {
+                width = "dynamic",
+                font = {
+                    size = 10
+                },
+                color = colors.frost_blue1,
+                max_chars = 25,
+                y_offset = 8
+            }
+        }
+    )
+
+    local media_title =
+        sbar.add(
+        "item",
+        {
+            drawing = true,
+            icon = {
+                drawing = false
+            },
+            label = {
+                color = colors.frost_light,
+                max_chars = 25,
+                font = {
+                    size = 10
+                },
+                y_offset = -6
+            }
+        }
+    )
+
+    return media_cover, media_artist, media_title
+end
+
+local media_cover, media_artist, media_title = setup_media_items()
+
+local media_container =
+    sbar.add(
+    "bracket",
+    "media_container",
+    {media_cover.name, media_artist.name, media_title.name},
+    {
+        background = {
             color = colors.bg1,
-            max_chars = 40,
-            y_offset = 8
-        }
-    }
-)
-
-local media_title =
-    sbar.add(
-    "item",
-    {
-        position = "left",
-        padding_left = -10,
-        drawing = true,
-        icon = {
-            drawing = true
-        },
-        label = {
-            font = {
-                size = 10
-            },
-            y_offset = -6
+            border_width = 0
         }
     }
 )
@@ -229,3 +243,5 @@ media_title:subscribe(
         )
     end
 )
+
+return media_container

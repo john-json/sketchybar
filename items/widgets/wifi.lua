@@ -17,10 +17,10 @@ local wifi_up =
 		width = 0,
 		icon = {
 			padding_right = 0,
-			paddding_left = 15,
+			paddding_left = 10,
 			font = {
 				style = settings.font.style_map.Bold,
-				size = 10
+				size = 8
 			},
 			string = icons.wifi.upload
 		},
@@ -49,7 +49,7 @@ local wifi_down =
 			padding_right = 0,
 			font = {
 				style = settings.font.style_map.Bold,
-				size = 10
+				size = 8
 			},
 			string = icons.wifi.download
 		},
@@ -79,7 +79,7 @@ local wifi_icon =
 			color = colors.frost_blue2,
 			font = {
 				color = colors.frost_blue1,
-				size = 25
+				size = 12
 			},
 			label = {
 				font = {

@@ -1,9 +1,10 @@
 return {
-    paddings = 3,
+    paddings = 0,
+    bar_paddings = 0,
     group_paddings = 5,
-    icons = "sf-symbols", -- alternatively available: NerdFont
-    -- -- This is a font configuration for SF Pro and SF Mono (installed manually)
-    -- font = require("helpers.default_font"),
+    icon_paddings = 5,
+    icons = "sf-symbols",
+    -- alternatively available: NerdFont
 
     -- Alternatively, this is a font config for JetBrainsMono Nerd Font
     font = {
@@ -12,7 +13,7 @@ return {
         style_map = {
             ["Regular"] = "Regular",
             ["Semibold"] = "Medium",
-            ["Bold"] = "SemiBold",
+            ["Bold"] = "Bold",
             ["Heavy"] = "Bold",
             ["Black"] = "ExtraBold"
         }
