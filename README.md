@@ -12,17 +12,6 @@
 
 
 
-<p align="center">
-This bar project aims to create a highly flexible, customizable, fast and powerful status bar replacement for people that like playing with
-shell scripts.
-</p>
-
-![](images/example.png)
-<p align="center">
-<a href="https://github.com/FelixKratz/SketchyBar/discussions/47?sort=top">More Setups</a>
-</p>
-
-
 
 ## Features
 * Full *configurability* at any time
