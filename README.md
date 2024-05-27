@@ -25,14 +25,6 @@
 
 
 
-## Getting Started
-Refer to the installation guide in the [documentation](https://felixkratz.github.io/SketchyBar/setup) to get the program set up.
-Once this is sorted you can start to become familiar with the syntax of sketchybar by going through the default [*sketchybarrc*](https://github.com/FelixKratz/SketchyBar/blob/master/sketchybarrc) file and the default [*plugin scripts*](https://github.com/FelixKratz/SketchyBar/blob/master/plugins),
-which are located in `~/.config/sketchybar/` and look like this:
-
-![](images/default.png)
-
-
 
 ## Documentation
 For the full documentation of all commands and properties please refer to the [website](https://felixkratz.github.io/SketchyBar/config/bar).
@@ -45,9 +37,6 @@ This project was forked from *[spacebar](https://github.com/cmacrae/spacebar)* a
 The original idea is based on the status bar that was included in *[yabai](https://github.com/koekeishiya/yabai)* before getting removed.
 
 
-## Related Projects
-- [SbarLua](https://github.com/FelixKratz/SbarLua): A Lua API for SketchyBar
-- [sketchybar-app-font](https://github.com/kvndrsslr/sketchybar-app-font): A symbol font for SketchyBar
-- [SketchyBarHelper](https://github.com/FelixKratz/SketchyBarHelper): A header for C/C++ to directly communicate with SketchyBar
+
 
 
