@@ -34,9 +34,6 @@ which are located in `~/.config/sketchybar/` and look like this:
 
 
 
-Should you encounter things not working as you expect them to, please *do not* hesitate to open an [issue](https://github.com/FelixKratz/SketchyBar/issues), as
-this is either a bug or a documentation problem and relevant in any case.
-
 ## Documentation
 For the full documentation of all commands and properties please refer to the [website](https://felixkratz.github.io/SketchyBar/config/bar).
 
