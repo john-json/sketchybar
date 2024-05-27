@@ -10,12 +10,7 @@
 <a href="https://github.com/FelixKratz/SketchyBar/discussions/12?sort=top">Plugins</a>
 </p>
 
-<p align="center">
-<a href="https://opensource.org/licenses/"><img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg"></a>
-<a href="https://github.com/FelixKratz/SketchyBar/releases"><img src="https://img.shields.io/github/v/release/FelixKratz/SketchyBar.svg?style=flat&color=orange" /></a>
-<a href="https://github.com/FelixKratz/SketchyBar/releases"><img src="https://img.shields.io/github/commits-since/FelixKratz/SketchyBar/latest.svg?color=orange"></a>
-<a href="https://en.wikipedia.org/wiki/Free_and_open-source_software"><img src="https://img.shields.io/badge/FOSS-100%25-green.svg?style=flat"></a>
-</p>
+
 
 <p align="center">
 This bar project aims to create a highly flexible, customizable, fast and powerful status bar replacement for people that like playing with
