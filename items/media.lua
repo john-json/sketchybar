@@ -3,8 +3,7 @@ local icons = require("icons")
 local settings = require("settings")
 
 local whitelist = {
-    ["Spotify"] = true,
-    ["Music"] = true
+    ["Spotify"] = true
 }
 
 local function setup_media_items()
@@ -12,14 +11,14 @@ local function setup_media_items()
         sbar.add(
         "item",
         {
-            position = "left",
-            align = "left",
+            position = "right",
+            align = "center",
             label = {
                 drawing = true
             },
             icon = {
                 drawing = true,
-                string = whitelist.Spotify and "" or icons.play,
+                string = "",
                 color = colors.frost_blue1,
                 font = {
                     size = 12
@@ -38,6 +37,7 @@ local function setup_media_items()
         sbar.add(
         "item",
         {
+            position = "right",
             drawing = true,
             width = 0,
             icon = {
@@ -59,6 +59,7 @@ local function setup_media_items()
         sbar.add(
         "item",
         {
+            position = "right",
             drawing = true,
             icon = {
                 drawing = false
@@ -86,8 +87,7 @@ local media_container =
     {media_cover.name, media_artist.name, media_title.name},
     {
         background = {
-            color = colors.bg1,
-            border_width = 0
+            color = colors.bg1
         }
     }
 )

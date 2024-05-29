@@ -6,9 +6,7 @@ sbar.add(
     "item",
     {
         position = "right",
-        align = "center",
-        padding_left = settings.group_paddings,
-        padding_right = settings.group_paddings
+        align = "center"
     }
 )
 
@@ -43,7 +41,8 @@ local cal =
             padding_left = 0,
             color = colors.bg1,
             border_width = 0
-        }
+        },
+        width = 150
     }
 )
 
@@ -52,8 +51,7 @@ sbar.add(
     "item",
     {
         position = "right",
-        align = "center",
-        width = settings.group_paddings
+        align = "center"
     }
 )
 

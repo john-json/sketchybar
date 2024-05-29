@@ -1,5 +1,5 @@
 return {
-    paddings = 0,
+    paddings = 5,
     bar_paddings = 0,
     group_paddings = 5,
     icon_paddings = 5,

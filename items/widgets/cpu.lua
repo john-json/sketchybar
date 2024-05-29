@@ -105,6 +105,6 @@ sbar.add(
     "widgets.cpu.padding",
     {
         position = "right",
-        width = settings.group_paddings
+        width = "dynamic"
     }
 )

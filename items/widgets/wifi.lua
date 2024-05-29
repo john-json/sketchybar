@@ -16,8 +16,8 @@ local wifi_up =
 		padding_left = -5,
 		width = 0,
 		icon = {
-			padding_right = 0,
-			paddding_left = 10,
+			padding_right = 5,
+			paddding_left = 20,
 			font = {
 				style = settings.font.style_map.Bold,
 				size = 8
@@ -72,7 +72,7 @@ local wifi_icon =
 	"wifi.icon",
 	{
 		position = "right",
-		padding_left = -20,
+		padding_left = -15,
 		padding_right = 5,
 		icon = {
 			string = icons.wifi.connected,

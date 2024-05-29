@@ -4,7 +4,7 @@ local settings = require("settings")
 sbar.add(
 	"item",
 	{
-		width = 20
+		width = "dynamic"
 	}
 )
 local apple =
@@ -12,33 +12,28 @@ local apple =
 	"item",
 	{
 		icon = {
+			padding_left = 10,
 			align = "center",
 			position = "center",
 			font = {
 				size = 12
 			},
-			padding_right = 5,
-			padding_left = 10,
 			string = icons.apple,
 			color = colors.frost_light
 		},
 		label = {
+			padding_right = 10,
 			drawing = true,
-			string = "Menu",
-			padding_right = 15,
-			padding_left = 5,
+			string = "macOS",
+			color = colors.frost_light,
 			font = {
-				size = 10,
-				color = colors.frost_blue1
+				size = 12
 			}
 		},
 		background = {
-			padding_right = 10,
-			align = "center",
-			position = "center",
 			color = colors.bg1,
 			border_width = 0,
-			width = 20
+			width = "dynamic"
 		},
 		click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
 	}
@@ -61,7 +56,7 @@ apple:subscribe(
 		local currently_on = (apple:query()).icon.value == icons.apple
 		apple:set(
 			{
-				icon = currently_on and icons.apple or icons.arrow_up
+				icon = currently_on and icons.apple or ""
 			}
 		)
 	end
@@ -88,7 +83,7 @@ apple:subscribe(
 							}
 						},
 						label = {
-							string = icons.arrow_down,
+							string = "",
 							font = {
 								size = 10,
 								color = colors.frost_blue1
@@ -122,11 +117,10 @@ apple:subscribe(
 							}
 						},
 						label = {
-							string = "Menu",
-							padding_right = 15,
-							padding_left = 5,
+							color = colors.frost_light,
+							string = "macOS",
 							font = {
-								size = 10
+								size = 12
 							}
 						}
 					}

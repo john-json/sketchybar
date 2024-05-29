@@ -10,12 +10,12 @@ local volume_percent =
     "widgets.volume1",
     {
         position = "right",
-        padding_right = 5,
         icon = {
             drawing = false
         },
         label = {
-            align = "left",
+            padding_right = 5,
+            align = "right",
             string = "??%",
             color = colors.frost_light,
             font = {
@@ -35,19 +35,20 @@ local volume_icon =
     "widgets.volume2",
     {
         position = "right",
-        padding_right = 0,
-        padding_left = -10,
+        padding_right = 5,
+        padding_left = 0,
         icon = {
             color = colors.frost_blue1,
             size = 10
         },
         label = {
-            align = "center",
+            align = "right",
             color = colors.frost_blue1,
             font = {
                 size = 12
             }
-        }
+        },
+        click_script = "osascript $CONFIG_DIR/items/scripts/openSoundMenu.scpt"
     }
 )
 

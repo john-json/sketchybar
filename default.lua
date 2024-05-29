@@ -23,9 +23,7 @@ sbar.default(
 				style = settings.font.style_map.SemiBold,
 				size = 16
 			},
-			color = colors.frost_light,
-			padding_left = settings.paddings,
-			padding_right = settings.paddings
+			color = colors.frost_light
 		},
 		background = {
 			height = 30,

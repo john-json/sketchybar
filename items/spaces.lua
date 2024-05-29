@@ -182,7 +182,9 @@ for i = 1, 10, 1 do
 	space:subscribe(
 		"mouse.clicked",
 		function(env)
-			sbar.exec("open -a 'Mission Control'")
+			local selected = env.SELECTED == "true"
+
+			sbar.exec(selected and "open -a 'Mission Control'" or "osascript $CONFIG_DIR/items/scripts/newSpace.scpt")
 		end
 	)
 

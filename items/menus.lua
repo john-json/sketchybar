@@ -36,6 +36,8 @@ for i = 1, max_items, 1 do
                 drawing = false
             },
             label = {
+                padding_left = 5,
+                padding_right = 5,
                 color = colors.frost_light,
                 font = {
                     color = colors.frost_light,
@@ -165,6 +167,7 @@ local menu_indicator =
         position = "left",
         align = "center",
         icon = {
+            align = "center",
             string = icons.options,
             color = colors.frost_blue1,
             font = {
