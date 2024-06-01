@@ -23,7 +23,7 @@ sbar.default(
 				style = settings.font.style_map.SemiBold,
 				size = 16
 			},
-			color = colors.frost_light
+			color = colors.white
 		},
 		background = {
 			height = 30,

@@ -25,10 +25,10 @@ local cpu =
         },
         icon = {
             string = "􀼣",
-            padding_right = 25,
-            padding_left = 5,
+            padding_right = 20,
+            padding_left = 10,
             align = "center",
-            color = colors.frost_blue1,
+            color = colors.magenta,
             font = {
                 size = 12
             }

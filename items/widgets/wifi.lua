@@ -28,10 +28,9 @@ local wifi_up =
 			font = {
 				family = settings.font.numbers,
 				style = settings.font.style_map.Bold,
-				size = 10,
-				color = colors.bg1
+				size = 8
 			},
-			color = colors.green,
+			color = colors.white,
 			string = "en1 Bps"
 		},
 		y_offset = 4
@@ -57,10 +56,9 @@ local wifi_down =
 			font = {
 				family = settings.font.numbers,
 				style = settings.font.style_map.Bold,
-				size = 10,
-				color = colors.bg1
+				size = 8
 			},
-			color = colors.bg1,
+			color = colors.grey,
 			string = "en1 Bps"
 		},
 		y_offset = -4
@@ -76,16 +74,15 @@ local wifi_icon =
 		padding_right = 5,
 		icon = {
 			string = icons.wifi.connected,
-			color = colors.frost_blue2,
+			color = colors.blue,
 			font = {
-				color = colors.frost_blue1,
 				size = 12
-			},
-			label = {
-				font = {
-					color = colors.frost_light,
-					size = 10
-				}
+			}
+		},
+		label = {
+			font = {
+				color = colors.blue,
+				size = 10
 			}
 		}
 	}
@@ -99,7 +96,10 @@ local wifi =
 		label = {
 			drawing = false,
 			style = settings.font.style_map.Bold,
-			aize = 10
+			font = {
+				color = colors.blue,
+				size = 10
+			}
 		}
 	}
 )
@@ -140,7 +140,7 @@ local ssid =
 			font = {
 				size = 10,
 				style = settings.font.style_map.Bold,
-				color = colors.frost_light
+				color = colors.bg1
 			},
 			max_chars = 18,
 			string = "????????????????"
@@ -218,7 +218,7 @@ local router =
 		label = {
 			string = "???.???.???.???",
 			width = popup_width / 2,
-			align = "right"
+			align = "left"
 		}
 	}
 )
@@ -228,7 +228,9 @@ sbar.add(
 		position = "left",
 		width = settings.group_paddings,
 		label = {
-			size = 8
+			font = {
+				size = 10
+			}
 		}
 	}
 )
@@ -240,25 +242,25 @@ wifi_up:subscribe(
 		wifi_up:set(
 			{
 				icon = {
-					color = colors.green,
+					color = colors.white,
 					padding_right = 5
 				},
 				label = {
 					string = env.upload,
 					style = settings.font.style_map.Bold,
-					color = colors.frost_blue1
+					color = colors.white
 				}
 			}
 		)
 		wifi_down:set(
 			{
 				icon = {
-					color = colors.red,
+					color = colors.grey,
 					padding_right = 5
 				},
 				label = {
 					string = env.download,
-					color = colors.frost_blue2
+					color = colors.grey
 				}
 			}
 		)

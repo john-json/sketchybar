@@ -7,42 +7,41 @@ sbar.add(
 		width = 0
 	}
 )
-local apple =
+local add_space =
 	sbar.add(
 	"item",
 	{
 		icon = {
-			padding_left = 10,
-			padding_right = 10,
 			align = "center",
 			font = {
-				size = 12
+				size = 18
 			},
-			string = icons.apple,
+			string = icons.plus,
 			color = colors.grey
 		},
 		background = {
-			color = colors.bg1
-		},
-		click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
+			color = {
+				alpha = 0
+			}
+		}
 	}
 )
 sbar.add(
 	"bracket",
 	{
-		apple.name
+		add_space.name
 	},
 	{}
 )
 
-apple:subscribe(
+add_space:subscribe(
 	"mouse.entered",
 	function(env)
 		sbar.animate(
 			"elastic",
 			15,
 			function()
-				apple:set(
+				add_space:set(
 					{
 						background = {
 							color = {
@@ -50,8 +49,8 @@ apple:subscribe(
 							}
 						},
 						icon = {
-							string = "Menu",
-							color = colors.white,
+							string = "Add space",
+							color = colors.orange,
 							font = {
 								size = 12
 							}
@@ -62,25 +61,25 @@ apple:subscribe(
 		)
 	end
 )
-apple:subscribe(
+add_space:subscribe(
 	"mouse.exited",
 	function(env)
 		sbar.animate(
 			"elastic",
 			15,
 			function()
-				apple:set(
+				add_space:set(
 					{
 						background = {
 							color = {
-								alpha = 1
+								alpha = 0
 							}
 						},
 						icon = {
-							string = icons.apple,
+							string = icons.plus,
 							color = colors.grey,
 							font = {
-								size = 12
+								size = 18
 							}
 						}
 					}
@@ -89,23 +88,17 @@ apple:subscribe(
 		)
 	end
 )
-apple:subscribe(
+
+add_space:subscribe(
 	"mouse.clicked",
 	function(env)
-		sbar.animate(
-			"elastic",
-			15,
-			function()
-				apple:set(
-					{
-						label = {
-							font = {
-								colors = colors.bg1
-							}
-						}
-					}
-				)
-			end
+		add_space:set(
+			{
+				icon = {
+					string = icons.plus,
+					sbar.exec('osascript "$CONFIG_DIR/items/scripts/newSpace.scpt"')
+				}
+			}
 		)
 	end
 )

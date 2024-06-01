@@ -19,7 +19,7 @@ local function setup_media_items()
             icon = {
                 drawing = true,
                 string = "",
-                color = colors.frost_blue1,
+                color = colors.green,
                 font = {
                     size = 12
                 }
@@ -44,13 +44,14 @@ local function setup_media_items()
                 drawing = false
             },
             label = {
+                padding_left = 10,
                 width = "dynamic",
                 font = {
                     size = 10
                 },
-                color = colors.frost_blue1,
+                color = colors.orange,
                 max_chars = 25,
-                y_offset = 8
+                y_offset = 6
             }
         }
     )
@@ -65,12 +66,13 @@ local function setup_media_items()
                 drawing = false
             },
             label = {
+                padding_left = 10,
                 color = colors.frost_light,
                 max_chars = 25,
                 font = {
                     size = 10
                 },
-                y_offset = -6
+                y_offset = -5
             }
         }
     )
@@ -87,7 +89,8 @@ local media_container =
     {media_cover.name, media_artist.name, media_title.name},
     {
         background = {
-            color = colors.bg1
+            color = colors.bg1,
+            padding_right = 20
         }
     }
 )

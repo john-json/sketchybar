@@ -32,6 +32,7 @@ local function getSpaceIcon(space, active)
 		return sf_icons_inactive[space] or "􀂓"
 	end
 end
+
 local spaces = {
 	background = {
 		colors = colors.bg1
@@ -44,13 +45,12 @@ for i = 1, 10, 1 do
 		"space",
 		"space." .. i,
 		{
-			position = "center",
+			position = "left",
 			align = "center",
 			space = i,
 			label = {
-				color = colors.frost_light,
+				color = colors.text,
 				align = "center",
-				padding_left = 5,
 				font = {
 					family = settings.font.text,
 					size = 10
@@ -59,11 +59,10 @@ for i = 1, 10, 1 do
 			icon = {
 				string = getSpaceIcon(i, false),
 				size = 20,
-				color = colors.bg1
+				color = colors.red
 			},
 			background = {
-				color = colors.bg1,
-				border_color = colors.bg1
+				color = colors.bg1
 			}
 		}
 	)
@@ -87,17 +86,17 @@ for i = 1, 10, 1 do
 									alpha = 1
 								},
 								font = {
+									color = colors.red,
 									size = selected and 12 or 20
 								}
 							},
 							icon = {
-								padding_left = selected and 5 or 0,
-								paddings_right = selected and 5 or 0,
+								padding_left = selected and 10 or 0,
 								style = settings.font.style_map.SemiBold,
 								string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-								color = selected and colors.frost_blue1 or colors.bg1,
+								color = selected and colors.red or colors.bg2,
 								font = {
-									size = selected and 14 or 18
+									size = selected and 14 or 20
 								}
 							},
 							background = {
@@ -109,6 +108,7 @@ for i = 1, 10, 1 do
 			)
 		end
 	)
+
 	space:subscribe(
 		"mouse.entered",
 		function(env)
@@ -125,18 +125,19 @@ for i = 1, 10, 1 do
 								}
 							},
 							icon = {
-								string = selected and icons.space_control3 or getSpaceIcon(i, true),
+								string = selected and "Spaces" or getSpaceIcon(i, true),
 								style = settings.font.style_map.Regular,
-								color = selected and colors.frost_blue1 or colors.bg1,
+								color = selected and colors.red or colors.bg1,
 								font = {
-									size = selected and 18 or 25
+									size = selected and 12 or 25
 								}
 							},
 							label = {
+								drawing = false,
 								string = env.INFO,
-								color = colors.frost_blue1,
+								color = colors.red,
 								font = {
-									size = 2
+									size = 1
 								}
 							}
 						}
@@ -158,16 +159,15 @@ for i = 1, 10, 1 do
 							icon = {
 								style = settings.font.style_map.SemiBold,
 								font = {
-									size = selected and 14 or 18
+									size = selected and 14 or 20
 								},
-								-- string = selected and "" or getSpaceIcon(i, false),
 								string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-								color = selected and colors.frost_blue1 or colors.bg1
+								color = selected and colors.red or colors.bg2
 							},
 							label = {
+								drawing = true,
 								style = settings.font.style_map.Regular,
-								padding_right = selected and 15 or 0,
-								color = colors.frost_light,
+								color = colors.white,
 								font = {
 									size = selected and 12 or 0
 								}
@@ -182,32 +182,7 @@ for i = 1, 10, 1 do
 	space:subscribe(
 		"mouse.clicked",
 		function(env)
-			local selected = env.SELECTED == "true"
-
-			sbar.exec(selected and "open -a 'Mission Control'" or "osascript $CONFIG_DIR/items/scripts/newSpace.scpt")
+			sbar.exec("open -a 'Mission Control'")
 		end
 	)
-
-	-- 	space:subscribe(
-	-- 		"mouse.exited",
-	-- 		function(env)
-	-- 			local selected = env.SELECTED == "true"
-	-- 			space:set(
-	-- 				{
-	-- 					icon = {
-	-- 						drawing = selected and false or true
-	-- 					},
-	-- 					label = {
-	-- 						string = env.INFO,
-	-- 						padding_left = selected and 5 or "",
-	-- 						color = colors.frost_light,
-	-- 						padding_right = selected and 10 or "",
-	-- 						font = {
-	-- 							size = 10
-	-- 						}
-	-- 					}
-	-- 				}
-	-- 			)
-	-- 		end
-	-- 	)
 end

@@ -7,11 +7,11 @@ sbar.bar(
         topmost = "window",
         height = 30,
         color = colors.transparent,
-        padding_right = 5,
-        padding_left = 5,
-        margin = -20,
+        padding_right = 0,
+        padding_left = 0,
+        margin = 10,
         corner_radius = 6,
-        y_offset = 6,
+        y_offset = 5,
         shadow = true
     }
 )

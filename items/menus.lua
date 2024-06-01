@@ -1,6 +1,7 @@
 local colors = require("colors")
 local icons = require("icons")
 local settings = require("settings")
+local apple = require("items.apple")
 
 local menu_watcher =
     sbar.add(
@@ -38,10 +39,10 @@ for i = 1, max_items, 1 do
             label = {
                 padding_left = 5,
                 padding_right = 5,
-                color = colors.frost_light,
+                color = colors.white,
                 font = {
-                    color = colors.frost_light,
-                    size = 10,
+                    color = colors.white,
+                    size = 12,
                     style = settings.font.style_map[i == 1 and "Bold" or "SemiBold"]
                 }
             },
@@ -57,6 +58,7 @@ sbar.add(
     {"/menu\\..*/"},
     {
         background = {
+            alpha = 0,
             color = colors.bg1
         }
     }
@@ -117,17 +119,17 @@ space_menu_swap:subscribe(
                     updates = false
                 }
             )
+            sbar.set(
+                "/apple\\..*/",
+                {
+                    drawing = true
+                }
+            )
 
             sbar.set(
                 "/menu\\..*/",
                 {
                     drawing = false
-                }
-            )
-            sbar.set(
-                "front_app\\",
-                {
-                    drawing = true
                 }
             )
             sbar.set(
@@ -143,11 +145,12 @@ space_menu_swap:subscribe(
                 }
             )
             sbar.set(
-                "front_app\\",
+                "/apple\\..*/",
                 {
-                    drawing = false
+                    drawing = true
                 }
             )
+
             sbar.set(
                 "/space\\..*/",
                 {
@@ -167,11 +170,12 @@ local menu_indicator =
         position = "left",
         align = "center",
         icon = {
-            align = "center",
-            string = icons.options,
-            color = colors.frost_blue1,
+            padding_left = 10,
+            padding_right = 10,
+            string = icons.swap,
+            color = colors.orange,
             font = {
-                size = 14
+                size = 12
             }
         },
         background = {
@@ -179,19 +183,7 @@ local menu_indicator =
         }
     }
 )
-menu_indicator:subscribe(
-    "swap_menus_and_spaces",
-    function(env)
-        local currently_on = (menu_indicator:query()).icon.value == icons.arrow_right
-        menu_indicator:set(
-            {
-                icon = {
-                    string = currently_on and icons.arrow_right or icons.options2
-                }
-            }
-        )
-    end
-)
+
 menu_indicator:subscribe(
     "mouse.entered",
     function(env)
@@ -209,9 +201,9 @@ menu_indicator:subscribe(
                             }
                         },
                         icon = {
-                            color = colors.frost_blue1,
+                            color = colors.orange,
                             font = {
-                                size = 14
+                                size = 12
                             }
                         }
                     }
@@ -228,11 +220,16 @@ menu_indicator:subscribe(
                     function()
                         menu_item:set(
                             {
+                                background = {
+                                    color = {
+                                        alpha = 1
+                                    }
+                                },
                                 label = {
-                                    color = selected and colors.red or colors.frost_light,
+                                    color = colors.white,
                                     font = {
                                         size = 12,
-                                        style = settings.font.style_map.Bold
+                                        style = settings.font.style_map.SemiBold
                                     }
                                 }
                             }
@@ -253,8 +250,13 @@ menu_indicator:subscribe(
             function()
                 menu_indicator:set(
                     {
+                        background = {
+                            color = {
+                                alpha = 1
+                            }
+                        },
                         label = {
-                            color = colors.frost_blue1,
+                            color = colors.gray,
                             font = {
                                 size = 12
                             }
@@ -273,8 +275,13 @@ menu_indicator:subscribe(
                     function()
                         menu_item:set(
                             {
+                                background = {
+                                    color = {
+                                        alpha = 1
+                                    }
+                                },
                                 label = {
-                                    color = colors.frost_light,
+                                    color = colors.white,
                                     font = {
                                         size = 12,
                                         style = settings.font.style_map.SemiBold

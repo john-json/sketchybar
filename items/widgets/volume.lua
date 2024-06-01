@@ -17,10 +17,9 @@ local volume_percent =
             padding_right = 5,
             align = "right",
             string = "??%",
-            color = colors.frost_light,
+            color = colors.white,
             font = {
-                align = "center",
-                size = 12,
+                size = 10,
                 style = settings.font.style_map["SemiBold"],
                 family = settings.font.text,
                 color = colors.bg1
@@ -35,20 +34,20 @@ local volume_icon =
     "widgets.volume2",
     {
         position = "right",
-        padding_right = 5,
+        padding_right = 0,
         padding_left = 0,
         icon = {
-            color = colors.frost_blue1,
+            color = colors.yellow,
             size = 10
         },
         label = {
             align = "right",
-            color = colors.frost_blue1,
+            color = colors.yellow,
             font = {
                 size = 12
             }
-        },
-        click_script = "osascript $CONFIG_DIR/items/scripts/openSoundMenu.scpt"
+        }
+        -- click_script = "osascript $CONFIG_DIR/items/scripts/openSoundMenu.scpt"
     }
 )
 
@@ -58,6 +57,8 @@ local volume_bracket =
     "widgets.volume.bracket",
     {volume_icon.name, volume_percent.name},
     {
+        padding_left = 10,
+        padding_right = 10,
         background = {
             color = colors.bg1
         },
