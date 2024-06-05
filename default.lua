@@ -5,12 +5,12 @@ sbar.default(
 	{
 		updates = "when_shown",
 		icon = {
+			padding_left = 5,
+			padding_right = 5,
 			font = {
 				family = settings.font.text,
 				style = settings.font.style_map.Bold
 			},
-			padding_left = settings.icon_paddings,
-			padding_right = settings.icon_paddings,
 			background = {
 				image = {
 					corner_radius = 8
@@ -21,7 +21,7 @@ sbar.default(
 			font = {
 				family = settings.font.text,
 				style = settings.font.style_map.SemiBold,
-				size = 16
+				size = 12
 			},
 			color = colors.white
 		},
@@ -32,14 +32,17 @@ sbar.default(
 			border_color = colors.border2
 		},
 		popup = {
-			margin = 50,
+			position = "center",
+			align = "left",
+			y_offset = 10,
+			width = "dynamic",
 			label = {
 				font = {
 					size = 10
 				}
 			},
 			background = {
-				border_width = 1,
+				border_width = 0,
 				corner_radius = 12,
 				border_color = colors.popup.border,
 				color = colors.popup.bg,

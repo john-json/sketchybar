@@ -17,9 +17,8 @@ local volume_percent =
             padding_right = 5,
             align = "right",
             string = "??%",
-            color = colors.white,
+            color = colors.frost_light,
             font = {
-                size = 10,
                 style = settings.font.style_map["SemiBold"],
                 family = settings.font.text,
                 color = colors.bg1
@@ -37,12 +36,12 @@ local volume_icon =
         padding_right = 0,
         padding_left = 0,
         icon = {
-            color = colors.yellow,
+            color = colors.orange,
             size = 10
         },
         label = {
-            align = "right",
-            color = colors.yellow,
+            align = "left",
+            color = colors.orange,
             font = {
                 size = 12
             }
@@ -194,7 +193,7 @@ local function volume_toggle_details(env)
                                 {
                                     position = "popup." .. volume_bracket.name,
                                     width = popup_width,
-                                    align = "center",
+                                    align = "left",
                                     label = {
                                         font = {
                                             size = 12

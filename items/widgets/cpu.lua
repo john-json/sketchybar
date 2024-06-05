@@ -24,28 +24,26 @@ local cpu =
             drawing = true
         },
         icon = {
-            string = "􀼣",
-            padding_right = 20,
             padding_left = 10,
-            align = "center",
-            color = colors.magenta,
+            padding_right = 20,
+            string = "􀼣",
+            align = "left",
+            color = colors.seezalt_dark,
             font = {
                 size = 12
             }
         },
         label = {
-            position = "center",
+            position = "left",
             color = colors.frost_light,
-            padding_right = 15,
+            padding_right = 10,
             string = "cpu ??%",
             font = {
                 family = settings.font.text,
-                style = settings.font.style_map["SemiBold"],
-                size = 12
+                style = settings.font.style_map["SemiBold"]
             },
             align = "right",
-            width = 10,
-            y_offset = 0
+            width = 10
         }
     }
 )
@@ -99,12 +97,11 @@ sbar.add(
     }
 )
 
--- Background around the cpu item
-sbar.add(
-    "item",
-    "widgets.cpu.padding",
-    {
-        position = "right",
-        width = "dynamic"
-    }
-)
+-- -- Background around the cpu item
+-- sbar.add(
+--     "item",
+--     "widgets.cpu.padding",
+--     {
+--         position = "right"
+--     }
+-- )

@@ -6,6 +6,15 @@ local whitelist = {
     ["Spotify"] = true
 }
 
+-- Background around the cpu item
+sbar.add(
+    "item",
+    "widgets.media.padding",
+    {
+        position = "right"
+    }
+)
+
 local function setup_media_items()
     local media_cover =
         sbar.add(
@@ -49,7 +58,7 @@ local function setup_media_items()
                 font = {
                     size = 10
                 },
-                color = colors.orange,
+                color = colors.green,
                 max_chars = 25,
                 y_offset = 6
             }

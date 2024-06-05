@@ -39,17 +39,17 @@ add_space:subscribe(
 	function(env)
 		sbar.animate(
 			"elastic",
-			15,
+			10,
 			function()
 				add_space:set(
 					{
 						background = {
-							color = {
-								alpha = 1
-							}
+							color = colors.bg1
 						},
 						icon = {
-							string = "Add space",
+							padding_right = 10,
+							padding_left = 10,
+							string = "Add 􀅼",
 							color = colors.orange,
 							font = {
 								size = 12
@@ -76,6 +76,8 @@ add_space:subscribe(
 							}
 						},
 						icon = {
+							padding_right = 0,
+							padding_left = 0,
 							string = icons.plus,
 							color = colors.grey,
 							font = {

@@ -25,6 +25,7 @@ local sf_icons_inactive = {
 	"􀂓",
 	"􀂓"
 }
+
 local function getSpaceIcon(space, active)
 	if active then
 		return sf_icons_active[space]
@@ -33,18 +34,33 @@ local function getSpaceIcon(space, active)
 	end
 end
 
-local spaces = {
-	background = {
-		colors = colors.bg1
+-- Create a parent container with a background
+local parent_container =
+	sbar.add(
+	"parent",
+	"parent_container",
+	{
+		width = "dynamic",
+		background = {
+			drawing = true,
+			color = colors.bg1,
+			corner_radius = 10,
+			padding = 10
+		},
+		position = "left",
+		align = "center"
 	}
-}
+)
 
-for i = 1, 10, 1 do
+local spaces = {1, 2, 3, 4, 5, 6, 7, 8, 0}
+
+for i = 1, 10 do
 	local space =
 		sbar.add(
 		"space",
 		"space." .. i,
 		{
+			parent = "parent_container",
 			position = "left",
 			align = "center",
 			space = i,
@@ -62,11 +78,13 @@ for i = 1, 10, 1 do
 				color = colors.red
 			},
 			background = {
+				drawing = true,
 				color = colors.bg1
 			}
 		}
 	)
 	spaces[i] = space
+
 	space:subscribe(
 		"front_app_switched",
 		function(env)
@@ -87,16 +105,16 @@ for i = 1, 10, 1 do
 								},
 								font = {
 									color = colors.red,
-									size = selected and 12 or 20
+									size = selected and 12 or 18
 								}
 							},
 							icon = {
 								padding_left = selected and 10 or 0,
 								style = settings.font.style_map.SemiBold,
 								string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-								color = selected and colors.red or colors.bg2,
+								color = selected and colors.red or colors.bg1,
 								font = {
-									size = selected and 14 or 20
+									size = selected and 12 or 18
 								}
 							},
 							background = {
@@ -115,7 +133,7 @@ for i = 1, 10, 1 do
 			local selected = env.SELECTED == "true"
 			sbar.animate(
 				"elastic",
-				15,
+				10,
 				function()
 					space:set(
 						{
@@ -125,7 +143,7 @@ for i = 1, 10, 1 do
 								}
 							},
 							icon = {
-								string = selected and "Spaces" or getSpaceIcon(i, true),
+								string = selected and "􁻻 Spaces" or getSpaceIcon(i, true),
 								style = settings.font.style_map.Regular,
 								color = selected and colors.red or colors.bg1,
 								font = {
@@ -134,10 +152,10 @@ for i = 1, 10, 1 do
 							},
 							label = {
 								drawing = false,
-								string = env.INFO,
+								string = selected and "Spaces" or env.INFO,
 								color = colors.red,
 								font = {
-									size = 1
+									size = selected and 12 or 12
 								}
 							}
 						}
@@ -146,20 +164,21 @@ for i = 1, 10, 1 do
 			)
 		end
 	)
+
 	space:subscribe(
 		"mouse.exited",
 		function(env)
 			local selected = env.SELECTED == "true"
 			sbar.animate(
 				"elastic",
-				15,
+				10,
 				function()
 					space:set(
 						{
 							icon = {
 								style = settings.font.style_map.SemiBold,
 								font = {
-									size = selected and 14 or 20
+									size = selected and 12 or 18
 								},
 								string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
 								color = selected and colors.red or colors.bg2

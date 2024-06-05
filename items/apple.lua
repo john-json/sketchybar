@@ -19,7 +19,7 @@ local apple =
 				size = 12
 			},
 			string = icons.apple,
-			color = colors.grey
+			color = colors.seezalt_dark
 		},
 		background = {
 			color = colors.bg1
@@ -78,7 +78,7 @@ apple:subscribe(
 						},
 						icon = {
 							string = icons.apple,
-							color = colors.grey,
+							color = colors.seezalt_dark,
 							font = {
 								size = 12
 							}

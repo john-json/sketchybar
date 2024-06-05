@@ -1,7 +1,7 @@
 local colors = require("colors")
 local icons = require("icons")
 local settings = require("settings")
-local apple = require("items.apple")
+local app_icons = require("helpers.app_icons")
 
 local menu_watcher =
     sbar.add(
@@ -138,6 +138,12 @@ space_menu_swap:subscribe(
                     drawing = true
                 }
             )
+            sbar.set(
+                "/add_space\\..*/",
+                {
+                    drawing = true
+                }
+            )
         else
             menu_watcher:set(
                 {
@@ -157,6 +163,12 @@ space_menu_swap:subscribe(
                     drawing = false
                 }
             )
+            sbar.set(
+                "/add_space\\..*/",
+                {
+                    drawing = false
+                }
+            )
 
             update_menus()
         end
@@ -172,8 +184,8 @@ local menu_indicator =
         icon = {
             padding_left = 10,
             padding_right = 10,
+            color = colors.yellow,
             string = icons.swap,
-            color = colors.orange,
             font = {
                 size = 12
             }
@@ -220,6 +232,7 @@ menu_indicator:subscribe(
                     function()
                         menu_item:set(
                             {
+                                width = "dynamic",
                                 background = {
                                     color = {
                                         alpha = 1

@@ -5,7 +5,7 @@ sbar.exec(
 	"killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en1 network_update 2.0"
 )
 sbar.exec("networksetup -getairportnetwork en1 | cut -c 25-")
-local popup_width = 250
+local popup_width = 150
 local wifi_up =
 	sbar.add(
 	"item",
@@ -16,7 +16,7 @@ local wifi_up =
 		padding_left = -5,
 		width = 0,
 		icon = {
-			padding_right = 5,
+			padding_right = 0,
 			paddding_left = 20,
 			font = {
 				style = settings.font.style_map.Bold,
@@ -58,7 +58,7 @@ local wifi_down =
 				style = settings.font.style_map.Bold,
 				size = 8
 			},
-			color = colors.grey,
+			color = colors.red,
 			string = "en1 Bps"
 		},
 		y_offset = -4
@@ -74,7 +74,7 @@ local wifi_icon =
 		padding_right = 5,
 		icon = {
 			string = icons.wifi.connected,
-			color = colors.blue,
+			color = colors.red,
 			font = {
 				size = 12
 			}
@@ -114,14 +114,25 @@ local wifi_bracket =
 	},
 	{
 		background = {
+			padding_left = 10,
+			padding_right = 10,
 			color = colors.bg1
 		},
 		popup = {
-			align = "center",
+			align = "left",
 			height = 28
 		}
 	}
 )
+-- Background around the cpu item
+sbar.add(
+	"item",
+	"widgets.wifi.padding",
+	{
+		position = "right"
+	}
+)
+
 local ssid =
 	sbar.add(
 	"item",
@@ -138,7 +149,6 @@ local ssid =
 		align = "center",
 		label = {
 			font = {
-				size = 10,
 				style = settings.font.style_map.Bold,
 				color = colors.bg1
 			},
@@ -148,7 +158,7 @@ local ssid =
 		background = {
 			height = 40,
 			color = colors.transparent,
-			y_offset = -15
+			y_offset = -50
 		}
 	}
 )
@@ -255,12 +265,12 @@ wifi_up:subscribe(
 		wifi_down:set(
 			{
 				icon = {
-					color = colors.grey,
+					color = colors.red,
 					padding_right = 5
 				},
 				label = {
 					string = env.download,
-					color = colors.grey
+					color = colors.red
 				}
 			}
 		)

@@ -2,7 +2,8 @@ local settings = require("settings")
 
 local icons = {
     sf_symbols = {
-        plus = "􀃝",
+        plus = "􀅼",
+        plus2 = "􀃝",
         loading = "􀖇",
         apple = "􀣺",
         line = "􀝷",

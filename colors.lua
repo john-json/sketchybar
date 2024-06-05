@@ -1,6 +1,6 @@
 return {
     black = 0xff141414,
-    white = 0xffaeaeae,
+    white = 0xffe5e5e5,
     white_transparent = 0x8faeaeae,
     red = 0xffa95c58,
     green = 0xffA3BE8C,
@@ -23,6 +23,9 @@ return {
     frost_blue3 = 0xff81A1C1,
     frost_blue4 = 0xff5E81AC,
     frost_light = 0xff9fa29f,
+    seezalt_dark = 0xff45566a,
+    seezalt_smoke = 0xff737c73,
+    seesalt_spanishgrey = 0xff8f969e,
     bar = {
         bg = 0xff181818,
         bg2 = 0xff232323,
@@ -33,7 +36,7 @@ return {
         bg = 0x661e1e1e,
         border = 0xD9252526
     },
-    bg1 = 0xff181818,
+    bg1 = 0xff1e1e1e,
     bg2 = 0xff252526,
     with_alpha = function(color, alpha)
         if alpha > 1.0 or alpha < 0.0 then
