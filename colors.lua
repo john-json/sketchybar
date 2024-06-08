@@ -26,6 +26,7 @@ return {
     seezalt_dark = 0xff45566a,
     seezalt_smoke = 0xff737c73,
     seesalt_spanishgrey = 0xff8f969e,
+    platinum = 0xffe5e5e5,
     bar = {
         bg = 0xff181818,
         bg2 = 0xff232323,

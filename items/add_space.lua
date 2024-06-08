@@ -14,7 +14,7 @@ local add_space =
 		icon = {
 			align = "center",
 			font = {
-				size = 18
+				size = 14
 			},
 			string = icons.plus,
 			color = colors.grey

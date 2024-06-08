@@ -16,7 +16,7 @@ local apple =
 			padding_right = 10,
 			align = "center",
 			font = {
-				size = 12
+				size = 14
 			},
 			string = icons.apple,
 			color = colors.seezalt_dark

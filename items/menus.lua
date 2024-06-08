@@ -39,7 +39,7 @@ for i = 1, max_items, 1 do
             label = {
                 padding_left = 5,
                 padding_right = 5,
-                color = colors.white,
+                color = colors.se,
                 font = {
                     color = colors.white,
                     size = 12,
@@ -215,7 +215,7 @@ menu_indicator:subscribe(
                         icon = {
                             color = colors.orange,
                             font = {
-                                size = 12
+                                size = 14
                             }
                         }
                     }

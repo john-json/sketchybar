@@ -52,7 +52,7 @@ local parent_container =
 	}
 )
 
-local spaces = {1, 2, 3, 4, 5, 6, 7, 8, 0}
+local spaces = {}
 
 for i = 1, 10 do
 	local space =
@@ -202,6 +202,26 @@ for i = 1, 10 do
 		"mouse.clicked",
 		function(env)
 			sbar.exec("open -a 'Mission Control'")
+			space:set(
+				{
+					icon = {
+						style = settings.font.style_map.SemiBold,
+						font = {
+							size = selected and 12 or 18
+						},
+						string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
+						color = selected and colors.red or colors.bg2
+					},
+					label = {
+						drawing = true,
+						style = settings.font.style_map.Regular,
+						color = colors.white,
+						font = {
+							size = selected and 12 or 0
+						}
+					}
+				}
+			)
 		end
 	)
 end

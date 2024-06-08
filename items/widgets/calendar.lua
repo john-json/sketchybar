@@ -15,17 +15,17 @@ local cal =
     "item",
     {
         label = {
-            padding_right = 10,
+            padding_right = 20,
             position = "center",
-            color = colors.seesalt_spanishgrey,
+            color = colors.platinum,
             font = {
                 style = settings.font.style_map["Bold"],
-                size = 14
+                size = 12
             }
         },
         icon = {
             padding_left = 10,
-            color = colors.yellow,
+            color = colors.seezalt_smoke,
             font = {
                 style = settings.font.style_map["Regular"],
                 size = 12
@@ -49,8 +49,8 @@ cal:subscribe(
     function(env)
         cal:set(
             {
-                icon = os.date("%A %b.%d.  %H"),
-                label = os.date("%M")
+                icon = os.date("􀒏 %A %b.%d /"),
+                label = os.date(" 􀐬 %H:%M")
                 -- icon = os.date("%a.%d %b. %H"),
             }
         )
