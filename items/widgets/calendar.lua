@@ -12,45 +12,47 @@ sbar.add(
 
 local cal =
     sbar.add(
-    "item",
-    {
-        label = {
-            padding_right = 20,
-            position = "center",
-            color = colors.platinum,
-            font = {
-                style = settings.font.style_map["Bold"],
-                size = 12
-            }
-        },
-        icon = {
-            padding_left = 10,
-            color = colors.seezalt_smoke,
-            font = {
-                style = settings.font.style_map["Regular"],
-                size = 12
-            }
-        },
-        position = "center",
-        update_freq = 30,
-        background = {
-            color = colors.bg1,
-            border_width = 0
-        },
-        width = "dynamic"
-    }
-)
+        "item",
+        {
+            label = {
+                padding_right = 10,
+                position = "right",
+                color = colors.white,
+                font = {
+                    style = settings.font.style_map["Bold"],
+                    size = 19
+                }
+            },
+            icon = {
+                align = "right",
 
--- Padding item required because of bracket
-sbar.add("item", {})
+                color = colors.grey,
+                font = {
+                    style = settings.font.style_map["Regular"],
+                    size = 14
+                }
+            },
+            position = "right",
+            update_freq = 30,
+            background = {
+                height = 16,
+                color = colors.bg2,
+                border_width = 0
+            },
+
+            width = "60",
+
+        }
+    )
+
 
 cal:subscribe(
-    {"forced", "routine", "system_woke"},
+    { "forced", "routine", "system_woke" },
     function(env)
         cal:set(
             {
-                icon = os.date("􀒏 %A %b.%d /"),
-                label = os.date(" 􀐬 %H:%M")
+                icon = os.date("%H"),
+                label = os.date("%M ")
                 -- icon = os.date("%a.%d %b. %H"),
             }
         )

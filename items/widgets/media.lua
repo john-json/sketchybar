@@ -6,85 +6,72 @@ local whitelist = {
     ["Spotify"] = true
 }
 
--- Background around the cpu item
-sbar.add(
-    "item",
-    "widgets.media.padding",
-    {
-        position = "right"
-    }
-)
+
 
 local function setup_media_items()
     local media_cover =
         sbar.add(
-        "item",
-        {
-            position = "right",
-            align = "center",
-            label = {
-                drawing = true
-            },
-            icon = {
-                drawing = true,
-                string = "",
-                color = colors.green,
-                font = {
-                    size = 12
-                }
-            },
-            drawing = true,
-            updates = true,
-            popup = {
+            "item",
+            {
+                position = "right",
                 align = "center",
-                horizontal = true
+
+                icon = {
+                    string = "",
+                    color = colors.green,
+                    font = {
+                        size = 18
+                    }
+                },
+                drawing = true,
+                updates = true,
+                popup = {
+                    align = "center",
+                    horizontal = true
+                }
             }
-        }
-    )
+        )
 
     local media_artist =
         sbar.add(
-        "item",
-        {
-            position = "right",
-            drawing = true,
-            width = 0,
-            icon = {
-                drawing = false
-            },
-            label = {
-                padding_left = 10,
-                width = "dynamic",
-                font = {
-                    size = 10
+            "item",
+            {
+                position = "right",
+                drawing = true,
+
+                icon = {
+                    drawing = false
                 },
-                color = colors.green,
-                max_chars = 25,
-                y_offset = 6
+                label = {
+                    style = settings.font.style_map["Bold"],
+
+                    width = "dynamic",
+
+                    color = colors.black,
+                    max_chars = 25,
+
+                }
             }
-        }
-    )
+        )
 
     local media_title =
         sbar.add(
-        "item",
-        {
-            position = "right",
-            drawing = true,
-            icon = {
-                drawing = false
-            },
-            label = {
-                padding_left = 10,
-                color = colors.frost_light,
-                max_chars = 25,
-                font = {
-                    size = 10
+            "item",
+            {
+                position = "right",
+                drawing = true,
+                icon = {
+                    drawing = false
                 },
-                y_offset = -5
+                label = {
+
+                    color = colors.seezalt.white,
+                    max_chars = 25,
+
+
+                }
             }
-        }
-    )
+        )
 
     return media_cover, media_artist, media_title
 end
@@ -93,16 +80,16 @@ local media_cover, media_artist, media_title = setup_media_items()
 
 local media_container =
     sbar.add(
-    "bracket",
-    "media_container",
-    {media_cover.name, media_artist.name, media_title.name},
-    {
-        background = {
-            color = colors.bg1,
-            padding_right = 20
+        "bracket",
+        "media_container",
+        { media_cover.name, media_artist.name, media_title.name },
+        {
+            background = {
+                color = colors.bg1,
+
+            }
         }
-    }
-)
+    )
 
 sbar.add(
     "item",

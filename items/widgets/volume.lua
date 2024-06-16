@@ -6,66 +6,70 @@ local popup_width = 140
 
 local volume_percent =
     sbar.add(
-    "item",
-    "widgets.volume1",
-    {
-        position = "right",
-        icon = {
-            drawing = false
-        },
-        label = {
-            padding_right = 5,
-            align = "right",
-            string = "??%",
-            color = colors.frost_light,
-            font = {
-                style = settings.font.style_map["SemiBold"],
-                family = settings.font.text,
-                color = colors.bg1
+        "item",
+        "widgets.volume1",
+        {
+            position = "right",
+            icon = {
+                drawing = false
+            },
+            label = {
+                drawing = true,
+                padding_right = 5,
+                align = "right",
+                string = "??",
+                color = colors.white,
+                font = {
+                    style = settings.font.style_map["SemiBold"],
+                    family = settings.font.text,
+                    color = colors.bg1
+                }
             }
         }
-    }
-)
+    )
 
 local volume_icon =
     sbar.add(
-    "item",
-    "widgets.volume2",
-    {
-        position = "right",
-        padding_right = 0,
-        padding_left = 0,
-        icon = {
-            color = colors.orange,
-            size = 10
-        },
-        label = {
-            align = "left",
-            color = colors.orange,
-            font = {
-                size = 12
+        "item",
+        "widgets.volume2",
+        {
+            position = "right",
+            padding_right = 0,
+            padding_left = 5,
+            icon = {
+                color = colors.seezalt.light,
+                size = 10
+            },
+            label = {
+                align = "left",
+                color = colors.seezalt.light,
+                font = {
+                    size = 12
+                }
             }
+            -- click_script = "osascript $CONFIG_DIR/items/scripts/openSoundMenu.scpt"
         }
-        -- click_script = "osascript $CONFIG_DIR/items/scripts/openSoundMenu.scpt"
-    }
-)
+    )
 
 local volume_bracket =
     sbar.add(
-    "bracket",
-    "widgets.volume.bracket",
-    {volume_icon.name, volume_percent.name},
-    {
-        padding_left = 10,
-        padding_right = 10,
-        background = {
-            color = colors.bg1
-        },
-        popup = {
-            align = "left"
+        "bracket",
+        "widgets.volume.bracket",
+        { volume_icon.name, volume_percent.name },
+        {
+            padding_left = 10,
+            padding_right = 10,
+            background = {
+                margin = -20,
+                color = colors.bg1
+            },
+            popup = {
+                align = "center"
+            }
         }
-    }
-)
+    )
+
+
 
 sbar.add(
     "item",
@@ -77,28 +81,34 @@ sbar.add(
 
 local volume_slider =
     sbar.add(
-    "slider",
-    popup_width,
-    {
-        position = "popup." .. volume_bracket.name,
-        slider = {
-            highlight_color = colors.grey,
-            background = {
-                height = 5,
-                color = colors.transparent
+        "slider",
+        popup_width,
+        {
+            position = "popup." .. volume_bracket.name,
+            slider = {
+                highlight_color = colors.seezalt.light,
+                y_offset = 5,
+                background = {
+
+                    height = 10,
+                    corner_radius = 20,
+                    color = colors.seezalt.black,
+                },
+                knob = {
+
+                    color = colors.white,
+                    string = "􀀁",
+                    drawing = true
+                }
             },
-            knob = {
-                string = "􀀁",
-                drawing = true
-            }
-        },
-        background = {
-            color = colors.transparent,
-            height = 6
-        },
-        click_script = 'osascript -e "set volume output volume $PERCENTAGE"'
-    }
-)
+            background = {
+
+                color = colors.bg1,
+                height = 15
+            },
+            click_script = 'osascript -e "set volume output volume $PERCENTAGE"'
+        }
+    )
 
 volume_percent:subscribe(
     "volume_change",
@@ -199,12 +209,12 @@ local function volume_toggle_details(env)
                                             size = 12
                                         },
                                         string = device,
-                                        color = colors.text_active
+                                        color = colors.white
                                     },
                                     click_script = 'SwitchAudioSource -s "' ..
                                         device ..
-                                            '" && sketchybar --set /volume.device\\.*/ label.color=' ..
-                                                colors.grey .. " --set $NAME label.color=" .. colors.grey
+                                        '" && sketchybar --set /volume.device\\.*/ label.color=' ..
+                                        colors.grey .. " --set $NAME label.color=" .. colors.grey
                                 }
                             )
                             counter = counter + 1

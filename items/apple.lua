@@ -9,24 +9,24 @@ sbar.add(
 )
 local apple =
 	sbar.add(
-	"item",
-	{
-		icon = {
-			padding_left = 10,
-			padding_right = 10,
-			align = "center",
-			font = {
-				size = 14
+		"item",
+		{
+			icon = {
+				padding_left = 10,
+				padding_right = 10,
+				align = "center",
+				font = {
+					size = 14
+				},
+				string = icons.apple,
+				color = colors.seezalt_dark,
 			},
-			string = icons.apple,
-			color = colors.seezalt_dark
-		},
-		background = {
-			color = colors.bg1
-		},
-		click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
-	}
-)
+			background = {
+				color = colors.bg2
+			},
+			click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
+		}
+	)
 sbar.add(
 	"bracket",
 	{
@@ -51,7 +51,7 @@ apple:subscribe(
 						},
 						icon = {
 							string = "Menu",
-							color = colors.white,
+							color = colors.red,
 							font = {
 								size = 12
 							}

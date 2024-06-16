@@ -9,23 +9,24 @@ sbar.add(
 )
 local add_space =
 	sbar.add(
-	"item",
-	{
-		icon = {
-			align = "center",
-			font = {
-				size = 14
+		"item",
+		{
+			position = "center",
+			icon = {
+				align = "center",
+				font = {
+					size = 10
+				},
+				string = icons.plus,
+				color = colors.white
 			},
-			string = icons.plus,
-			color = colors.grey
-		},
-		background = {
-			color = {
-				alpha = 0
+			background = {
+				color = {
+					alpha = 0
+				}
 			}
 		}
-	}
-)
+	)
 sbar.add(
 	"bracket",
 	{

@@ -5,20 +5,20 @@ local app_icons = require("helpers.app_icons")
 
 local menu_watcher =
     sbar.add(
-    "item",
-    {
-        drawing = false,
-        updates = false
-    }
-)
+        "item",
+        {
+            drawing = false,
+            updates = false
+        }
+    )
 local space_menu_swap =
     sbar.add(
-    "item",
-    {
-        drawing = false,
-        updates = true
-    }
-)
+        "item",
+        {
+            drawing = false,
+            updates = true
+        }
+    )
 sbar.add("event", "swap_menus_and_spaces")
 
 local max_items = 15
@@ -26,36 +26,36 @@ local menu_items = {}
 for i = 1, max_items, 1 do
     local menu =
         sbar.add(
-        "item",
-        "menu." .. i,
-        {
-            drawing = false,
-            icon = {
-                drawing = false
-            },
-            background = {
-                drawing = false
-            },
-            label = {
-                padding_left = 5,
-                padding_right = 5,
-                color = colors.se,
-                font = {
-                    color = colors.white,
-                    size = 12,
-                    style = settings.font.style_map[i == 1 and "Bold" or "SemiBold"]
-                }
-            },
-            click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i
-        }
-    )
+            "item",
+            "menu." .. i,
+            {
+                drawing = false,
+                icon = {
+                    drawing = false
+                },
+                background = {
+                    drawing = false
+                },
+                label = {
+                    padding_left = 5,
+                    padding_right = 5,
+                    color = colors.black,
+                    font = {
+                        color = colors.black,
+                        size = 12,
+                        style = settings.font.style_map[i == 1 and "Bold" or "SemiBold"]
+                    }
+                },
+                click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i
+            }
+        )
 
     menu_items[i] = menu
 end
 
 sbar.add(
     "bracket",
-    {"/menu\\..*/"},
+    { "/menu\\..*/" },
     {
         background = {
             alpha = 0,
@@ -66,12 +66,12 @@ sbar.add(
 
 local menu =
     sbar.add(
-    "item",
-    "menu.padding",
-    {
-        drawing = false
-    }
-)
+        "item",
+        "menu.padding",
+        {
+            drawing = false
+        }
+    )
 
 local function update_menus(env)
     sbar.exec(
@@ -177,24 +177,25 @@ space_menu_swap:subscribe(
 
 local menu_indicator =
     sbar.add(
-    "item",
-    {
-        position = "left",
-        align = "center",
-        icon = {
-            padding_left = 10,
-            padding_right = 10,
-            color = colors.yellow,
-            string = icons.swap,
-            font = {
-                size = 12
+        "item",
+        {
+            position = "left",
+            align = "center",
+            icon = {
+
+                color = colors.bg2,
+                string = "􀍠",
+                font = {
+                    size = 18
+                }
+            },
+            background = {
+                color = colors.transparent,
+                corner_radius = 3,
+                height = 30
             }
-        },
-        background = {
-            color = colors.bg1
         }
-    }
-)
+    )
 
 menu_indicator:subscribe(
     "mouse.entered",
@@ -239,10 +240,16 @@ menu_indicator:subscribe(
                                     }
                                 },
                                 label = {
-                                    color = colors.white,
+                                    color = colors.black,
                                     font = {
                                         size = 12,
                                         style = settings.font.style_map.SemiBold
+                                    }
+                                },
+                                icon = {
+                                    color = colors.bg2,
+                                    font = {
+                                        size = 18
                                     }
                                 }
                             }
@@ -269,9 +276,15 @@ menu_indicator:subscribe(
                             }
                         },
                         label = {
-                            color = colors.gray,
+                            color = colors.bg2,
                             font = {
                                 size = 12
+                            }
+                        },
+                        icon = {
+                            color = colors.bg2,
+                            font = {
+                                size = 18
                             }
                         }
                     }
@@ -290,7 +303,7 @@ menu_indicator:subscribe(
                             {
                                 background = {
                                     color = {
-                                        alpha = 1
+                                        alpha = 0
                                     }
                                 },
                                 label = {

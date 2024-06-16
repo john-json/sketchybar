@@ -8,52 +8,52 @@ sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_
 
 local cpu =
     sbar.add(
-    "graph",
-    "widgets.cpu",
-    42,
-    {
-        position = "right",
-        graph = {
-            color = colors.blue
-        },
-        background = {
-            color = colors.bg1,
-            border_color = {
-                alpha = 0
+        "graph",
+        "widgets.cpu",
+        42,
+        {
+            position = "right",
+            graph = {
+                color = colors.blue
             },
-            drawing = true
-        },
-        icon = {
-            padding_left = 10,
-            padding_right = 20,
-            string = "􀼣",
-            align = "left",
-            color = colors.seezalt_dark,
-            font = {
-                size = 12
+            background = {
+                color = colors.grey,
+                border_color = {
+                    alpha = 0
+                },
+                drawing = true
+            },
+            icon = {
+                padding_left = 10,
+                padding_right = 20,
+                string = "􀼣",
+                align = "left",
+                color = colors.bg2,
+                font = {
+                    size = 12
+                }
+            },
+            label = {
+                position = "left",
+                color = colors.white,
+                padding_right = 10,
+                string = "cpu ??%",
+                font = {
+                    family = settings.font.text,
+                    style = settings.font.style_map["SemiBold"]
+                },
+                align = "right",
+                width = 10
             }
-        },
-        label = {
-            position = "left",
-            color = colors.frost_light,
-            padding_right = 10,
-            string = "cpu ??%",
-            font = {
-                family = settings.font.text,
-                style = settings.font.style_map["SemiBold"]
-            },
-            align = "right",
-            width = 10
         }
-    }
-)
+    )
 
 cpu:subscribe(
     "cpu_update",
     function(env)
         -- Also available: env.user_load, env.sys_load
         local load = tonumber(env.total_load)
-        cpu:push({load / 100.})
+        cpu:push({ load / 100. })
 
         local color = colors.green
         if load > 30 then
@@ -88,7 +88,7 @@ cpu:subscribe(
 sbar.add(
     "bracket",
     "widgets.cpu.bracket",
-    {cpu.name},
+    { cpu.name },
     {
         background = {
             color = colors.transparent,
