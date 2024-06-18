@@ -3,6 +3,8 @@ local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
+
+
 local sf_icons_active = {
 	"1",
 	"2",
@@ -40,6 +42,7 @@ end
 
 local spaces = {}
 
+
 -- Create a parent container with a background
 
 for i = 1, 10, 1 do
@@ -66,16 +69,15 @@ for i = 1, 10, 1 do
 					padding_right = 5,
 					string = getSpaceIcon(i, false),
 					size = 12,
-					color = colors.granit.three
+					color = colors.orange
 				},
 				background = {
 					drawing = true,
-					color = colors.bar.bg
+					color = colors.blue
 				},
 			}
 		)
 	spaces[i] = space
-
 
 	-- Padding space
 	sbar.add("space", "space.padding." .. i, {
@@ -126,15 +128,6 @@ for i = 1, 10, 1 do
 
 
 
-	-- local space_bracket = sbar.add("bracket", "space.bracket", { space.name }, {
-	-- 	background = {
-	-- 		color = colors.red,
-	-- 		height = 30,
-
-	-- 	}
-	-- })
-
-	-- Padding space
 
 	------------ ANIMATIONS AND CLICKS -----------
 

@@ -15,7 +15,7 @@ local volume_percent =
             },
             label = {
                 drawing = true,
-                padding_right = 5,
+                padding_right = settings.paddings,
                 padding_left = 0,
                 string = "??",
                 color = colors.magenta,

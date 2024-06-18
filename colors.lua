@@ -7,7 +7,7 @@ return {
     red = 0xff732313,
     green = 0xff717f66,
     yellow = 0xff898862,
-    orange = 0xff89654c,
+    orange = 0xff975338,
     blue = 0xff6d8690,
     magenta = 0xff5a525a,
     grey = 0xff32312f,
@@ -48,7 +48,8 @@ return {
         platinum = 0xffe5e5e5,
     },
     bar = {
-        bg = 0xff1c1c1c,
+        bg = 0xff171717,
+        bg3 = 0xff1c1c1c,
         bg2 = 0x32312f,
         transparent = 0xe61c1c1c,
         border = 0xD92525276,

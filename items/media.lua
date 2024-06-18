@@ -18,10 +18,13 @@ local function setup_media_items()
 
                 icon = {
                     string = "",
-                    color = colors.green,
+                    color = colors.bar.bg,
                     font = {
                         size = 18
                     }
+                },
+                background = {
+                    color = colors.green,
                 },
                 drawing = true,
                 updates = true,
@@ -47,8 +50,8 @@ local function setup_media_items()
 
                     width = "dynamic",
 
-                    color = colors.granit.two,
-                    max_chars = 25,
+                    color = colors.green,
+                    max_chars = 10,
 
                 }
             }
@@ -66,7 +69,7 @@ local function setup_media_items()
                 label = {
 
                     color = colors.granit.one,
-                    max_chars = 25,
+                    max_chars = 10,
 
 
                 }
@@ -85,7 +88,7 @@ local media_container =
         { media_cover.name, media_artist.name, media_title.name },
         {
             background = {
-                color = colors.bg1,
+                color = colors.bar.bg,
 
             }
         }

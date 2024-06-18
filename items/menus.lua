@@ -34,7 +34,7 @@ for i = 1, max_items, 1 do
                     drawing = false
                 },
                 background = {
-                    drawing = false
+                    drawing = false,
                 },
                 label = {
                     padding_left = 5,
@@ -74,6 +74,33 @@ local menu =
             drawing = false
         }
     )
+
+-- Animate the menu items when they show up
+for i = 1, max_items do
+    local menu_item = menu_items[i]
+    if menu_item:query().geometry.drawing == "on" then
+        sbar.animate(
+            "elastic",
+            15,
+            function()
+                menu_item:set(
+                    {
+                        background = {
+                            alpha = 1,
+                        },
+                        label = {
+                            color = colors.granit.one,
+                            font = {
+                                size = 12,
+                                style = settings.font.style_map.SemiBold
+                            }
+                        }
+                    }
+                )
+            end
+        )
+    end
+end
 
 local function update_menus(env)
     sbar.exec(
@@ -217,6 +244,9 @@ menu_indicator:subscribe(
                                 alpha = 1
                             }
                         },
+                        label = {
+                            color = colors.yellow,
+                        },
                         icon = {
                             color = colors.foreground,
                             font = {
@@ -244,7 +274,7 @@ menu_indicator:subscribe(
                                     }
                                 },
                                 label = {
-                                    color = colors.orange,
+                                    color = colors.yellow,
                                     font = {
                                         size = 12,
                                         style = settings.font.style_map.SemiBold
@@ -280,7 +310,7 @@ menu_indicator:subscribe(
                             }
                         },
                         label = {
-                            color = colors.orange,
+                            color = colors.granit.one,
                             font = {
                                 size = 12
                             }
@@ -295,34 +325,6 @@ menu_indicator:subscribe(
                 )
             end
         )
-        -- Animate the menu items when they show up
-        for i = 1, max_items do
-            local menu_item = menu_items[i]
-            if menu_item:query().geometry.drawing == "on" then
-                sbar.animate(
-                    "elastic",
-                    15,
-                    function()
-                        menu_item:set(
-                            {
-                                background = {
-                                    color = {
-                                        alpha = 1
-                                    }
-                                },
-                                label = {
-                                    color = colors.orange,
-                                    font = {
-                                        size = 12,
-                                        style = settings.font.style_map.SemiBold
-                                    }
-                                }
-                            }
-                        )
-                    end
-                )
-            end
-        end
     end
 )
 

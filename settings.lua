@@ -1,5 +1,5 @@
 return {
-    paddings = 2,
+    paddings = 5,
     group_paddings = 5,
 
 
