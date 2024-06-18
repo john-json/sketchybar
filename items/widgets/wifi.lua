@@ -4,7 +4,7 @@ local settings = require("settings")
 sbar.exec(
 	"killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en1 network_update 2.0"
 )
-sbar.exec("networksetup -getairportnetwork en1 | cut -c 25-")
+
 local popup_width = 250
 local wifi_up =
 	sbar.add(
@@ -12,15 +12,13 @@ local wifi_up =
 		"widgets.wifi1",
 		{
 			position = "right",
-			align = "left",
 			padding_left = -5,
 			width = 0,
 			icon = {
-				padding_right = 0,
-				paddding_left = 25,
+
 				font = {
 					style = settings.font.style_map.Bold,
-					size = 8
+					size = 9
 				},
 				string = icons.wifi.upload
 			},
@@ -28,9 +26,8 @@ local wifi_up =
 				font = {
 					family = settings.font.numbers,
 					style = settings.font.style_map.Bold,
-					size = 8
+					size = 9
 				},
-				color = colors.white,
 				string = "en1 Bps"
 			},
 			y_offset = 4
@@ -42,13 +39,11 @@ local wifi_down =
 		"widgets.wifi2",
 		{
 			position = "right",
-			align = "left",
-			padding_left = -10,
+			padding_left = -5,
 			icon = {
-				padding_right = 0,
 				font = {
 					style = settings.font.style_map.Bold,
-					size = 8
+					size = 9
 				},
 				string = icons.wifi.download
 			},
@@ -56,7 +51,7 @@ local wifi_down =
 				font = {
 					family = settings.font.numbers,
 					style = settings.font.style_map.Bold,
-					size = 8
+					size = 9
 				},
 				color = colors.seezalt.light,
 				string = "en1 Bps"
@@ -69,69 +64,41 @@ local wifi_icon =
 		"item",
 		"wifi.icon",
 		{
+			padding_left = 5,
+			width = 5,
+			label = {
+				drawing = false,
+			},
 			position = "right",
-			padding_left = -5,
-			padding_right = 15,
+
 			icon = {
 				string = icons.wifi.connected,
-				color = colors.seezalt.light,
+				color = colors.yellow,
 				font = {
 					size = 12
 				}
 			},
-			label = {
-				font = {
-					color = colors.white,
-					size = 10
-				}
-			}
+
 		}
 	)
-local wifi =
-	sbar.add(
-		"item",
-		"widgets.wifi.padding",
-		{
-			position = "right",
-			label = {
-				drawing = false,
-				style = settings.font.style_map.Bold,
-				font = {
-					color = colors.blue,
-					size = 10
-				}
-			}
-		}
-	)
-local wifi_bracket =
-	sbar.add(
-		"bracket",
-		"widgets.wifi.bracket",
-		{
-			wifi.name,
-			wifi_up.name,
-			wifi_down.name
-		},
-		{
-			background = {
-				padding_left = 10,
-				padding_right = 10,
-				color = colors.grey
-			},
-			popup = {
-				align = "center",
-				height = 40
-			}
-		}
-	)
--- Background around the cpu item
-sbar.add(
-	"item",
-	"widgets.wifi.padding",
-	{
-		position = "right"
-	}
-)
+
+local wifi = sbar.add("item", "widgets.wifi.padding", {
+	position = "right",
+	label = { drawing = false },
+})
+
+-- Background around the item
+local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
+	wifi.name,
+	wifi_icon.name,
+	wifi_up.name,
+	wifi_down.name
+}, {
+	background = { color = colors.bar.bg },
+	popup = { align = "center", height = 30 }
+})
+
+
 
 local ssid =
 	sbar.add(
@@ -252,25 +219,26 @@ wifi_up:subscribe(
 		wifi_up:set(
 			{
 				icon = {
-					color = colors.white,
+					color = colors.green,
 					padding_right = 5
 				},
 				label = {
 					string = env.upload,
 					style = settings.font.style_map.Bold,
-					color = colors.white
+					color = colors.granit.one
 				}
 			}
 		)
 		wifi_down:set(
 			{
 				icon = {
-					color = colors.bg2,
+					color = colors.red,
 					padding_right = 5
 				},
 				label = {
 					string = env.download,
-					color = colors.bg2
+					style = settings.font.style_map.Bold,
+					color = colors.granit.two
 				}
 			}
 		)
@@ -315,9 +283,9 @@ local function toggle_details()
 				popup = {
 					drawing = true,
 					label = {
-						font = {
-							size = 8
-						}
+
+						size = 8
+
 					}
 				}
 			}
@@ -376,10 +344,17 @@ local function toggle_details()
 		hide_details()
 	end
 end
+
+
+
 wifi_up:subscribe("mouse.clicked", toggle_details)
 wifi_down:subscribe("mouse.clicked", toggle_details)
 wifi:subscribe("mouse.clicked", toggle_details)
 wifi:subscribe("mouse.exited.global", hide_details)
+
+
+
+
 local function copy_label_to_clipboard(env)
 	local label = (sbar.query(env.NAME)).label.value
 	sbar.exec('echo "' .. label .. '" | pbcopy')
@@ -388,7 +363,7 @@ local function copy_label_to_clipboard(env)
 		{
 			label = {
 				string = icons.clipboard,
-				align = "center",
+				align = "left",
 				size = 8
 			}
 		}

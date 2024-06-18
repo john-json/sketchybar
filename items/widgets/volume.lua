@@ -16,13 +16,13 @@ local volume_percent =
             label = {
                 drawing = true,
                 padding_right = 5,
-                align = "right",
+                padding_left = 0,
                 string = "??",
-                color = colors.white,
+                color = colors.magenta,
                 font = {
+                    size = 12,
                     style = settings.font.style_map["SemiBold"],
                     family = settings.font.text,
-                    color = colors.bg1
                 }
             }
         }
@@ -34,20 +34,21 @@ local volume_icon =
         "widgets.volume2",
         {
             position = "right",
-            padding_right = 0,
-            padding_left = 5,
+            padding_right = 5,
+            padding_left = 2,
             icon = {
-                color = colors.seezalt.light,
-                size = 10
+                padding_right = 0,
+                color = colors.magenta,
+                size = 14
             },
             label = {
                 align = "left",
-                color = colors.seezalt.light,
+                color = colors.magenta,
                 font = {
                     size = 12
                 }
-            }
-            -- click_script = "osascript $CONFIG_DIR/items/scripts/openSoundMenu.scpt"
+            },
+            click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 10"
         }
     )
 
@@ -57,11 +58,10 @@ local volume_bracket =
         "widgets.volume.bracket",
         { volume_icon.name, volume_percent.name },
         {
-            padding_left = 10,
-            padding_right = 10,
+
             background = {
-                margin = -20,
-                color = colors.bg1
+
+                color = colors.bar.bg
             },
             popup = {
                 align = "center"
@@ -74,6 +74,7 @@ local volume_bracket =
 sbar.add(
     "item",
     {
+
         position = "right",
         width = 5
     }
@@ -86,25 +87,29 @@ local volume_slider =
         {
             position = "popup." .. volume_bracket.name,
             slider = {
-                highlight_color = colors.seezalt.light,
+                highlight_color = colors.slategray.three,
                 y_offset = 5,
                 background = {
 
-                    height = 10,
-                    corner_radius = 20,
-                    color = colors.seezalt.black,
+                    height = 15,
+                    corner_radius = 6,
+                    color = colors.granit.four,
                 },
                 knob = {
 
-                    color = colors.white,
+                    color = colors.slategray.one,
+                    border = {
+                        size = 2,
+                        color = colors.popup.border
+                    },
                     string = "􀀁",
                     drawing = true
                 }
             },
             background = {
 
-                color = colors.bg1,
-                height = 15
+                color = colors.bar.bg,
+                height = 25
             },
             click_script = 'osascript -e "set volume output volume $PERCENTAGE"'
         }
@@ -209,7 +214,7 @@ local function volume_toggle_details(env)
                                             size = 12
                                         },
                                         string = device,
-                                        color = colors.white
+                                        color = colors.foreground
                                     },
                                     click_script = 'SwitchAudioSource -s "' ..
                                         device ..

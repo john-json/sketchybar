@@ -5,56 +5,42 @@ sbar.default(
 	{
 		updates = "when_shown",
 		icon = {
-			padding_left = 2,
-			padding_right = 2,
+			padding_left = settings.paddings,
+			padding_right = settings.paddings,
 			font = {
 				family = settings.font.text,
-				style = settings.font.style_map.Heavy,
-				size = 14
+				style = settings.font.style_map.Bold,
+				size = 12.0
 			},
-			background = {
-				image = {
-					corner_radius = 4
-				}
-			}
 		},
 		label = {
+			padding_left = settings.paddings,
+			padding_right = settings.paddings,
 			font = {
 				family = settings.font.text,
 				style = settings.font.style_map.SemiBold,
-				size = 12
+				size = 12.0
 			},
-			color = colors.white
+			color = colors.foreground
 		},
 		background = {
-			height = 18,
-			corner_radius = 4,
+			height = 30,
+			corner_radius = 6,
 			border_width = 0,
-			border_color = colors.transparent
+			image = {
+				corner_radius = 6
+			}
+
 		},
 		popup = {
-			padding_left = 10,
-			padding_right = 10,
-			position = "center",
-			align = "left",
-			y_offset = 10,
-			width = "dynamic",
-			label = {
-
-				font = {
-					size = 12
-				}
-			},
 			background = {
-				padding_left = 10,
-				padding_right = 10,
-				border_width = 0,
+				border_width = 2,
 				corner_radius = 8,
 				border_color = colors.popup.border,
 				color = colors.popup.bg,
 				shadow = {
 					drawing = true
-				}
+				},
 			},
 			blur_radius = 80
 		},

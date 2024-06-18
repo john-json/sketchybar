@@ -47,7 +47,7 @@ local function setup_media_items()
 
                     width = "dynamic",
 
-                    color = colors.black,
+                    color = colors.granit.two,
                     max_chars = 25,
 
                 }
@@ -65,7 +65,7 @@ local function setup_media_items()
                 },
                 label = {
 
-                    color = colors.seezalt.white,
+                    color = colors.granit.one,
                     max_chars = 25,
 
 

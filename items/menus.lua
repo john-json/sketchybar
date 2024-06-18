@@ -39,9 +39,9 @@ for i = 1, max_items, 1 do
                 label = {
                     padding_left = 5,
                     padding_right = 5,
-                    color = colors.black,
+                    color = colors.foreground,
                     font = {
-                        color = colors.black,
+                        color = colors.foreground,
                         size = 12,
                         style = settings.font.style_map[i == 1 and "Bold" or "SemiBold"]
                     }
@@ -59,7 +59,7 @@ sbar.add(
     {
         background = {
             alpha = 0,
-            color = colors.bg1
+            color = colors.bar.bg
         }
     }
 )
@@ -69,6 +69,8 @@ local menu =
         "item",
         "menu.padding",
         {
+            padding_right = 10,
+            padding_left = 10,
             drawing = false
         }
     )
@@ -182,17 +184,19 @@ local menu_indicator =
             position = "left",
             align = "center",
             icon = {
-
-                color = colors.bg2,
+                padding_left = 10,
+                padding_right = 7,
+                color = colors.foreground,
                 string = "􀍠",
                 font = {
                     size = 18
                 }
             },
             background = {
-                color = colors.transparent,
-                corner_radius = 3,
-                height = 30
+                color = colors.bar.bg,
+
+
+
             }
         }
     )
@@ -214,7 +218,7 @@ menu_indicator:subscribe(
                             }
                         },
                         icon = {
-                            color = colors.orange,
+                            color = colors.foreground,
                             font = {
                                 size = 14
                             }
@@ -240,14 +244,14 @@ menu_indicator:subscribe(
                                     }
                                 },
                                 label = {
-                                    color = colors.black,
+                                    color = colors.orange,
                                     font = {
                                         size = 12,
                                         style = settings.font.style_map.SemiBold
                                     }
                                 },
                                 icon = {
-                                    color = colors.bg2,
+                                    color = colors.foreground,
                                     font = {
                                         size = 18
                                     }
@@ -276,13 +280,13 @@ menu_indicator:subscribe(
                             }
                         },
                         label = {
-                            color = colors.bg2,
+                            color = colors.orange,
                             font = {
                                 size = 12
                             }
                         },
                         icon = {
-                            color = colors.bg2,
+                            color = colors.foreground,
                             font = {
                                 size = 18
                             }
@@ -303,11 +307,11 @@ menu_indicator:subscribe(
                             {
                                 background = {
                                     color = {
-                                        alpha = 0
+                                        alpha = 1
                                     }
                                 },
                                 label = {
-                                    color = colors.white,
+                                    color = colors.orange,
                                     font = {
                                         size = 12,
                                         style = settings.font.style_map.SemiBold
