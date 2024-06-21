@@ -93,7 +93,14 @@ local media_container =
             background = {
                 color = colors.bar.bg,
 
-            }
+            },
+            icon = {
+                string = "",
+                color = colors.green,
+                font = {
+                    size = 18
+                }
+            },
         }
     )
 sbar.add(

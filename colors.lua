@@ -26,6 +26,15 @@ return {
     grey4 = 0xff373737,
     grey5 = 0xff232323,
 
+    indigo = {
+        one = 0xff667287,
+        two = 0xff424a57,
+        three = 0xff3b424d,
+        four = 0xff323841,
+        five = 0xff323c49,
+        six = 0xff272c33
+    },
+
     dimgray = {
         one = 0xffb5b5b5,
         two = 0xff6d6d6b,

@@ -14,7 +14,7 @@ local apple =
 					size = 14
 				},
 				string = icons.apple,
-				color = colors.granit.one,
+				color = colors.indigo.one,
 				padding_right = 10,
 				padding_left = 10,
 			},
@@ -39,7 +39,7 @@ apple:subscribe(
 				apple:set(
 					{
 						background = {
-							color = colors.orange
+							color = colors.indigo.one,
 						},
 						icon = {
 							color = colors.bar.bg,

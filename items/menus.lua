@@ -41,7 +41,7 @@ for i = 1, max_items, 1 do
                 label = {
                     padding_left = 5,
                     padding_right = 5,
-                    color = colors.orange,
+                    color = colors.indigo.one,
                     font = {
 
                         size = 12,

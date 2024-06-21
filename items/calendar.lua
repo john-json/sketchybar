@@ -6,12 +6,23 @@ local cal =
     sbar.add(
         "item",
         {
-            position = "center",
+            position = "right",
+
 
             label = {
+                background = {
+
+                    color = colors.indigo.six,
+                    height = 30,
+                    padding_right = 5,
+                    corner_radius = 6,
+
+
+                },
                 padding_right = 10,
+                padding_left = 10,
                 position = "left",
-                color = colors.slategray.one,
+                color = colors.foreground,
                 font = {
                     style = settings.font.style_map["Bold"],
                     size = 14
@@ -19,8 +30,9 @@ local cal =
             },
             icon = {
                 padding_left = 10,
+                padding_right = 10,
                 align = "laft",
-                color = colors.slategray.four,
+                color = colors.indigo.three,
                 font = {
                     style = settings.font.style_map["SemiBold"],
                     size = 12
@@ -30,14 +42,15 @@ local cal =
 
             update_freq = 30,
             background = {
-                height = 24,
-                color = colors.bg2,
-                border_width = 0
+
+                color = colors.bar.bg,
+
             },
 
             width = "dynamic",
 
         }
+
     )
 
 
@@ -46,8 +59,8 @@ cal:subscribe(
     function(env)
         cal:set(
             {
-                icon = os.date("%a.%d 􀥤 %H:"),
-                label = os.date("%M")
+                icon = os.date("%a.%d "),
+                label = os.date("%H:%M")
                 -- icon = os.date("%a.%d %b. %H"),
             }
         )

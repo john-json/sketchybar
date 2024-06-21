@@ -3,18 +3,16 @@ local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
--- Padding item required because of bracket
-sbar.add("item", { width = 10 })
 
 
 local terminal =
 	sbar.add(
 		"item",
 		{
+			shadown = true,
 			position = "right",
 			background = {
 				color = colors.transparent
-
 			},
 			icon = {
 
@@ -48,7 +46,7 @@ local chat =
 			},
 			icon = {
 
-				string = "󱜸",
+				string = "􀌲",
 				color = colors.metalsaurus,
 				font = { size = 18,
 				},
@@ -81,7 +79,7 @@ local code =
 			},
 			icon = {
 				padding_left = 5,
-				string = "󱃖",
+				string = "􀤘",
 				color = colors.metalsaurus,
 				font = { size = 18,
 				},
