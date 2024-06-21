@@ -28,22 +28,24 @@ for i = 1, 10 do
 		space = i,
 		position = "center",
 		label = {
-			color = colors.bar.bg,
-			padding_right = 0,
-			padding_left = 0,
+			color = colors.stormcloud.two,
+			padding_right = 10,
+			padding_left = 10,
 			font = {
 				style = settings.font.style_map.SemiBold,
 				family = settings.font.text,
 			},
 		},
 		icon = {
+			padding_right = 10,
+			padding_left = 10,
 			drawing = false,
 		},
 		background = {
-			padding_right = 5,
-			padding_left = 5,
-			height = 20,
-			color = colors.indigo.five,
+			padding_right = 10,
+			padding_left = 10,
+			height = 28,
+			color = colors.stormcloud.one,
 		},
 	})
 	spaces[i] = space
@@ -59,13 +61,13 @@ for i = 1, 10 do
 					padding_left = selected and 0 or 0,
 					string = selected and env.INFO or "",
 					font = {
-						size = 14
+						size = 12
 					},
 				},
 				icon = {
 					drawing = selected and false or true,
-					padding_left = selected and 5 or 3,
-					padding_right = selected and 6 or 4,
+					padding_left = selected and 5 or 5,
+					padding_right = selected and 2 or 5,
 					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
 
 
@@ -73,9 +75,9 @@ for i = 1, 10 do
 				background = {
 					padding_right = 5,
 					padding_left = 5,
-					corner_radius = selected and 4 or 15,
-					height = 20,
-					color = colors.indigo.five,
+					corner_radius = selected and 6 or 15,
+					height = 24,
+					color = selected and colors.stormcloud.one or colors.transparent,
 				},
 			})
 		end)
@@ -91,14 +93,16 @@ for i = 1, 10 do
 					padding_right = 4,
 					drawing = selected and false or true,
 					string = icons.space_control,
-					color = colors.indigo.one,
+					color = colors.stormcloud.one,
+					font = {
+						size = 16
+					},
 
 				},
 				label = {
-
-					color = colors.indigo.one,
+					color = colors.stormcloud.two,
 					font = {
-						size = 14,
+						size = 12,
 					},
 				},
 			})
@@ -111,18 +115,18 @@ for i = 1, 10 do
 			space:set({
 				icon = {
 					padding_left = selected and 5 or 3,
-					padding_right = selected and 6 or 4,
+					padding_right = selected and 2 or 4,
 					drawing = selected and false or true,
 					style = settings.font.style_map.SemiBold,
 					font = {
 						size = 14,
 					},
 					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-					color = selected and colors.bar.bg or colors.slategray.two,
+					color = colors.stormcloud.two
 				},
 				label = {
 					style = settings.font.style_map.SemiBold,
-					color = colors.bar.bg,
+					color = colors.stormcloud.two,
 					font = {
 						size = 14,
 					},
@@ -146,7 +150,7 @@ local add_space = sbar.add("item", {
 			size = 12,
 		},
 		string = icons.plus,
-		color = colors.slategray.two,
+
 	},
 	label = {
 		drawing = false,
@@ -162,9 +166,9 @@ add_space:subscribe("mouse.entered", function(env)
 			icon = {
 
 				string = "Add",
-				color = colors.indigo.one,
+				color = colors.stormcloud.two,
 				font = {
-					size = 14,
+					size = 12,
 				},
 			},
 		})
@@ -176,7 +180,7 @@ add_space:subscribe("mouse.exited", function(env)
 		add_space:set({
 			icon = {
 				string = icons.plus,
-				color = colors.indigo.one,
+				color = colors.stormcloud.two,
 				font = {
 					size = 12,
 				},
@@ -197,8 +201,10 @@ end
 
 sbar.add("bracket", space_names, {
 	background = {
+		padding_left = 10,
+		padding_right = 10,
 		color = colors.bar.bg,
-		height = 28, -- Adjust the height as needed
+		height = 30, -- Adjust the height as needed
 		corner_radius = 6, -- Adjust the corner radius as needed
 	}
 })

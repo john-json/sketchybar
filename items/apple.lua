@@ -14,12 +14,13 @@ local apple =
 					size = 14
 				},
 				string = icons.apple,
-				color = colors.indigo.one,
+				color = colors.stormcloud.one,
 				padding_right = 10,
 				padding_left = 10,
 			},
 
 			background = {
+				border_width = 1,
 				color = colors.bar.bg
 			},
 
@@ -39,7 +40,7 @@ apple:subscribe(
 				apple:set(
 					{
 						background = {
-							color = colors.indigo.one,
+							color = colors.stormcloud.one,
 						},
 						icon = {
 							color = colors.bar.bg,
@@ -72,7 +73,7 @@ apple:subscribe(
 							padding_right = 10,
 							padding_left = 10,
 							string = icons.apple,
-							color = colors.granit.one,
+							color = colors.stormcloud.one,
 							font = {
 								size = 14
 							}

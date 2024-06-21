@@ -70,7 +70,7 @@ local wifi_icon =
 			position = "right",
 			icon = {
 				string = icons.wifi.connected,
-				color = colors.yellow,
+				color = colors.orange,
 				font = {
 					size = 14
 				}

@@ -17,8 +17,8 @@ local terminal =
 			icon = {
 
 				string = "􀩼",
-				color = colors.metalsaurus,
-				font = { size = 18,
+				color = colors.yellow,
+				font = { size = 14,
 				},
 			},
 			label = {
@@ -47,8 +47,8 @@ local chat =
 			icon = {
 
 				string = "􀌲",
-				color = colors.metalsaurus,
-				font = { size = 18,
+				color = colors.yellow,
+				font = { size = 14,
 				},
 			},
 			label = {
@@ -80,8 +80,8 @@ local code =
 			icon = {
 				padding_left = 5,
 				string = "􀤘",
-				color = colors.metalsaurus,
-				font = { size = 18,
+				color = colors.yellow,
+				font = { size = 14,
 				},
 			},
 			label = {

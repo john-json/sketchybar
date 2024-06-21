@@ -10,7 +10,7 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 
 
     position = "right",
-    graph = { color = colors.blue },
+    graph = { color = colors.red },
     background = {
         height = 18,
         color = { alpha = 0 },
@@ -19,14 +19,14 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
     },
     icon = {
         string = icons.cpu,
-        color = colors.slategray.two,
+        color = colors.red,
         font = {
 
             size = 18.0,
         },
     },
     label = {
-        color = colors.slategray.three,
+        color = colors.red,
         string = "cpu ??%",
         font = {
             family = settings.font.numbers,

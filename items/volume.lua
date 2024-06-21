@@ -7,21 +7,22 @@ local popup_width = 140
 local volume_percent =
     sbar.add(
         "item",
-        "volume1",
+        "widgets.volume1",
         {
             position = "right",
             icon = {
                 drawing = false
             },
             label = {
-                drawing = true,
-
-                string = "??",
-                color = colors.slategray.two,
+                padding_right = 5,
+                align = "right",
+                string = "??%",
+                color = colors.magenta,
                 font = {
-                    size = 14,
+                    size = 12,
                     style = settings.font.style_map["SemiBold"],
                     family = settings.font.text,
+                    color = colors.bg1
                 }
             }
         }
@@ -30,16 +31,23 @@ local volume_percent =
 local volume_icon =
     sbar.add(
         "item",
-        "volume2",
+        "widgets.volume2",
         {
             position = "right",
+            padding_right = 0,
+            padding_left = 5,
             icon = {
-                color = colors.slategray.three,
-                size = 14
+                color = colors.magenta,
+                size = 12
             },
             label = {
-                drawing = true,
-            },
+                align = "right",
+                color = colors.magenta,
+                font = {
+                    size = 12
+                }
+            }
+            -- click_script = "osascript $CONFIG_DIR/items/scripts/openSoundMenu.scpt"
         }
     )
 
@@ -49,28 +57,24 @@ local volume_bracket =
         "widgets.volume.bracket",
         { volume_icon.name, volume_percent.name },
         {
-
+            padding_left = 10,
+            padding_right = 10,
             background = {
-
-                color = colors.bar.bg
+                color = colors.bg1
             },
             popup = {
-                align = "right"
+                align = "left"
             }
         }
     )
 
-
-
 sbar.add(
     "item",
     {
-
         position = "right",
         width = 5
     }
 )
-
 local volume_slider =
     sbar.add(
         "slider",

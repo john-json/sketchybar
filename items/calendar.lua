@@ -10,31 +10,32 @@ local cal =
 
 
             label = {
-                background = {
-
-                    color = colors.indigo.six,
-                    height = 30,
-                    padding_right = 5,
-                    corner_radius = 6,
-
-
-                },
                 padding_right = 10,
                 padding_left = 10,
-                position = "left",
+
+                border_width = 2,
+                border_color = colors.bar.bg,
+                background = {
+
+                    color = colors.blue,
+                    height = 30,
+                    corner_radius = 6,
+                },
+
+
                 color = colors.foreground,
                 font = {
                     style = settings.font.style_map["Bold"],
-                    size = 14
+                    size = 12
                 }
             },
             icon = {
                 padding_left = 10,
                 padding_right = 10,
                 align = "laft",
-                color = colors.indigo.three,
+                color = colors.indigo.one,
                 font = {
-                    style = settings.font.style_map["SemiBold"],
+                    style = settings.font.style_map["Regualr"],
                     size = 12
 
                 }
