@@ -17,19 +17,19 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
         border_color = { alpha = 0 },
         drawing = true,
     },
-    icon = { string = icons.cpu, color = colors.metalsaurus },
+    icon = { string = icons.cpu, color = colors.slategray.two },
     label = {
-        color = colors.bar.bg,
+        color = colors.slategray.three,
         string = "cpu ??%",
         font = {
             family = settings.font.numbers,
             style = settings.font.style_map["Bold"],
-            size = 9.0,
+            size = 12.0,
         },
         align = "right",
-        padding_right = 0,
-        width = 0,
-        y_offset = 4
+
+
+        y_offset = 0
     },
     padding_right = settings.paddings + 6,
     padding_left = settings.paddings + 6,

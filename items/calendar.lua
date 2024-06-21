@@ -31,7 +31,7 @@ local cal =
             update_freq = 30,
             background = {
                 height = 24,
-                color = colors.slategray.two,
+                color = colors.bg2,
                 border_width = 0
             },
 

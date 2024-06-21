@@ -4,25 +4,29 @@ local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
 -- Padding item required because of bracket
-sbar.add("item", { width = 5 })
+sbar.add("item", { width = 10 })
 
 
 local terminal =
 	sbar.add(
 		"item",
-		"widgets.terminal",
 		{
 			position = "right",
+			background = {
+				color = colors.transparent
+
+			},
 			icon = {
 
+				string = "􀩼",
 				color = colors.metalsaurus,
-				size = 18,
-				string = ""
+				font = { size = 18,
+				},
 			},
 			label = {
-				drawing = false,
+				drawing = true,
+			}
 
-			},
 		}
 	)
 
@@ -69,13 +73,14 @@ local code =
 	sbar.add(
 		"item",
 		{
+
 			position = "right",
 			background = {
 				color = colors.transparent
 
 			},
 			icon = {
-
+				padding_left = 5,
 				string = "󱃖",
 				color = colors.metalsaurus,
 				font = { size = 18,
@@ -89,14 +94,7 @@ local code =
 	)
 
 
-sbar.add(
-	"item",
-	{
 
-		position = "right",
-		width = 5
-	}
-)
 code:subscribe(
 	"mouse.clicked",
 	function(env)
@@ -107,6 +105,14 @@ code:subscribe(
 
 
 
+sbar.add(
+	"item",
+	{
+
+		position = "right",
+		width = 10
+	}
+)
 
 
 -- Double border for apple using a single item bracket

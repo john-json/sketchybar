@@ -38,7 +38,7 @@ local wifi_down =
 		"widgets.wifi2",
 		{
 			position = "right",
-			padding_left = -5,
+			padding_left = 5,
 			icon = {
 				font = {
 					style = settings.font.style_map.Bold,
@@ -63,6 +63,7 @@ local wifi_icon =
 		"item",
 		"wifi.icon",
 		{
+			padding_left = -5,
 			label = {
 				drawing = false,
 			},
@@ -88,7 +89,7 @@ sbar.add(
 	{
 
 		position = "right",
-		width = 5
+		width = 10
 	}
 )
 

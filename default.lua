@@ -8,6 +8,7 @@ sbar.default(
 		icon = {
 			padding_left = settings.paddings,
 			padding_right = settings.paddings,
+			color = colors.slategray.two,
 			font = {
 				family = settings.font.text,
 				style = settings.font.style_map.Bold,

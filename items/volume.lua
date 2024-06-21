@@ -7,7 +7,7 @@ local popup_width = 140
 local volume_percent =
     sbar.add(
         "item",
-        "widgets.volume1",
+        "volume1",
         {
             position = "right",
             icon = {
@@ -17,7 +17,7 @@ local volume_percent =
                 drawing = true,
 
                 string = "??",
-                color = colors.granit.two,
+                color = colors.slategray.two,
                 font = {
                     size = 14,
                     style = settings.font.style_map["SemiBold"],
@@ -30,20 +30,16 @@ local volume_percent =
 local volume_icon =
     sbar.add(
         "item",
-        "widgets.volume2",
+        "volume2",
         {
             position = "right",
-
-
             icon = {
-                drawing = true,
-                color = colors.granit.one,
+                color = colors.slategray.three,
                 size = 14
             },
             label = {
                 drawing = true,
             },
-            click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 10"
         }
     )
 
@@ -59,7 +55,7 @@ local volume_bracket =
                 color = colors.bar.bg
             },
             popup = {
-                align = "center"
+                align = "right"
             }
         }
     )
@@ -82,13 +78,13 @@ local volume_slider =
         {
             position = "popup." .. volume_bracket.name,
             slider = {
-                highlight_color = colors.slategray.three,
+                highlight_color = colors.slategray.two,
                 y_offset = 5,
                 background = {
 
                     height = 15,
                     corner_radius = 6,
-                    color = colors.granit.four,
+                    color = colors.slategray.four,
                 },
                 knob = {
 
@@ -132,6 +128,7 @@ volume_percent:subscribe(
 
         volume_icon:set(
             {
+                color = colors.slategray.one,
                 label = icon
             }
         )
@@ -188,14 +185,14 @@ local function volume_toggle_details(env)
                 sbar.exec(
                     "SwitchAudioSource -a -t output",
                     function(available)
-                        current = current_audio_device
+                        local current = current_audio_device
                         local color = colors.bg1
                         local counter = 0
 
                         for device in string.gmatch(available, "[^\r\n]+") do
                             local color = colors.bg1
                             if current == device then
-                                color = colors.bg1
+                                color = colors.slategray.one
                             end
                             sbar.add(
                                 "item",
@@ -209,12 +206,12 @@ local function volume_toggle_details(env)
                                             size = 12
                                         },
                                         string = device,
-                                        color = colors.foreground
+                                        color = colors.slategray.two
                                     },
                                     click_script = 'SwitchAudioSource -s "' ..
                                         device ..
                                         '" && sketchybar --set /volume.device\\.*/ label.color=' ..
-                                        colors.grey .. " --set $NAME label.color=" .. colors.grey
+                                        colors.slategray.two .. " --set $NAME label.color=" .. colors.slategray.two
                                 }
                             )
                             counter = counter + 1
