@@ -6,28 +6,28 @@ local app_icons = require("helpers.app_icons")
 
 
 local sf_icons_active = {
-	"1",
-	"2",
-	"3",
-	"4",
-	"5",
-	"6",
-	"7",
-	"8",
-	"9",
-	"10",
+	"􀀺",
+	"􀀼",
+	"􀀾",
+	"􀘗",
+	"􀁂",
+	"􀑱",
+	"􀁆",
+	"􀁈",
+	"􀁊",
+	"􀓵",
 }
 local sf_icons_inactive = {
-	"1",
-	"2",
-	"3",
-	"4",
-	"5",
-	"6",
-	"7",
-	"8",
-	"9",
-	"10",
+	"􀧙",
+	"􀧙",
+	"􀧙",
+	"􀧙",
+	"􀧙",
+	"􀧙",
+	"􀧙",
+	"􀧙",
+	"􀧙",
+	"􀧙",
 
 }
 
@@ -43,6 +43,7 @@ end
 local spaces = {}
 
 
+
 -- Create a parent container with a background
 
 for i = 1, 10, 1 do
@@ -50,41 +51,34 @@ for i = 1, 10, 1 do
 		sbar.add(
 			"space",
 			"space." .. i, {
-				space = i,
 
-				position = "center",
+				space = i,
+				position = "left",
 				label = {
 
-
-					highlight_color = colors.white,
-					color = colors.foreground,
+					highlight_color = colors.foreground,
+					color = colors.slategray.two,
 					align = "center",
 					font = {
+						style = settings.font.style_map.SemiBold,
 						family = settings.font.text,
-						size = 14
+					}
+				},
+				background = {
+					color = {
+						color = colors.bar.bg,
+
 					}
 				},
 				icon = {
-					padding_left = 10,
-					padding_right = 5,
-					string = getSpaceIcon(i, false),
-					size = 12,
-					color = colors.orange
-				},
-				background = {
-					drawing = true,
-					color = colors.blue
-				},
-			}
-		)
+					string = getSpaceIcon(i, true),
+					size = 18,
+					color = colors.slategray.one,
+
+				}
+			})
 	spaces[i] = space
 
-	-- Padding space
-	sbar.add("space", "space.padding." .. i, {
-		space = i,
-		script = "",
-		width = settings.group_paddings,
-	})
 
 
 	space:subscribe(
@@ -93,15 +87,17 @@ for i = 1, 10, 1 do
 			local selected = env.SELECTED == "true"
 			sbar.animate(
 				"elastic",
-				8,
+				10,
 				function()
 					space:set(
 						{
+
 							label = {
-								padding_right = selected and 10 or 2,
+								padding_right = selected and 10 or 0,
+								padding_left = selected and 10 or 0,
 								style = settings.font.style_map.SemiBold,
 								string = selected and env.INFO or "",
-								color = selected and colors.foreground or colors.granit.one,
+								color = selected and colors.bar.bg or colors.slategray.one,
 								font = {
 
 									size = selected and 14 or 18
@@ -109,15 +105,22 @@ for i = 1, 10, 1 do
 							},
 							icon = {
 
-								string = selected and getSpaceIcon(i, false) or getSpaceIcon(i, false),
-								color = selected and colors.foreground or colors.granit.two,
+								padding_left = selected and 10 or 5,
+								padding_right = selected and 0 or 5,
+								string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
+								color = selected and colors.bar.bg or colors.slategray.two,
 								font = {
-									size = selected and 14 or 12
-								}
+									size = selected and 18 or 18,
+								},
 							},
 							background = {
-								height = selected and 30 or 25,
-								color = selected and colors.bar.bg or colors.bar.bg,
+								padding_right = selected and 5 or 5,
+								padding_left = selected and 5 or 5,
+
+								drawing = selected and true or true,
+
+								height = selected and 28 or 26,
+								color = selected and colors.slategray.two or colors.bar.bg,
 							}
 						}
 					)
@@ -137,20 +140,22 @@ for i = 1, 10, 1 do
 			local selected = env.SELECTED == "true"
 			sbar.animate(
 				"elastic",
-				5,
+				3,
 				function()
 					space:set(
 						{
+							background = {
+								drawing = true,
+							},
 
 							icon = {
 
-								padding_left = 10,
-								padding_right = 5,
-								string = selected and icons.space_control or getSpaceIcon(i, false),
+
+								string = icons.space_control,
 								style = settings.font.style_map.SemiBold,
-								color = selected and colors.yellow or colors.granit.one,
+								color = selected and colors.bar.bg or colors.slategray.one,
 								font = {
-									size = selected and 14 or 20
+									size = selected and 22 or 20
 								},
 
 							},
@@ -158,9 +163,9 @@ for i = 1, 10, 1 do
 
 								style = settings.font.style_map.SemiBold,
 								string = env.INFO,
-								color = colors.yellow,
+								color = colors.slategray.one,
 								font = {
-									size = selected and 14 or 12,
+									size = selected and 16 or 12,
 
 								}
 							}
@@ -177,23 +182,22 @@ for i = 1, 10, 1 do
 			local selected = env.SELECTED == "true"
 			sbar.animate(
 				"elastic",
-				5,
+				3,
 				function()
 					space:set(
 						{
 							icon = {
-								padding_left = 10,
-								padding_right = 5,
+
 								style = settings.font.style_map.SemiBold,
 								font = {
-									size = selected and 14 or 12
+									size = selected and 18 or 18
 								},
 								string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-								color = selected and colors.foreground or colors.granit.one
+								color = selected and colors.bar.bg or colors.slategray.two
 							},
 							label = {
 								style = settings.font.style_map.SemiBold,
-								color = colors.foreground,
+								color = colors.bar.bg,
 								font = {
 									size = 14
 								}
@@ -218,26 +222,22 @@ end
 
 -------------- ADD SPACE BUTTON -----------
 
-sbar.add(
-	"item",
-	{
-		width = 0
-	}
-)
+
+
 local add_space =
 	sbar.add(
 		"item",
 		{
-			position = "center",
+
 
 			icon = {
 				padding_left = 8,
 				padding_right = 10,
 				font = {
-					size = 12
+					size = 14
 				},
 				string = icons.plus,
-				color = colors.orange
+				color = colors.slategray.tw,
 			},
 			label = {
 				drawing = false,
@@ -245,7 +245,7 @@ local add_space =
 			background = {
 
 				color = colors.bar.bg,
-				height = 25,
+
 			},
 		}
 	)
@@ -256,17 +256,17 @@ add_space:subscribe(
 	function(env)
 		sbar.animate(
 			"elastic",
-			10,
+			8,
 			function()
 				add_space:set(
 					{
 
 						icon = {
 
-							string = "Add 􀅼",
-							color = colors.orange,
+							string = "Add",
+							color = colors.slategray.one,
 							font = {
-								size = 12
+								size = 14
 							}
 						}
 					}
@@ -280,16 +280,16 @@ add_space:subscribe(
 	function(env)
 		sbar.animate(
 			"elastic",
-			15,
+			8,
 			function()
 				add_space:set(
 					{
 
 						icon = {
 							string = icons.plus,
-							color = colors.orange,
+							color = colors.metalsaurus,
 							font = {
-								size = 12
+								size = 18
 							}
 						}
 					}
@@ -311,7 +311,3 @@ add_space:subscribe(
 		)
 	end
 )
-
-
--- Padding item required because of bracket
-sbar.add("item", { width = 5 })

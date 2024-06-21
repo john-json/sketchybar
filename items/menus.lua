@@ -3,6 +3,8 @@ local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
+
+
 local menu_watcher =
     sbar.add(
         "item",
@@ -39,9 +41,9 @@ for i = 1, max_items, 1 do
                 label = {
                     padding_left = 5,
                     padding_right = 5,
-                    color = colors.foreground,
+                    color = colors.orange,
                     font = {
-                        color = colors.foreground,
+
                         size = 12,
                         style = settings.font.style_map[i == 1 and "Bold" or "SemiBold"]
                     }
@@ -58,7 +60,7 @@ sbar.add(
     { "/menu\\..*/" },
     {
         background = {
-            alpha = 0,
+            alpha = 1,
             color = colors.bar.bg
         }
     }
@@ -89,7 +91,7 @@ for i = 1, max_items do
                             alpha = 1,
                         },
                         label = {
-                            color = colors.granit.one,
+                            color = colors.metalsaurus,
                             font = {
                                 size = 12,
                                 style = settings.font.style_map.SemiBold
@@ -212,8 +214,8 @@ local menu_indicator =
             align = "center",
             icon = {
                 padding_left = 10,
-                padding_right = 7,
-                color = colors.foreground,
+                padding_right = 10,
+                color = colors.metalsaurus,
                 string = "􀍠",
                 font = {
                     size = 18
@@ -240,15 +242,13 @@ menu_indicator:subscribe(
                 menu_indicator:set(
                     {
                         background = {
-                            color = {
-                                alpha = 1
-                            }
+                            color = colors.bar.bg
                         },
                         label = {
-                            color = colors.yellow,
+                            color = colors.metalsaurus,
                         },
                         icon = {
-                            color = colors.foreground,
+                            color = colors.metalsaurus,
                             font = {
                                 size = 14
                             }
@@ -258,40 +258,38 @@ menu_indicator:subscribe(
             end
         )
         -- Animate the menu items when they show up
-        for i = 1, max_items do
-            local menu_item = menu_items[i]
-            if menu_item:query().geometry.drawing == "on" then
-                sbar.animate(
-                    "elastic",
-                    15,
-                    function()
-                        menu_item:set(
-                            {
-                                width = "dynamic",
-                                background = {
-                                    color = {
-                                        alpha = 1
-                                    }
-                                },
-                                label = {
-                                    color = colors.yellow,
-                                    font = {
-                                        size = 12,
-                                        style = settings.font.style_map.SemiBold
-                                    }
-                                },
-                                icon = {
-                                    color = colors.foreground,
-                                    font = {
-                                        size = 18
-                                    }
-                                }
+
+        local menu_item = menu_items
+
+        sbar.animate(
+            "elastic",
+            15,
+            function()
+                menu_item:set(
+                    {
+                        width = "dynamic",
+                        background = {
+                            color = {
+                                alpha = 1
                             }
-                        )
-                    end
+                        },
+                        label = {
+                            color = colors.metalsaurus,
+                            font = {
+                                size = 14,
+                                style = settings.font.style_map.SemiBold
+                            }
+                        },
+                        icon = {
+                            color = colors.metalsaurus,
+                            font = {
+                                size = 25
+                            }
+                        }
+                    }
                 )
             end
-        end
+        )
     end
 )
 menu_indicator:subscribe(
@@ -310,13 +308,13 @@ menu_indicator:subscribe(
                             }
                         },
                         label = {
-                            color = colors.granit.one,
+                            color = colors.metalsaurus,
                             font = {
-                                size = 12
+                                size = 14
                             }
                         },
                         icon = {
-                            color = colors.foreground,
+                            color = colors.metalsaurus,
                             font = {
                                 size = 18
                             }

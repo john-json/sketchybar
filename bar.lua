@@ -5,13 +5,13 @@ local settings = require("settings")
 sbar.bar(
     {
         topmost = "window",
-        height = 30,
+        height = 32,
         color = colors.transparent,
         padding_right = 0,
         padding_left = 0,
         margin = 10,
         corner_radius = 8,
-        y_offset = 6,
-        shadow = false
+        y_offset = 4,
+        shadow = true
     }
 )

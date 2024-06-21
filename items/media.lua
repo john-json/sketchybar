@@ -2,6 +2,7 @@ local colors = require("colors")
 local icons = require("icons")
 local settings = require("settings")
 
+
 local whitelist = {
     ["Spotify"] = true
 }
@@ -18,15 +19,13 @@ local function setup_media_items()
 
                 icon = {
                     string = "",
-                    color = colors.bar.bg,
+                    color = colors.green,
                     font = {
                         size = 18
                     }
                 },
-                background = {
-                    color = colors.green,
-                },
-                drawing = true,
+
+                drawing = false,
                 updates = true,
                 popup = {
                     align = "center",
@@ -51,7 +50,7 @@ local function setup_media_items()
                     width = "dynamic",
 
                     color = colors.green,
-                    max_chars = 10,
+
 
                 }
             }
@@ -81,19 +80,30 @@ end
 
 local media_cover, media_artist, media_title = setup_media_items()
 
+
 local media_container =
     sbar.add(
         "bracket",
         "media_container",
         { media_cover.name, media_artist.name, media_title.name },
         {
+            -- Padding item required because of bracket
+            padding_left = 10,
+            padding_right = 10,
             background = {
                 color = colors.bar.bg,
 
             }
         }
     )
+sbar.add(
+    "item",
+    {
 
+        position = "right",
+        width = 5
+    }
+)
 sbar.add(
     "item",
     {

@@ -15,12 +15,11 @@ local volume_percent =
             },
             label = {
                 drawing = true,
-                padding_right = settings.paddings,
-                padding_left = 0,
+
                 string = "??",
-                color = colors.magenta,
+                color = colors.granit.two,
                 font = {
-                    size = 12,
+                    size = 14,
                     style = settings.font.style_map["SemiBold"],
                     family = settings.font.text,
                 }
@@ -34,19 +33,15 @@ local volume_icon =
         "widgets.volume2",
         {
             position = "right",
-            padding_right = 5,
-            padding_left = 2,
+
+
             icon = {
-                padding_right = 0,
-                color = colors.magenta,
+                drawing = true,
+                color = colors.granit.one,
                 size = 14
             },
             label = {
-                align = "left",
-                color = colors.magenta,
-                font = {
-                    size = 12
-                }
+                drawing = true,
             },
             click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 10"
         }

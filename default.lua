@@ -3,6 +3,7 @@ local colors = require("colors")
 
 sbar.default(
 	{
+
 		updates = "when_shown",
 		icon = {
 			padding_left = settings.paddings,
@@ -10,7 +11,7 @@ sbar.default(
 			font = {
 				family = settings.font.text,
 				style = settings.font.style_map.Bold,
-				size = 12.0
+				size = 14.0
 			},
 		},
 		label = {
@@ -24,18 +25,22 @@ sbar.default(
 			color = colors.foreground
 		},
 		background = {
-			height = 30,
+			height = 28,
+
 			corner_radius = 6,
 			border_width = 0,
+			border_color = {
+				color = colors.transparent
+			},
 			image = {
-				corner_radius = 6
+				corner_radius = 8
 			}
 
 		},
 		popup = {
 			background = {
 				border_width = 2,
-				corner_radius = 8,
+				corner_radius = 6,
 				border_color = colors.popup.border,
 				color = colors.popup.bg,
 				shadow = {
@@ -44,8 +49,8 @@ sbar.default(
 			},
 			blur_radius = 80
 		},
-		padding_left = 5,
-		padding_right = 5,
+		padding_right = settings.group_paddings,
+		padding_left = settings.group_paddings,
 		scroll_texts = true
 	}
 )

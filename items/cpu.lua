@@ -7,17 +7,19 @@ local settings = require("settings")
 sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_load/bin/cpu_load cpu_update 2.0")
 
 local cpu = sbar.add("graph", "widgets.cpu", 42, {
+
+
     position = "right",
     graph = { color = colors.blue },
     background = {
-        height = 22,
+        height = 18,
         color = { alpha = 0 },
         border_color = { alpha = 0 },
         drawing = true,
     },
-    icon = { string = icons.cpu, color = colors.orange },
+    icon = { string = icons.cpu, color = colors.metalsaurus },
     label = {
-        color = colors.orange,
+        color = colors.bar.bg,
         string = "cpu ??%",
         font = {
             family = settings.font.numbers,
@@ -29,7 +31,8 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
         width = 0,
         y_offset = 4
     },
-    padding_right = settings.paddings + 6
+    padding_right = settings.paddings + 6,
+    padding_left = settings.paddings + 6,
 })
 
 cpu:subscribe("cpu_update", function(env)
@@ -60,7 +63,7 @@ end)
 
 -- Background around the cpu item
 sbar.add("bracket", "widgets.cpu.bracket", { cpu.name }, {
-    background = { color = colors.bg1 }
+    background = { color = colors.bar.bg }
 })
 
 -- Background around the cpu item

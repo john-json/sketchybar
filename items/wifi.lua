@@ -12,7 +12,6 @@ local wifi_up =
 		"widgets.wifi1",
 		{
 			position = "right",
-			padding_left = -5,
 			width = 0,
 			icon = {
 
@@ -64,28 +63,34 @@ local wifi_icon =
 		"item",
 		"wifi.icon",
 		{
-			padding_left = 5,
-			width = 5,
 			label = {
 				drawing = false,
 			},
 			position = "right",
-
 			icon = {
 				string = icons.wifi.connected,
 				color = colors.yellow,
 				font = {
-					size = 12
+					size = 14
 				}
 			},
 
 		}
 	)
-
 local wifi = sbar.add("item", "widgets.wifi.padding", {
 	position = "right",
 	label = { drawing = false },
 })
+
+
+sbar.add(
+	"item",
+	{
+
+		position = "right",
+		width = 5
+	}
+)
 
 -- Background around the item
 local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
@@ -94,10 +99,12 @@ local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
 	wifi_up.name,
 	wifi_down.name
 }, {
-	background = { color = colors.bar.bg },
+	background = {
+
+		color = colors.bar.bg
+	},
 	popup = { align = "center", height = 30 }
 })
-
 
 
 local ssid =
@@ -344,7 +351,6 @@ local function toggle_details()
 		hide_details()
 	end
 end
-
 
 
 wifi_up:subscribe("mouse.clicked", toggle_details)

@@ -2,8 +2,6 @@ local colors = require("colors")
 local icons = require("icons")
 local settings = require("settings")
 
--- Padding item required because of bracket
-sbar.add("item", { width = 0 })
 
 
 
@@ -16,11 +14,11 @@ local apple =
 					size = 14
 				},
 				string = icons.apple,
-				color = colors.dimgray.one,
-				padding_right = 12,
-				padding_left = 12,
+				color = colors.granit.one,
+				padding_right = 10,
+				padding_left = 10,
 			},
-			label = { drawing = false },
+
 			background = {
 				color = colors.bar.bg
 			},
@@ -40,8 +38,11 @@ apple:subscribe(
 			function()
 				apple:set(
 					{
+						background = {
+							color = colors.orange
+						},
 						icon = {
-							color = colors.blue,
+							color = colors.bar.bg,
 							font = {
 								size = 20
 							}
@@ -68,8 +69,10 @@ apple:subscribe(
 							color = colors.bar.bg,
 						},
 						icon = {
+							padding_right = 10,
+							padding_left = 10,
 							string = icons.apple,
-							color = colors.dimgray.one,
+							color = colors.granit.one,
 							font = {
 								size = 14
 							}
@@ -81,13 +84,3 @@ apple:subscribe(
 		)
 	end
 )
-
--- Double border for apple using a single item bracket
-sbar.add("bracket", { apple.name }, {
-	background = {
-
-		border_color = colors.grey,
-	}
-})
--- Padding item required because of bracket
-sbar.add("item", { width = 0 })

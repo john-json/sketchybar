@@ -4,13 +4,17 @@ return {
     foreground = 0xffb6b6b5,
     inactive_foreground = 0xff5c5c5c,
 
-    red = 0xff732313,
+    red = 0xff6c3834,
     green = 0xff717f66,
     yellow = 0xff898862,
-    orange = 0xff975338,
+    orange = 0xff8f6441,
+    orange_alt = 0xff975338,
     blue = 0xff6d8690,
     magenta = 0xff5a525a,
     grey = 0xff32312f,
+    metalsaurus = 0xff5d5d5d,
+    metalsaurus2 = 0xff344156,
+    selected = 0xff3e3e3e,
 
 
 
@@ -48,8 +52,8 @@ return {
         platinum = 0xffe5e5e5,
     },
     bar = {
-        bg = 0xff171717,
-        bg3 = 0xff1c1c1c,
+        bg = 0xff191919,
+        bg3 = 0xff1e1e1e1e,
         bg2 = 0x32312f,
         transparent = 0xe61c1c1c,
         border = 0xD92525276,
