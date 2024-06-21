@@ -89,7 +89,7 @@ sbar.add(
 	{
 
 		position = "right",
-		width = 10
+		width = 5
 	}
 )
 
@@ -214,7 +214,7 @@ sbar.add(
 		width = settings.group_paddings,
 		label = {
 			font = {
-				size = 10
+				size = 5
 			}
 		}
 	}

@@ -12,6 +12,8 @@ local terminal =
 			shadown = true,
 			position = "right",
 			background = {
+				border_width = 0,
+				border_color = colors.transparent,
 				color = colors.transparent
 			},
 			icon = {
@@ -41,6 +43,8 @@ local chat =
 		{
 			position = "right",
 			background = {
+				border_width = 0,
+				border_color = colors.transparent,
 				color = colors.transparent
 
 			},
@@ -74,6 +78,8 @@ local code =
 
 			position = "right",
 			background = {
+				border_width = 0,
+				border_color = colors.transparent,
 				color = colors.transparent
 
 			},
@@ -108,7 +114,7 @@ sbar.add(
 	{
 
 		position = "right",
-		width = 10
+		width = 5
 	}
 )
 

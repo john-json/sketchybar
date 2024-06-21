@@ -24,7 +24,7 @@ local function setup_media_items()
                         size = 18
                     }
                 },
-
+                padding_left = 10,
                 drawing = false,
                 updates = true,
                 popup = {
@@ -66,9 +66,9 @@ local function setup_media_items()
                     drawing = false
                 },
                 label = {
-
+                    padding_right = 10,
                     color = colors.granit.one,
-                    max_chars = 10,
+                    max_chars = 30,
 
 
                 }
@@ -91,7 +91,7 @@ local media_container =
             padding_left = 10,
             padding_right = 10,
             background = {
-                color = colors.bar.bg,
+                color = colors.transparent,
 
             },
             icon = {

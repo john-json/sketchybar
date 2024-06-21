@@ -6,7 +6,7 @@ local cal =
     sbar.add(
         "item",
         {
-            position = "right",
+            position = "center",
 
 
             label = {
@@ -17,7 +17,7 @@ local cal =
                 border_color = colors.bar.bg,
                 background = {
 
-                    color = colors.blue,
+                    color = colors.grey,
                     height = 30,
                     corner_radius = 6,
                 },
@@ -33,7 +33,7 @@ local cal =
                 padding_left = 10,
                 padding_right = 10,
                 align = "laft",
-                color = colors.indigo.one,
+                color = colors.lightgray,
                 font = {
                     style = settings.font.style_map["Regualr"],
                     size = 12
@@ -60,7 +60,7 @@ cal:subscribe(
     function(env)
         cal:set(
             {
-                icon = os.date("%a.%d "),
+                icon = os.date("%A %d %B "),
                 label = os.date("%H:%M")
                 -- icon = os.date("%a.%d %b. %H"),
             }

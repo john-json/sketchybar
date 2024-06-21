@@ -14,7 +14,7 @@ local apple =
 					size = 14
 				},
 				string = icons.apple,
-				color = colors.stormcloud.one,
+				color = colors.lightgray,
 				padding_right = 10,
 				padding_left = 10,
 			},

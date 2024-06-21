@@ -4,12 +4,12 @@ local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
 local sf_icons_active = {
-	"", "", "", "", "", "", "", "", "", "", "", ""
+	"", "", "", "", "", "", "", "", "", ""
 }
 
 local sf_icons_inactive = {
 	"􀧙", "􀧙", "􀧙", "􀧙", "􀧙",
-	"􀧙", "􀧙", "􀧙", "􀧙", "􀧙",
+	"􀧙", "􀧙", "􀧙", "􀧙", "􀧙"
 }
 
 local function getSpaceIcon(space, active)
@@ -22,11 +22,24 @@ end
 
 local spaces = {}
 
+-- local function log(message)
+-- 	os.execute('echo "' .. message .. '" >> /tmp/sketchybar.log')
+-- end cat /tmp/sketchybar.log
+
+local function switchToSpace(spaceNumber)
+	local scriptPath = string.format('"$CONFIG_DIR/items/scripts/switchSpace/switchToSpace%d.scpt"', spaceNumber)
+	log("Switching to space: " .. spaceNumber .. " with script: " .. scriptPath)
+	local command = 'osascript ' .. scriptPath
+	log("Executing command: " .. command)
+	local result = os.execute(command)
+	log("Result: " .. tostring(result))
+end
+
 -- Create space items
 for i = 1, 10 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
-		position = "center",
+		position = "left",
 		label = {
 			color = colors.stormcloud.two,
 			padding_right = 10,
@@ -45,7 +58,7 @@ for i = 1, 10 do
 			padding_right = 10,
 			padding_left = 10,
 			height = 28,
-			color = colors.stormcloud.one,
+			color = colors.grey,
 		},
 	})
 	spaces[i] = space
@@ -55,7 +68,6 @@ for i = 1, 10 do
 		sbar.animate("elastic", 10, function()
 			space:set({
 				label = {
-
 					drawing = selected and true or false,
 					padding_right = selected and 10 or 0,
 					padding_left = selected and 0 or 0,
@@ -69,10 +81,10 @@ for i = 1, 10 do
 					padding_left = selected and 5 or 5,
 					padding_right = selected and 2 or 5,
 					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-
-
 				},
 				background = {
+					border_width = 0,
+					border_color = colors.transparent,
 					padding_right = 5,
 					padding_left = 5,
 					corner_radius = selected and 6 or 15,
@@ -87,7 +99,6 @@ for i = 1, 10 do
 		local selected = env.SELECTED == "true"
 		sbar.animate("elastic", 10, function()
 			space:set({
-
 				icon = {
 					padding_left = 3,
 					padding_right = 4,
@@ -97,7 +108,6 @@ for i = 1, 10 do
 					font = {
 						size = 16
 					},
-
 				},
 				label = {
 					color = colors.stormcloud.two,
@@ -136,13 +146,14 @@ for i = 1, 10 do
 	end)
 
 	space:subscribe("mouse.clicked", function(env)
-		sbar.exec("open -a 'Mission Control'")
+		log("Clicked space: " .. i)
+		switchToSpace(i)
 	end)
 end
 
 -- ADD SPACE BUTTON
 local add_space = sbar.add("item", {
-	position = "center",
+	position = "left",
 	icon = {
 		padding_left = 8,
 		padding_right = 10,
@@ -150,7 +161,6 @@ local add_space = sbar.add("item", {
 			size = 12,
 		},
 		string = icons.plus,
-
 	},
 	label = {
 		drawing = false,
@@ -164,7 +174,6 @@ add_space:subscribe("mouse.entered", function(env)
 	sbar.animate("elastic", 8, function()
 		add_space:set({
 			icon = {
-
 				string = "Add",
 				color = colors.stormcloud.two,
 				font = {
