@@ -22,9 +22,9 @@ end
 
 local spaces = {}
 
--- local function log(message)
--- 	os.execute('echo "' .. message .. '" >> /tmp/sketchybar.log')
--- end cat /tmp/sketchybar.log
+local function log(message)
+	os.execute('echo "' .. message .. '" >> /tmp/sketchybar.log')
+end
 
 local function switchToSpace(spaceNumber)
 	local scriptPath = string.format('"$CONFIG_DIR/items/scripts/switchSpace/switchToSpace%d.scpt"', spaceNumber)
@@ -58,7 +58,7 @@ for i = 1, 10 do
 			padding_right = 10,
 			padding_left = 10,
 			height = 28,
-			color = colors.grey,
+			color = colors.stormcloud.one,
 		},
 	})
 	spaces[i] = space
