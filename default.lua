@@ -6,13 +6,12 @@ sbar.default(
 
 		updates = "when_shown",
 		icon = {
-			padding_left = settings.paddings,
-			padding_right = settings.paddings,
-			color = colors.slategray.two,
+
+			color = colors.foreground,
 			font = {
 				family = settings.font.text,
 				style = settings.font.style_map.Bold,
-				size = 14.0
+				size = 18.0
 			},
 		},
 		label = {
@@ -21,19 +20,21 @@ sbar.default(
 			font = {
 				family = settings.font.text,
 				style = settings.font.style_map.SemiBold,
-				size = 12.0
+				size = 14.0
 			},
 			color = colors.foreground
 		},
 		background = {
-			height = 30,
+			height = 28,
 			corner_radius = 6,
 			border_width = 1,
-			border_color = colors.grey,
+
+			border_color = colors.darkgrey,
 
 			image = {
 				corner_radius = 8
-			}
+			},
+
 
 		},
 		popup = {

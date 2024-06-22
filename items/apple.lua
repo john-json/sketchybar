@@ -3,18 +3,16 @@ local icons = require("icons")
 local settings = require("settings")
 
 
-
-
 local apple =
 	sbar.add(
 		"item",
 		{
 			icon = {
 				font = {
-					size = 14
+					size = 18
 				},
 				string = icons.apple,
-				color = colors.lightgray,
+				color = colors.lightgrey,
 				padding_right = 10,
 				padding_left = 10,
 			},
@@ -73,7 +71,7 @@ apple:subscribe(
 							padding_right = 10,
 							padding_left = 10,
 							string = icons.apple,
-							color = colors.stormcloud.one,
+							color = colors.lightgray,
 							font = {
 								size = 14
 							}

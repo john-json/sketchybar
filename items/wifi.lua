@@ -71,9 +71,7 @@ local wifi_icon =
 			icon = {
 				string = icons.wifi.connected,
 				color = colors.orange,
-				font = {
-					size = 14
-				}
+
 			},
 
 		}
@@ -227,26 +225,26 @@ wifi_up:subscribe(
 		wifi_up:set(
 			{
 				icon = {
-					color = colors.green,
+					color = colors.lightgray,
 					padding_right = 5
 				},
 				label = {
 					string = env.upload,
 					style = settings.font.style_map.Bold,
-					color = colors.granit.one
+					color = colors.lightgray
 				}
 			}
 		)
 		wifi_down:set(
 			{
 				icon = {
-					color = colors.red,
+					color = colors.grey,
 					padding_right = 5
 				},
 				label = {
 					string = env.download,
 					style = settings.font.style_map.Bold,
-					color = colors.granit.two
+					color = colors.grey
 				}
 			}
 		)

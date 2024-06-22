@@ -2,13 +2,13 @@ local settings = require("settings")
 
 local icons = {
     sf_symbols = {
-        plus = "􀅼",
+        plus = "􀁌",
         plus2 = "􀃝",
         loading = "􀖇",
         apple = "􀣺",
         line = "􀝷",
         gear = "􀍟",
-        cpu = "􀧓",
+        cpu = "􁛴",
         clipboard = "􀉄",
         aqi = "􀴿",
         bookmark = "􀉟",
@@ -30,7 +30,7 @@ local icons = {
         active_space = "􀯺",
         inactive_space = "􀯺",
         spaces = "􁏮",
-        menu = "􀱢",
+        menu = "􁍟",
         space_control2 = "􀚅",
         space_control = "􀫲",
         space_control4 = "􁈔",
@@ -64,11 +64,11 @@ local icons = {
             off = "􀯶"
         },
         volume = {
-            _100 = "􀊩",
-            _66 = "􀊩",
-            _33 = "􀊧",
-            _10 = "􀊥",
-            _0 = "􀊣"
+            _100 = "􀥒",
+            _66 = "􀥒",
+            _33 = "􀥒",
+            _10 = "􀽆",
+            _0 = "􀽅"
         },
         battery = {
             _100 = "􀛨",
@@ -81,14 +81,14 @@ local icons = {
         wifi = {
             upload = "􀄨",
             download = "􀄩",
-            connected = "􀙇",
-            disconnected = "􀙈",
+            connected = "􀷗",
+            disconnected = "􂄁",
             router = "􁓤"
         },
         media = {
-            back = "􀊊",
-            forward = "􀊌",
-            play_pause = "􀊈"
+            back = "􀊉",
+            forward = "􀊋",
+            play_pause = "􁚟"
         }
     },
     -- Alternative NerdFont icons

@@ -17,7 +17,7 @@ local volume_percent =
                 padding_right = 5,
                 align = "right",
                 string = "??%",
-                color = colors.magenta,
+                color = colors.foreground_light,
                 font = {
                     size = 12,
                     style = settings.font.style_map["SemiBold"],
@@ -38,13 +38,13 @@ local volume_icon =
             padding_left = 5,
             icon = {
                 color = colors.magenta,
-                size = 12
+                size = 18
             },
             label = {
                 align = "right",
-                color = colors.magenta,
+                color = colors.lightgray,
                 font = {
-                    size = 12
+                    size = 18
                 }
             }
             -- click_script = "osascript $CONFIG_DIR/items/scripts/openSoundMenu.scpt"

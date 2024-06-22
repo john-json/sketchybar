@@ -1,7 +1,8 @@
 return {
     black = 0xff141414,
-    white = 0xff272826,
-    foreground = 0xffb6b6b5,
+    white = 0xffd0d3db,
+    foreground_light = 0xffa0a0a0,
+    foreground = 0xff444444,
     inactive_foreground = 0xff5c5c5c,
 
     red = 0xff814e4b,
@@ -16,6 +17,8 @@ return {
     metalsaurus = 0xff5d5d5d,
     metalsaurus2 = 0xff344156,
     selected = 0xff3e3e3e,
+    darkgrey = 0xff252525,
+    ebony = 0xff5d5d5d,
 
 
 

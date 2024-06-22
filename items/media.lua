@@ -4,41 +4,85 @@ local settings = require("settings")
 
 
 local whitelist = {
-    ["Spotify"] = true
-}
-
-
+    ["Spotify"] = true,
+    ["Music"] = true
+};
 
 local function setup_media_items()
     local media_cover =
         sbar.add(
             "item",
             {
-                position = "right",
+                position = "popup.",
+                background = {
+                    image = {
+                        string = "media.artwork",
+                        scale = 0.6,
+                    },
+                    color = colors.transparent,
+                },
                 align = "center",
 
                 icon = {
                     string = "",
                     color = colors.green,
-                    font = {
-                        size = 18
-                    }
+
                 },
-                padding_left = 10,
+
                 drawing = false,
                 updates = true,
-                popup = {
-                    align = "center",
-                    horizontal = true
-                }
+
             }
         )
+    local media_next = sbar.add(
+        "item",
+        {
+            position = "right",
+            icon = {
+
+                string = icons.media.forward
+            },
+            label = {
+                drawing = true
+            },
+            click_script = "nowplaying-cli next"
+        }
+    )
+    local media_play = sbar.add(
+        "item",
+        {
+            position = "right",
+            icon = {
+                string = icons.media.play_pause
+            },
+            label = {
+                drawing = true
+            },
+            click_script = "nowplaying-cli togglePlayPause"
+        }
+    )
+    local media_back = sbar.add(
+        "item",
+        {
+            position = "right",
+            icon = {
+                string = icons.media.back
+            },
+            label = {
+                drawing = true
+            },
+            click_script = "nowplaying-cli previous"
+        }
+    )
+
+
+
 
     local media_artist =
         sbar.add(
             "item",
             {
-                position = "right",
+                position = "popup." .. media_cover.name,
                 drawing = true,
 
                 icon = {
@@ -46,7 +90,7 @@ local function setup_media_items()
                 },
                 label = {
                     style = settings.font.style_map["Bold"],
-
+                    padding_left = 10,
                     width = "dynamic",
 
                     color = colors.green,
@@ -60,7 +104,7 @@ local function setup_media_items()
         sbar.add(
             "item",
             {
-                position = "right",
+                position = "popup." .. media_cover.name,
                 drawing = true,
                 icon = {
                     drawing = false
@@ -68,37 +112,37 @@ local function setup_media_items()
                 label = {
                     padding_right = 10,
                     color = colors.granit.one,
-                    max_chars = 30,
+                    max_chars = 15,
 
 
                 }
             }
         )
 
-    return media_cover, media_artist, media_title
+    return media_cover, media_artist, media_title, media_next, media_back, media_play
 end
 
-local media_cover, media_artist, media_title = setup_media_items()
+local media_cover, media_artist, media_title, media_next, media_back, media_play = setup_media_items()
 
 
 local media_container =
     sbar.add(
         "bracket",
         "media_container",
-        { media_cover.name, media_artist.name, media_title.name },
+        { media_cover.name, media_back.name, media_play.name, media_next.name },
         {
             -- Padding item required because of bracket
-            padding_left = 10,
-            padding_right = 10,
+            padding_left = 5,
+            padding_right = 5,
             background = {
-                color = colors.transparent,
+                color = colors.bar.bg,
 
             },
             icon = {
                 string = "",
                 color = colors.green,
                 font = {
-                    size = 18
+                    size = 14
                 }
             },
         }
@@ -111,45 +155,7 @@ sbar.add(
         width = 5
     }
 )
-sbar.add(
-    "item",
-    {
-        position = "popup." .. media_cover.name,
-        icon = {
-            string = icons.media.back
-        },
-        label = {
-            drawing = true
-        },
-        click_script = "nowplaying-cli previous"
-    }
-)
-sbar.add(
-    "item",
-    {
-        position = "popup." .. media_cover.name,
-        icon = {
-            string = icons.media.play_pause
-        },
-        label = {
-            drawing = true
-        },
-        click_script = "nowplaying-cli togglePlayPause"
-    }
-)
-sbar.add(
-    "item",
-    {
-        position = "popup." .. media_cover.name,
-        icon = {
-            string = icons.media.forward
-        },
-        label = {
-            drawing = true
-        },
-        click_script = "nowplaying-cli next"
-    }
-)
+
 
 local interrupt = 0
 local function animate_detail(detail)
@@ -161,18 +167,44 @@ local function animate_detail(detail)
     end
 
     sbar.animate(
-        "tanh",
+        "elastic",
         30,
         function()
-            media_artist:set(
+            media_play:set(
                 {
+                    icon = {
+                        size = 18,
+                        color = colors.foreground_light
+                    },
+                    label = {
+
+                        width = "dynamic"
+                    }
+                }
+            )
+            media_back:set(
+                {
+                    icon = {
+                        font = {
+                            size = 12,
+                        },
+
+                        color = colors.slategray.two
+                    },
                     label = {
                         width = "dynamic"
                     }
                 }
             )
-            media_title:set(
+            media_next:set(
                 {
+                    icon = {
+                        font = {
+                            size = 12,
+                        },
+                        size = 10,
+                        color = colors.slategray.two
+                    },
                     label = {
                         width = "dynamic"
                     }
@@ -189,14 +221,22 @@ media_cover:subscribe(
             local drawing = (env.INFO.state == "playing")
             media_artist:set(
                 {
+                    position = "popup." .. media_cover.name,
                     drawing = drawing,
-                    label = env.INFO.artist
+                    label = env.INFO.artist,
+                    popup = {
+                        drawing = true
+                    }
                 }
             )
             media_title:set(
                 {
+                    position = "popup." .. media_cover.name,
                     drawing = drawing,
-                    label = env.INFO.title
+                    label = env.INFO.title,
+                    popup = {
+                        drawing = true
+                    }
                 }
             )
             media_cover:set(
@@ -213,7 +253,7 @@ media_cover:subscribe(
                 media_cover:set(
                     {
                         popup = {
-                            drawing = false
+                            drawing = true
                         }
                     }
                 )
@@ -262,5 +302,24 @@ media_title:subscribe(
         )
     end
 )
+
+sbar.add("item", {
+    position = "popup." .. media_cover.name,
+    icon = { string = icons.media.back },
+    label = { drawing = false },
+    click_script = "nowplaying-cli previous",
+})
+sbar.add("item", {
+    position = "popup." .. media_cover.name,
+    icon = { string = icons.media.play_pause },
+    label = { drawing = false },
+    click_script = "nowplaying-cli togglePlayPause",
+})
+sbar.add("item", {
+    position = "popup." .. media_cover.name,
+    icon = { string = icons.media.forward },
+    label = { drawing = false },
+    click_script = "nowplaying-cli next",
+})
 
 return media_container

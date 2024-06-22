@@ -41,7 +41,7 @@ for i = 1, max_items, 1 do
                 label = {
                     padding_left = 5,
                     padding_right = 5,
-                    color = colors.stormcloud.two,
+
                     font = {
 
                         size = 12,
@@ -91,7 +91,7 @@ for i = 1, max_items do
                             alpha = 1,
                         },
                         label = {
-                            color = colors.stormcloud.two,
+
                             font = {
                                 size = 12,
                                 style = settings.font.style_map.SemiBold
@@ -215,7 +215,7 @@ local menu_indicator =
             icon = {
                 padding_left = 10,
                 padding_right = 10,
-                color = colors.stormcloud.one,
+
                 string = "􀍠",
                 font = {
                     size = 18
@@ -245,10 +245,10 @@ menu_indicator:subscribe(
                             color = colors.bar.bg
                         },
                         label = {
-                            color = colors.stormcloud.one,
+
                         },
                         icon = {
-                            color = colors.stormcloud.one,
+
                             font = {
                                 size = 14
                             }
@@ -274,14 +274,14 @@ menu_indicator:subscribe(
                             }
                         },
                         label = {
-                            color = colors.stormcloud.one,
+
                             font = {
                                 size = 14,
                                 style = settings.font.style_map.SemiBold
                             }
                         },
                         icon = {
-                            color = colors.stormcloud.one,
+
                             font = {
                                 size = 25
                             }
@@ -308,13 +308,13 @@ menu_indicator:subscribe(
                             }
                         },
                         label = {
-                            color = colors.stormcloud.one,
+
                             font = {
                                 size = 14
                             }
                         },
                         icon = {
-                            color = colors.stormcloud.one,
+
                             font = {
                                 size = 18
                             }

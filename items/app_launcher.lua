@@ -3,28 +3,36 @@ local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
+sbar.add(
+	"item",
+	{
 
+		position = "left",
+		width = 5
+	}
+)
 
 local terminal =
 	sbar.add(
 		"item",
 		{
 			shadown = true,
-			position = "right",
+			position = "left",
 			background = {
 				border_width = 0,
 				border_color = colors.transparent,
 				color = colors.transparent
 			},
 			icon = {
-
-				string = "􀩼",
-				color = colors.yellow,
-				font = { size = 14,
+				font = { size = 18,
 				},
+				padding_left = 5,
+				string = "􀁗",
+				color = colors.lightgray,
+
 			},
 			label = {
-				drawing = true,
+				drawing = false,
 			}
 
 		}
@@ -41,7 +49,7 @@ local chat =
 	sbar.add(
 		"item",
 		{
-			position = "right",
+			position = "left",
 			background = {
 				border_width = 0,
 				border_color = colors.transparent,
@@ -49,14 +57,15 @@ local chat =
 
 			},
 			icon = {
-
-				string = "􀌲",
-				color = colors.yellow,
-				font = { size = 14,
+				font = { size = 18,
 				},
+
+				string = "􂄼",
+				color = colors.lightgray,
+
 			},
 			label = {
-				drawing = true,
+				drawing = false,
 			}
 
 		}
@@ -76,7 +85,7 @@ local code =
 		"item",
 		{
 
-			position = "right",
+			position = "left",
 			background = {
 				border_width = 0,
 				border_color = colors.transparent,
@@ -84,14 +93,14 @@ local code =
 
 			},
 			icon = {
-				padding_left = 5,
+				padding_right = 5,
 				string = "􀤘",
-				color = colors.yellow,
-				font = { size = 14,
+				color = colors.lightgray,
+				font = { size = 18,
 				},
 			},
 			label = {
-				drawing = true,
+				drawing = false,
 			}
 
 		}
@@ -109,21 +118,13 @@ code:subscribe(
 
 
 
-sbar.add(
-	"item",
-	{
-
-		position = "right",
-		width = 5
-	}
-)
 
 
 -- Double border for apple using a single item bracket
 sbar.add("bracket", { chat.name, terminal.name, code.name }, {
 
 	background = {
-		position = "right",
+		position = "left",
 		color = colors.bar.bg,
 		width = "dynamic",
 		border_color = colors.grey,
