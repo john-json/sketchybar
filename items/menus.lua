@@ -3,6 +3,12 @@ local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
+
+sbar.add("item", "menus.padding", {
+    position = "right",
+    width = settings.group_paddings
+})
+
 local menu_watcher =
     sbar.add(
         "item",
@@ -39,9 +45,8 @@ for i = 1, max_items, 1 do
                 label = {
                     padding_left = 5,
                     padding_right = 5,
-                    color = colors.black,
+                    color = colors.bar.foreground_alt,
                     font = {
-                        color = colors.black,
                         size = 12,
                         style = settings.font.style_map[i == 1 and "Bold" or "SemiBold"]
                     }
@@ -182,15 +187,16 @@ local menu_indicator =
             position = "left",
             align = "center",
             icon = {
-
-                color = colors.bg2,
-                string = "􀍠",
+                padding_left = 5,
+                padding_right = 5,
+                color = colors.bar.bg,
+                string = "􁍝",
                 font = {
                     size = 18
                 }
             },
             background = {
-                color = colors.transparent,
+                color = colors.bar.foreground_alt,
                 corner_radius = 3,
                 height = 30
             }
@@ -214,7 +220,8 @@ menu_indicator:subscribe(
                             }
                         },
                         icon = {
-                            color = colors.orange,
+                            string = "􁍝",
+                            color = colors.bar.foreground_alt,
                             font = {
                                 size = 14
                             }
@@ -276,12 +283,13 @@ menu_indicator:subscribe(
                             }
                         },
                         label = {
-                            color = colors.bg2,
+                            color = colors.bar.foreground_alt,
                             font = {
                                 size = 12
                             }
                         },
                         icon = {
+                            string = "􁍝",
                             color = colors.bg2,
                             font = {
                                 size = 18
@@ -307,7 +315,7 @@ menu_indicator:subscribe(
                                     }
                                 },
                                 label = {
-                                    color = colors.white,
+                                    color = colors.bar.foreground_alt,
                                     font = {
                                         size = 12,
                                         style = settings.font.style_map.SemiBold
