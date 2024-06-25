@@ -4,6 +4,15 @@ local settings = require("settings")
 
 local popup_width = 140
 
+sbar.add(
+    "item",
+    {
+
+        position = "right",
+        width = settings.group_paddings
+    }
+)
+
 local volume_percent =
     sbar.add(
         "item",
@@ -17,7 +26,7 @@ local volume_percent =
                 padding_right = 5,
                 align = "right",
                 string = "??%",
-                color = colors.foreground_light,
+                color = colors.bar.foreground_light,
                 font = {
                     size = 12,
                     style = settings.font.style_map["SemiBold"],
@@ -38,7 +47,7 @@ local volume_icon =
             padding_left = 5,
             icon = {
                 color = colors.magenta,
-                size = 18
+
             },
             label = {
                 align = "right",
@@ -72,7 +81,7 @@ sbar.add(
     "item",
     {
         position = "right",
-        width = 5
+        width = settings.group_paddings
     }
 )
 local volume_slider =

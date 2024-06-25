@@ -5,6 +5,15 @@ sbar.exec(
 	"killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en1 network_update 2.0"
 )
 
+sbar.add(
+	"item",
+	{
+
+		position = "right",
+		width = settings.group_paddings
+	}
+)
+
 local popup_width = 250
 local wifi_up =
 	sbar.add(
@@ -52,7 +61,7 @@ local wifi_down =
 					style = settings.font.style_map.Bold,
 					size = 9
 				},
-				color = colors.seezalt.light,
+				color = colors.granit.one,
 				string = "en1 Bps"
 			},
 			y_offset = -4
@@ -63,14 +72,14 @@ local wifi_icon =
 		"item",
 		"wifi.icon",
 		{
-			padding_left = -5,
+
 			label = {
 				drawing = false,
 			},
 			position = "right",
 			icon = {
 				string = icons.wifi.connected,
-				color = colors.orange,
+				color = colors.lightgray,
 
 			},
 
@@ -78,18 +87,17 @@ local wifi_icon =
 	)
 local wifi = sbar.add("item", "widgets.wifi.padding", {
 	position = "right",
-	label = { drawing = false },
+	label = {
+		drawing = false,
+		font = {
+			style = settings.font.style_map.SemiBold,
+			size = 12,
+
+		},
+	},
 })
 
 
-sbar.add(
-	"item",
-	{
-
-		position = "right",
-		width = 5
-	}
-)
 
 -- Background around the item
 local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
@@ -102,7 +110,17 @@ local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
 
 		color = colors.bar.bg
 	},
-	popup = { align = "center", height = 30 }
+	popup = {
+		align = "center",
+		label = {
+			font = {
+				style = settings.font.style_map.SemiBold,
+				size = 12,
+
+			},
+			color = colors.yellow
+		},
+	}
 })
 
 
@@ -122,8 +140,9 @@ local ssid =
 			align = "center",
 			label = {
 				font = {
-					style = settings.font.style_map.Bold,
-					color = colors.bg1
+					style = settings.font.style_map.SemiBold,
+					size = 14,
+
 				},
 				max_chars = 18,
 				string = "????????????????"
@@ -205,18 +224,7 @@ local router =
 			}
 		}
 	)
-sbar.add(
-	"item",
-	{
-		position = "left",
-		width = settings.group_paddings,
-		label = {
-			font = {
-				size = 5
-			}
-		}
-	}
-)
+
 wifi_up:subscribe(
 	"network_update",
 	function(env)
@@ -225,13 +233,13 @@ wifi_up:subscribe(
 		wifi_up:set(
 			{
 				icon = {
-					color = colors.lightgray,
+					color = colors.granit.one,
 					padding_right = 5
 				},
 				label = {
 					string = env.upload,
 					style = settings.font.style_map.Bold,
-					color = colors.lightgray
+					color = colors.granit.one
 				}
 			}
 		)
@@ -264,7 +272,7 @@ wifi:subscribe(
 					{
 						icon = {
 							string = connected and icons.wifi.connected or icons.wifi.disconnected,
-							color = connected and colors.green or colors.red
+							color = connected and colors.lightgray or colors.red
 						}
 					}
 				)

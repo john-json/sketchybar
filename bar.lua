@@ -5,8 +5,8 @@ local settings = require("settings")
 sbar.bar(
     {
         topmost = "window",
-        height = 30,
-        color = colors.transparent,
+        height = 34,
+        color = colors.bar.bg2,
         padding_right = 0,
         padding_left = 0,
         margin = 10,

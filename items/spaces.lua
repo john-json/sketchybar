@@ -3,95 +3,34 @@ local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
--- ADD SPACE BUTTON---------------------------
-----------------------------------------------
 
-local add_space = sbar.add("item", {
-	position = "center",
-	icon = {
-		padding_left = 8,
-		padding_right = 10,
-		font = {
-			size = 18,
-		},
-		string = icons.plus,
-	},
-	label = {
-		drawing = false,
-	},
-	background = {
-		color = colors.bar.bg,
-	},
-})
 
-add_space:subscribe("mouse.entered", function(env)
-	sbar.animate("elastic", 20, function()
-		add_space:set({
-			icon = {
-				string = "Add",
-				color = colors.white,
-				font = {
-					size = 12,
-				},
-			},
-		})
-	end)
-end)
-
-add_space:subscribe("mouse.exited", function(env)
-	sbar.animate("elastic", 20, function()
-		add_space:set({
-			icon = {
-				string = icons.plus,
-				color = colors.stormcloud.two,
-				font = {
-					size = 12,
-				},
-			},
-		})
-	end)
-end)
-
-add_space:subscribe("mouse.clicked", function(env)
-	sbar.exec('osascript "$CONFIG_DIR/items/scripts/newSpace.scpt"')
-end)
 
 --------- SPACES --------------------------------
 -------------------------------------------------
 
 local sf_icons_active = {
-	"1",
-	"2",
-	"3",
-	"4",
-	"5",
-	"6",
-	"7",
-	"8",
-	"9",
-	"10",
+	"􀝜", "􀝜", "􀝜", "􀝜", "􀝜", "􀝜", "􀝜", "􀝜", "􀝜", "􀝜",
+
 }
 
+
+
 local sf_icons_inactive = {
-	"1",
-	"2",
-	"3",
-	"4",
-	"5",
-	"6",
-	"7",
-	"8",
-	"9",
-	"10",
+	"􀍷", "􀍷", "􀍷", "􀍷", "􀍷", "􀍷", "􀍷", "􀍷", "􀍷", "􀍷",
+
+
 }
 
 local function getSpaceIcon(space, active)
 	if active then
-		return app_icons[space]
+		return sf_icons_active[space]
 	else
 		return sf_icons_inactive[space]
 	end
 end
+
+
 
 local spaces = {}
 
@@ -112,27 +51,25 @@ end
 for i = 1, 10 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
-		position = "center",
+		position = "left",
 		label = {
-			padding_right = 10,
-			padding_left = 5,
+			drawing = false,
 			font = {
-				style = settings.font.style_map.Heavy,
+				style = settings.font.style_map.Bold,
 				family = settings.font.text,
 			},
 		},
 		icon = {
-
-			color = colors.foreground,
+			drawing = true,
+			color = colors.lightgray,
 			border_width = 0,
 		},
 		background = {
+			color = colors.white,
+			height = 20,
+			corner_radius = 50,
+		}
 
-			border_width = 0,
-			border_color = colors.transparent,
-
-			height = 30,
-		},
 	})
 	spaces[i] = space
 
@@ -141,30 +78,29 @@ for i = 1, 10 do
 		sbar.animate("elastic", 10, function()
 			space:set({
 				label = {
-					drawing = false,
-					-- string = selected and env.INFO or "",
-					-- font = {
-					-- 	size = 14
-					-- },
+					padding_left = 10
 				},
 				icon = {
-
-					border_width = 0,
-					padding_left = selected and 10 or 5,
-					padding_right = selected and 10 or 5,
+					drawing = selected and false or true,
+					padding_left = selected and 5 or 5,
+					padding_right = selected and 5 or 5,
 					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
 					font = {
-						size = selected and 16 or 14,
+						size = selected and 20 or 12,
 					},
+					color = selected and colors.bar.foreground_alt or colors.bar.foreground_alt
+
 				},
 				background = {
-
-					corner_radius = selected and 6 or 25,
-					height = selected and 22 or 16,
-					color = selected and colors.grey or colors.transparent,
-					padding_left = 5,
-					padding_right = 5,
+					border_width = 5,
+					border_color = colors.bar.bg,
+					corner_radius = 50,
+					height = selected and 28 or 16,
+					color = colors.transparent,
+					padding_left = selected and 5 or 5,
+					padding_right = selected and 5 or 5,
 				},
+
 			})
 		end)
 	end)
@@ -174,16 +110,23 @@ for i = 1, 10 do
 		sbar.animate("elastic", 10, function()
 			space:set({
 				icon = {
+					corner_radius = 50,
+					height = selected and 22,
 					border_width = 0,
-					drawing = selected and false or true,
-					string = "􀽐",
-					color = colors.ebony,
+					drawing = true,
+					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
+					color = selected and colors.bar.foreground_alt or colors.bar.foreground_alt,
 					font = {
-						size = selected and 16 or 10,
+						size = selected and 16 or 14,
 					},
 				},
-				label = {
-					color = colors.foreground,
+				background = {
+					border_width = 0,
+					corner_radius = 4,
+					height = selected and 12 or 16,
+					color = selected and colors.transparent or colors.transparent,
+					padding_left = selected and 5 or 5,
+					padding_right = selected and 5 or 5,
 				},
 			})
 		end)
@@ -199,24 +142,89 @@ for i = 1, 10 do
 					style = settings.font.style_map.Regular,
 
 					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-					color = colors.ebony,
+					color = selected and colors.white or colors.bar.foreground_alt,
 				},
-				label = {
-					style = settings.font.style_map.Heavy,
-					color = colors.foreground,
+				background = {
+					border_width = 0,
+					corner_radius = 4,
+					height = selected and 12 or 16,
+					color = colors.transparent,
+					padding_left = selected and 5 or 5,
+					padding_right = selected and 5 or 5,
 				},
 			})
 		end)
 	end)
 
 	space:subscribe("mouse.clicked", function(env)
+		local selected = env.SELECTED == "true"
 		log("Clicked space: " .. i)
 		switchToSpace(i)
+		background = {
+			click_script = selected and sbar.exec('osascript "$CONFIG_DIR/items/scripts/newSpace.scpt"')
+		}
 	end)
 end
 
--- Group space items into a bracket with a background------------
------------------------------------------------------------------
+
+
+-- -- ADD SPACE BUTTON---------------------------
+-- ----------------------------------------------
+
+-- local add_space = sbar.add("item", {
+-- 	position = "left",
+-- 	icon = {
+-- 		padding_left = settings.group_paddings,
+-- 		padding_right = settings.group_paddings,
+-- 		font = {
+-- 			size = 12,
+-- 		},
+-- 		string = icons.plus,
+
+-- 	},
+-- 	label = {
+-- 		drawing = false,
+-- 		string = "]"
+
+-- 	},
+-- 	background = {
+
+-- 		color = colors.bar.bg,
+-- 	},
+-- })
+
+-- add_space:subscribe("mouse.entered", function(env)
+-- 	sbar.animate("elastic", 10, function()
+-- 		add_space:set({
+-- 			icon = {
+-- 				string = "Add",
+-- 				color = colors.white,
+-- 				font = {
+-- 					size = 12,
+-- 				},
+-- 			},
+-- 		})
+-- 	end)
+-- end)
+
+-- add_space:subscribe("mouse.exited", function(env)
+-- 	sbar.animate("elastic", 10, function()
+-- 		add_space:set({
+-- 			icon = {
+-- 				string = icons.plus,
+-- 				color = colors.stormcloud.two,
+-- 				font = {
+-- 					size = 12,
+-- 				},
+-- 			},
+-- 		})
+-- 	end)
+-- end)
+
+-- add_space:subscribe("mouse.clicked", function(env)
+-- 	sbar.exec('osascript "$CONFIG_DIR/items/scripts/newSpace.scpt"')
+-- end)
+
 
 local space_names = {}
 for i = 1, 10 do
@@ -224,15 +232,18 @@ for i = 1, 10 do
 end
 
 sbar.add("bracket", space_names, add_space, {
-	label = {
-		padding_left = 20,
-		padding_right = 20,
-	},
-	background = {
-		padding_left = 20,
-		padding_right = 20,
-		color = colors.bar.bg,
 
+	background = {
+		margin = 0,
+
+		color = colors.bar.bg,
 		corner_radius = 6, -- Adjust the corner radius as needed
 	},
+})
+
+
+-- Background around the cpu item
+sbar.add("item", "menus.padding", {
+	position = "right",
+	width = settings.group_paddings
 })

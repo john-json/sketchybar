@@ -7,7 +7,7 @@ sbar.default(
 		updates = "when_shown",
 		icon = {
 
-			color = colors.foreground,
+			color = colors.lightgray,
 			font = {
 				family = settings.font.text,
 				style = settings.font.style_map.Bold,
@@ -22,15 +22,13 @@ sbar.default(
 				style = settings.font.style_map.SemiBold,
 				size = 14.0
 			},
-			color = colors.foreground
+			color = colors.lightgray
 		},
 		background = {
-			height = 28,
+			height = 30,
 			corner_radius = 6,
-			border_width = 1,
-
-			border_color = colors.darkgrey,
-
+			border_width = 0.5,
+			border_color = colors.bar.border,
 			image = {
 				corner_radius = 8
 			},
@@ -38,9 +36,13 @@ sbar.default(
 
 		},
 		popup = {
+
+			label = {
+				color = colors.bar.foreground_alt
+			},
 			background = {
 				border_width = 1,
-				corner_radius = 6,
+				corner_radius = 10,
 				border_color = colors.popup.border,
 				color = colors.popup.bg,
 				shadow = {

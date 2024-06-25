@@ -2,13 +2,15 @@ local settings = require("settings")
 
 local icons = {
     sf_symbols = {
-        plus = "􀁌",
+        plus = "􀐇",
+        plus_hover = "􀐈",
         plus2 = "􀃝",
         loading = "􀖇",
-        apple = "􀣺",
+        apple = "󰀶",
+        apple_alt = "􀣺",
         line = "􀝷",
         gear = "􀍟",
-        cpu = "􁛴",
+        cpu = "􀐷",
         clipboard = "􀉄",
         aqi = "􀴿",
         bookmark = "􀉟",
@@ -58,17 +60,17 @@ local icons = {
         circle_quit = "􀁑",
         play = "􀊄",
         swap2 = "􀊞",
-        swap = "􁏰",
+        swap = "􀍠",
         switch = {
             on = "􀯻",
             off = "􀯶"
         },
         volume = {
-            _100 = "􀥒",
-            _66 = "􀥒",
-            _33 = "􀥒",
-            _10 = "􀽆",
-            _0 = "􀽅"
+            _100 = "􀊦",
+            _66 = "􀊦",
+            _33 = "􀊦",
+            _10 = "􀊤",
+            _0 = "􀊢"
         },
         battery = {
             _100 = "􀛨",
@@ -79,10 +81,10 @@ local icons = {
             charging = "􀢋"
         },
         wifi = {
-            upload = "􀄨",
-            download = "􀄩",
-            connected = "􀷗",
-            disconnected = "􂄁",
+            upload = "􀄤",
+            download = "􀓃",
+            connected = "􀙇",
+            disconnected = "􀙈",
             router = "􁓤"
         },
         media = {
@@ -119,11 +121,11 @@ local icons = {
             charging = ""
         },
         wifi = {
-            upload = "",
-            download = "",
-            connected = "󰖩",
-            disconnected = "󰖪",
-            router = "Missing Icon"
+            upload = "􀄤",
+            download = "􀓃",
+            connected = "􀙇",
+            disconnected = "􀙈",
+            router = "􁓤"
         },
         media = {
             back = "",

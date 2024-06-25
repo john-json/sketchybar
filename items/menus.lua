@@ -4,6 +4,10 @@ local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
 
+sbar.add("item", "menus.padding", {
+    position = "right",
+    width = settings.group_paddings
+})
 
 local menu_watcher =
     sbar.add(
@@ -36,16 +40,15 @@ for i = 1, max_items, 1 do
                     drawing = false
                 },
                 background = {
-                    drawing = false,
+                    drawing = false
                 },
                 label = {
                     padding_left = 5,
                     padding_right = 5,
-
+                    color = colors.bar.foreground_alt,
                     font = {
-
                         size = 12,
-                        style = settings.font.style_map[i == 1 and "Bold" or "Regular"]
+                        style = settings.font.style_map[i == 1 and "Bold" or "SemiBold"]
                     }
                 },
                 click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i
@@ -60,8 +63,8 @@ sbar.add(
     { "/menu\\..*/" },
     {
         background = {
-            alpha = 1,
-            color = colors.bar.bg
+            alpha = 0,
+            color = colors.bg1
         }
     }
 )
@@ -71,38 +74,9 @@ local menu =
         "item",
         "menu.padding",
         {
-            padding_right = 10,
-            padding_left = 10,
             drawing = false
         }
     )
-
--- Animate the menu items when they show up
-for i = 1, max_items do
-    local menu_item = menu_items[i]
-    if menu_item:query().geometry.drawing == "on" then
-        sbar.animate(
-            "elastic",
-            15,
-            function()
-                menu_item:set(
-                    {
-                        background = {
-                            alpha = 1,
-                        },
-                        label = {
-
-                            font = {
-                                size = 12,
-                                style = settings.font.style_map.SemiBold
-                            }
-                        }
-                    }
-                )
-            end
-        )
-    end
-end
 
 local function update_menus(env)
     sbar.exec(
@@ -213,19 +187,18 @@ local menu_indicator =
             position = "left",
             align = "center",
             icon = {
-                padding_left = 10,
-                padding_right = 10,
-
-                string = "􀍠",
+                padding_left = 5,
+                padding_right = 5,
+                color = colors.bar.bg,
+                string = "􁍝",
                 font = {
                     size = 18
                 }
             },
             background = {
-                color = colors.bar.bg,
-
-
-
+                color = colors.bar.foreground_alt,
+                corner_radius = 3,
+                height = 30
             }
         }
     )
@@ -242,13 +215,13 @@ menu_indicator:subscribe(
                 menu_indicator:set(
                     {
                         background = {
-                            color = colors.bar.bg
-                        },
-                        label = {
-
+                            color = {
+                                alpha = 1
+                            }
                         },
                         icon = {
-
+                            string = "􁍝",
+                            color = colors.bar.foreground_alt,
                             font = {
                                 size = 14
                             }
@@ -258,38 +231,40 @@ menu_indicator:subscribe(
             end
         )
         -- Animate the menu items when they show up
-
-        local menu_item = menu_items
-
-        sbar.animate(
-            "elastic",
-            15,
-            function()
-                menu_item:set(
-                    {
-                        width = "dynamic",
-                        background = {
-                            color = {
-                                alpha = 1
+        for i = 1, max_items do
+            local menu_item = menu_items[i]
+            if menu_item:query().geometry.drawing == "on" then
+                sbar.animate(
+                    "elastic",
+                    15,
+                    function()
+                        menu_item:set(
+                            {
+                                width = "dynamic",
+                                background = {
+                                    color = {
+                                        alpha = 1
+                                    }
+                                },
+                                label = {
+                                    color = colors.black,
+                                    font = {
+                                        size = 12,
+                                        style = settings.font.style_map.SemiBold
+                                    }
+                                },
+                                icon = {
+                                    color = colors.bg2,
+                                    font = {
+                                        size = 18
+                                    }
+                                }
                             }
-                        },
-                        label = {
-
-                            font = {
-                                size = 14,
-                                style = settings.font.style_map.SemiBold
-                            }
-                        },
-                        icon = {
-
-                            font = {
-                                size = 25
-                            }
-                        }
-                    }
+                        )
+                    end
                 )
             end
-        )
+        end
     end
 )
 menu_indicator:subscribe(
@@ -308,13 +283,14 @@ menu_indicator:subscribe(
                             }
                         },
                         label = {
-
+                            color = colors.bar.foreground_alt,
                             font = {
-                                size = 14
+                                size = 12
                             }
                         },
                         icon = {
-
+                            string = "􁍝",
+                            color = colors.bg2,
                             font = {
                                 size = 18
                             }
@@ -323,6 +299,34 @@ menu_indicator:subscribe(
                 )
             end
         )
+        -- Animate the menu items when they show up
+        for i = 1, max_items do
+            local menu_item = menu_items[i]
+            if menu_item:query().geometry.drawing == "on" then
+                sbar.animate(
+                    "elastic",
+                    15,
+                    function()
+                        menu_item:set(
+                            {
+                                background = {
+                                    color = {
+                                        alpha = 0
+                                    }
+                                },
+                                label = {
+                                    color = colors.bar.foreground_alt,
+                                    font = {
+                                        size = 12,
+                                        style = settings.font.style_map.SemiBold
+                                    }
+                                }
+                            }
+                        )
+                    end
+                )
+            end
+        end
     end
 )
 

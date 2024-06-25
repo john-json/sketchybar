@@ -1,28 +1,27 @@
 local settings = require("settings")
 local colors = require("colors")
 
+-- Background around the cpu item
+sbar.add("item", "calendar.padding", {
+    position = "right",
+    width = settings.group_paddings
+})
 
 local cal =
     sbar.add(
         "item",
         {
             position = "right",
-
-
             label = {
                 padding_right = 10,
                 padding_left = 10,
-
-
                 background = {
 
-                    color = colors.foreground,
-                    height = 30,
+                    color = colors.bar.bg,
+                    height = 28,
                     corner_radius = 6,
                 },
-
-
-                color = colors.foreground_light,
+                color = colors.bar.foreground_alt,
                 font = {
                     style = settings.font.style_map["Bold"],
                     size = 14
@@ -32,28 +31,21 @@ local cal =
                 padding_left = 10,
                 padding_right = 10,
                 align = "laft",
-                color = colors.foreground,
+                color = colors.bar.bg,
                 font = {
                     style = settings.font.style_map["Regualr"],
                     size = 12
-
                 }
             },
-
             update_freq = 30,
             background = {
-                border_width = 2,
-                border_color = colors.bar.bg,
-                color = colors.bar.bg,
-
+                color = colors.bar.foreground_alt,
             },
-
             width = "dynamic",
 
         }
 
     )
-
 
 cal:subscribe(
     { "forced", "routine", "system_woke" },

@@ -7,8 +7,8 @@ sbar.add(
 	"item",
 	{
 
-		position = "left",
-		width = 5
+		position = "right",
+		width = settings.group_paddings
 	}
 )
 
@@ -17,11 +17,11 @@ local terminal =
 		"item",
 		{
 			shadown = true,
-			position = "left",
+			position = "right",
 			background = {
 				border_width = 0,
 				border_color = colors.transparent,
-				color = colors.transparent
+				color = colors.bar.bg
 			},
 			icon = {
 				font = { size = 18,
@@ -49,10 +49,9 @@ local chat =
 	sbar.add(
 		"item",
 		{
-			position = "left",
+			position = "right",
 			background = {
-				border_width = 0,
-				border_color = colors.transparent,
+
 				color = colors.transparent
 
 			},
@@ -80,48 +79,13 @@ chat:subscribe(
 
 
 
-local code =
-	sbar.add(
-		"item",
-		{
-
-			position = "left",
-			background = {
-				border_width = 0,
-				border_color = colors.transparent,
-				color = colors.transparent
-
-			},
-			icon = {
-				padding_right = 5,
-				string = "􀤘",
-				color = colors.lightgray,
-				font = { size = 18,
-				},
-			},
-			label = {
-				drawing = false,
-			}
-
-		}
-	)
-
-
-
-code:subscribe(
-	"mouse.clicked",
-	function(env)
-		sbar.exec("open -a 'Visual Studio Code'")
-	end
-)
-
 
 
 
 
 
 -- Double border for apple using a single item bracket
-sbar.add("bracket", { chat.name, terminal.name, code.name }, {
+sbar.add("bracket", { chat.name, terminal.name }, {
 
 	background = {
 		position = "left",
