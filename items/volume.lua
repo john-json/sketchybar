@@ -4,15 +4,6 @@ local settings = require("settings")
 
 local popup_width = 140
 
-sbar.add(
-    "item",
-    {
-
-        position = "right",
-        width = settings.group_paddings
-    }
-)
-
 local volume_percent =
     sbar.add(
         "item",
@@ -46,15 +37,12 @@ local volume_icon =
             padding_right = 0,
             padding_left = 5,
             icon = {
-                color = colors.magenta,
+                color = colors.blue,
 
             },
             label = {
                 align = "right",
-                color = colors.lightgray,
-                font = {
-                    size = 18
-                }
+                color = colors.slategray.one,
             }
             -- click_script = "osascript $CONFIG_DIR/items/scripts/openSoundMenu.scpt"
         }
@@ -68,6 +56,7 @@ local volume_bracket =
         {
             padding_left = 10,
             padding_right = 10,
+
             background = {
                 color = colors.bg1
             },
@@ -104,7 +93,7 @@ local volume_slider =
                     color = colors.slategray.one,
                     border = {
                         size = 2,
-                        color = colors.popup.border
+                        color = colors.white
                     },
                     string = "􀀁",
                     drawing = true
@@ -112,7 +101,7 @@ local volume_slider =
             },
             background = {
 
-                color = colors.bar.bg,
+                color = colors.transparent,
                 height = 25
             },
             click_script = 'osascript -e "set volume output volume $PERCENTAGE"'

@@ -81,7 +81,8 @@ return {
         white_transparent = 0x8faeaeae,
         inactive = 0xff727272,
         icons = 0xff61817f,
-        foreground_alt = 0xff3a3a3a,
+        foreground_alt = 0xffb9c1cc,
+        foreground_dimmed = 0xff666b70,
         foreground_alt_blue = 0xff7c879e,
     },
     popup = {

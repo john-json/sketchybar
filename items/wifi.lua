@@ -5,14 +5,11 @@ sbar.exec(
 	"killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en1 network_update 2.0"
 )
 
-sbar.add(
-	"item",
-	{
-
-		position = "right",
-		width = settings.group_paddings
-	}
-)
+-- Background around the cpu item
+sbar.add("item", "wifi.padding", {
+	position = "right",
+	width = settings.group_paddings
+})
 
 local popup_width = 250
 local wifi_up =
@@ -79,7 +76,7 @@ local wifi_icon =
 			position = "right",
 			icon = {
 				string = icons.wifi.connected,
-				color = colors.lightgray,
+				color = colors.orange,
 
 			},
 

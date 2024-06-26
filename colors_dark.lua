@@ -73,8 +73,7 @@ return {
     },
     bar = {
         bg = 0xff1c1c1c,
-        bg3 = 0xff1e1e1e1e,
-        bg2 = 0x00000000,
+        sub = 0xffc5c5c5,
         selected = 0xff232323,
         transparent = 0x00000000,
         border = 0xff565656,
@@ -82,7 +81,8 @@ return {
         white_transparent = 0x8faeaeae,
         inactive = 0xff727272,
         icons = 0xff61817f,
-        foreground_alt = 0xff8da2b1,
+        foreground_alt = 0xffb9c1cc,
+        foreground_dimmed = 0xff666b70,
         foreground_alt_blue = 0xff7c879e,
     },
     popup = {
