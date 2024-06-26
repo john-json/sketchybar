@@ -4,10 +4,6 @@ local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
 
-sbar.add("item", "menus.padding", {
-    position = "right",
-    width = settings.group_paddings
-})
 
 local menu_watcher =
     sbar.add(
@@ -64,7 +60,7 @@ sbar.add(
     {
         background = {
             alpha = 0,
-            color = colors.bg1
+            color = colors.bar.bg
         }
     }
 )
@@ -188,17 +184,17 @@ local menu_indicator =
             align = "center",
             icon = {
                 padding_left = 5,
-                padding_right = 5,
-                color = colors.bar.bg,
+                padding_right = 3,
+                color = colors.bar.foreground_alt,
                 string = "􁍝",
                 font = {
-                    size = 18
+                    size = 14
                 }
             },
             background = {
-                color = colors.bar.foreground_alt,
-                corner_radius = 3,
-                height = 30
+                color = colors.bar.bg,
+                corner_radius = 6,
+
             }
         }
     )
@@ -247,16 +243,16 @@ menu_indicator:subscribe(
                                     }
                                 },
                                 label = {
-                                    color = colors.black,
+                                    color = colors.bar.foreground_alt,
                                     font = {
                                         size = 12,
                                         style = settings.font.style_map.SemiBold
                                     }
                                 },
                                 icon = {
-                                    color = colors.bg2,
+                                    color = colors.bar.foreground_alt,
                                     font = {
-                                        size = 18
+                                        size = 14
                                     }
                                 }
                             }
@@ -290,7 +286,7 @@ menu_indicator:subscribe(
                         },
                         icon = {
                             string = "􁍝",
-                            color = colors.bg2,
+                            color = colors.bar.foreground_alt,
                             font = {
                                 size = 18
                             }

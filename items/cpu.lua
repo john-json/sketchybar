@@ -6,11 +6,7 @@ local settings = require("settings")
 -- the cpu load data, which is fired every 2.0 seconds.
 sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_load/bin/cpu_load cpu_update 2.0")
 
--- Background around the cpu item
-sbar.add("item", "widgets.cpu.padding", {
-    position = "right",
-    width = settings.group_paddings
-})
+
 
 
 local cpu = sbar.add("graph", "widgets.cpu", 42, {
@@ -26,11 +22,8 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
     },
     icon = {
         string = icons.cpu,
-        color = colors.lightgray,
-        font = {
+        color = colors.yellow,
 
-            size = 18.0,
-        },
     },
     label = {
         color = colors.lightgray,

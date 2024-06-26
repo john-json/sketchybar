@@ -1,23 +1,27 @@
 local colors = require("colors")
 local icons = require("icons")
 local settings = require("settings")
-local app_icons = require("helpers.app_icons")
 
 
 
 
+-- Background around the cpu item
+sbar.add("item", "menus.padding", {
+	position = "left",
+	width = settings.group_paddings
+})
 --------- SPACES --------------------------------
 -------------------------------------------------
 
 local sf_icons_active = {
-	"􀝜", "􀝜", "􀝜", "􀝜", "􀝜", "􀝜", "􀝜", "􀝜", "􀝜", "􀝜",
+	"􁽿", "􁽿", "􁽿", "􁽿", "􁽿", "􁽿", "􁽿", "􁽿", "􁽿", "􁽿",
 
 }
 
 
 
 local sf_icons_inactive = {
-	"􀍷", "􀍷", "􀍷", "􀍷", "􀍷", "􀍷", "􀍷", "􀍷", "􀍷", "􀍷",
+	"􁽾", "􁽾", "􁽾", "􁽾", "􁽾", "􁽾", "􁽾", "􁽾", "􁽾", "􁽾",
 
 
 }
@@ -61,7 +65,7 @@ for i = 1, 10 do
 		},
 		icon = {
 			drawing = true,
-			color = colors.lightgray,
+			color = colors.bar.bg2,
 			border_width = 0,
 		},
 		background = {
@@ -78,25 +82,26 @@ for i = 1, 10 do
 		sbar.animate("elastic", 10, function()
 			space:set({
 				label = {
-					padding_left = 10
+					padding_left = 0
 				},
 				icon = {
-					drawing = selected and false or true,
+					drawing = true,
 					padding_left = selected and 5 or 5,
 					padding_right = selected and 5 or 5,
 					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
 					font = {
-						size = selected and 20 or 12,
+						size = selected and 18 or 12,
 					},
-					color = selected and colors.bar.foreground_alt or colors.bar.foreground_alt
+					color = colors.bar.active,
 
 				},
 				background = {
-					border_width = 5,
-					border_color = colors.bar.bg,
-					corner_radius = 50,
-					height = selected and 28 or 16,
+					drawing = false,
+					border_color = selected and colors.blue or colors.grey,
+					corner_radius = selected and 50 or 25,
+
 					color = colors.transparent,
+
 					padding_left = selected and 5 or 5,
 					padding_right = selected and 5 or 5,
 				},
@@ -110,21 +115,20 @@ for i = 1, 10 do
 		sbar.animate("elastic", 10, function()
 			space:set({
 				icon = {
+					align = "center",
 					corner_radius = 50,
-					height = selected and 22,
 					border_width = 0,
 					drawing = true,
-					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
+					string = selected and "􀏪" or "􀯵",
 					color = selected and colors.bar.foreground_alt or colors.bar.foreground_alt,
 					font = {
-						size = selected and 16 or 14,
+						size = 18
 					},
 				},
 				background = {
 					border_width = 0,
 					corner_radius = 4,
-					height = selected and 12 or 16,
-					color = selected and colors.transparent or colors.transparent,
+					color = colors.transparent,
 					padding_left = selected and 5 or 5,
 					padding_right = selected and 5 or 5,
 				},
@@ -137,17 +141,18 @@ for i = 1, 10 do
 		sbar.animate("elastic", 10, function()
 			space:set({
 				icon = {
-
+					font = {
+						size = selected and 16 or 14
+					},
 					drawing = selected and false or true,
 					style = settings.font.style_map.Regular,
 
 					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-					color = selected and colors.white or colors.bar.foreground_alt,
+					color = selected and colors.bar.foreground_alt or colors.grey,
 				},
 				background = {
 					border_width = 0,
 					corner_radius = 4,
-					height = selected and 12 or 16,
 					color = colors.transparent,
 					padding_left = selected and 5 or 5,
 					padding_right = selected and 5 or 5,
@@ -160,8 +165,8 @@ for i = 1, 10 do
 		local selected = env.SELECTED == "true"
 		log("Clicked space: " .. i)
 		switchToSpace(i)
-		background = {
-			click_script = selected and sbar.exec('osascript "$CONFIG_DIR/items/scripts/newSpace.scpt"')
+		icon = {
+			click_script = selected and sbar.exec('osascript "$CONFIG_DIR/items/scripts/newSpace.scpt"'),
 		}
 	end)
 end
@@ -239,11 +244,4 @@ sbar.add("bracket", space_names, add_space, {
 		color = colors.bar.bg,
 		corner_radius = 6, -- Adjust the corner radius as needed
 	},
-})
-
-
--- Background around the cpu item
-sbar.add("item", "menus.padding", {
-	position = "right",
-	width = settings.group_paddings
 })

@@ -12,7 +12,7 @@ local function setup_media_items()
             color = colors.green,
         },
         position = "right",
-        align = "center",
+        align = "left",
         label = {
             padding_left = 10,
             padding_right = 5,
@@ -23,17 +23,17 @@ local function setup_media_items()
             padding_right = 10,
             drawing = true,
             string = "",
-            color = colors.bar.bg,
-            font = {
-                size = 14
-            }
+            color = colors.grey,
+
         },
         drawing = true,
         updates = true,
         popup = {
-            align = "center",
+            align = "lefz",
             horizontal = true,
-            height = 50,
+            height = 45,
+
+
         }
     })
 
@@ -45,15 +45,18 @@ local function setup_media_items()
             drawing = false
         },
         label = {
+            align = "right",
+            padding_right = 10,
             padding_left = 10,
             width = "dynamic",
             font = {
-                size = 10
+                size = 12
             },
             color = colors.green,
             max_chars = 25,
-            y_offset = 6
-        }
+            y_offset = 7
+        },
+
     })
 
     local media_title = sbar.add("item", {
@@ -63,14 +66,19 @@ local function setup_media_items()
             drawing = false
         },
         label = {
-            padding_left = 10,
-            color = colors.frost_light,
+            align = "right",
+            padding_right = 10,
+
+            width = "dynamic",
+
+            color = colors.grey,
             max_chars = 25,
             font = {
-                size = 10
+                size = 12
             },
-            y_offset = -5
-        }
+            y_offset = -6
+        },
+
     })
 
     return media_cover, media_artist, media_title
@@ -78,20 +86,55 @@ end
 
 local media_cover, media_artist, media_title = setup_media_items()
 
-local media_container = sbar.add("bracket", "media_container", { media_cover.name, media_artist.name, media_title.name },
+local media_bracket =
+    sbar.add(
+        "bracket",
+        "media.bracket",
+        { media_title.name, media_artist.name },
+        {
+            label = {
+                position = "left",
+                align = "left",
+                padding_left = 10,
+                padding_right = 10,
+            },
+
+            background = {
+                height = 45,
+                color = colors.bar.bg
+            },
+            popup = {
+                padding_left = 20,
+                padding_right = 20,
+                align = "right"
+            }
+        }
+    )
+
+
+
+local media_container = sbar.add("bracket", "media_bracket", { media_title.name },
     {
         background = {
-            color = colors.transparent,
-            padding_right = 20
+            position = "popup." .. media_bracket.name,
+
         }
     })
 
 sbar.add("item", {
     position = "popup." .. media_cover.name,
+    padding_left = 20,
+
     icon = {
-        string = icons.media.back
+        color = colors.foreground_light,
+        string = icons.media.back,
+        font = {
+            size = 12
+        },
+
     },
     label = {
+
         drawing = true
     },
     click_script = "nowplaying-cli previous"
@@ -99,8 +142,14 @@ sbar.add("item", {
 sbar.add("item", {
     position = "popup." .. media_cover.name,
     icon = {
-        string = icons.media.play_pause
+        color = colors.popup.icons,
+        string = icons.media.play_pause,
+        font = {
+            size = 30
+        },
+
     },
+
     label = {
         drawing = true
     },
@@ -109,8 +158,11 @@ sbar.add("item", {
 sbar.add("item", {
     position = "popup." .. media_cover.name,
     icon = {
-        padding_right = 20,
-        string = icons.media.forward
+        color = colors.grey3,
+        string = icons.media.forward,
+        font = {
+            size = 12
+        },
     },
     label = {
         drawing = true

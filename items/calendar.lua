@@ -1,7 +1,7 @@
 local settings = require("settings")
 local colors = require("colors")
 
--- Background around the cpu item
+
 sbar.add("item", "calendar.padding", {
     position = "right",
     width = settings.group_paddings
@@ -31,7 +31,7 @@ local cal =
                 padding_left = 10,
                 padding_right = 10,
                 align = "laft",
-                color = colors.bar.bg,
+                color = colors.bar.foreground_dimmed,
                 font = {
                     style = settings.font.style_map["Regualr"],
                     size = 12
@@ -39,8 +39,13 @@ local cal =
             },
             update_freq = 30,
             background = {
-                color = colors.bar.foreground_alt,
+                border_width = 1,
+                border_color = colors.border_transparent,
+                color = colors.semi_transparent,
+
             },
+            blur_radius = 10,
+            color = colors.bar.bg2,
             width = "dynamic",
 
         }
@@ -52,8 +57,8 @@ cal:subscribe(
     function(env)
         cal:set(
             {
-                icon = os.date("%A %d %B "),
-                label = os.date("􁆸 %H:%M")
+                icon = os.date("%a %d, %B "),
+                label = os.date("%H:%M")
                 -- icon = os.date("%a.%d %b. %H"),
             }
         )

@@ -132,11 +132,26 @@ local icons = {
             forward = "",
             play_pause = ""
         }
+    },
+    -- Animated icons
+    animated = {
+        loading = "􀖇", -- Example animated icon
+        arrow_down = "􀆈",
+        arrow_left = "􀁙",
+        arrow_right = "􀆊",
+        arrow_up = "􀆇",
+        -- Add more animated icons as needed
     }
 }
 
-if not (settings.icons == "NerdFont") then
-    return icons.sf_symbols
-else
-    return icons.nerdfont
+local function select_icons()
+    if settings.icons == "NerdFont" then
+        return icons.nerdfont
+    elseif settings.icons == "Animated" then
+        return icons.animated
+    else
+        return icons.sf_symbols
+    end
 end
+
+return select_icons()

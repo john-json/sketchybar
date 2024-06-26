@@ -6,12 +6,12 @@ local settings = require("settings")
 local apple = sbar.add("item", {
 	icon = {
 		font = {
-			size = 20,
+			size = 12,
 		},
-		string = icons.apple,
+		string = "􀆧",
 		color = colors.bar.foreground_alt,
-		padding_right = 5,
-		padding_left = 10,
+		padding_right = 2,
+		padding_left = 6,
 	},
 
 	background = {
@@ -32,7 +32,7 @@ apple:subscribe("mouse.entered", function(env)
 			icon = {
 				color = colors.bar.bg,
 				font = {
-					size = 20,
+					size = 18,
 				},
 			},
 		})
@@ -46,12 +46,11 @@ apple:subscribe("mouse.exited", function(env)
 				color = colors.bar.bg,
 			},
 			icon = {
-				padding_right = 10,
-				padding_left = 10,
-				string = icons.apple,
+
+				string = "􀆧",
 				color = colors.bar.foreground_alt,
 				font = {
-					size = 18,
+					size = 12,
 				},
 			},
 		})

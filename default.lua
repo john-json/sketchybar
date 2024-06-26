@@ -7,11 +7,11 @@ sbar.default(
 		updates = "when_shown",
 		icon = {
 
-			color = colors.lightgray,
+			color = colors.white,
 			font = {
 				family = settings.font.text,
 				style = settings.font.style_map.Bold,
-				size = 18.0
+				size = 14.0
 			},
 		},
 		label = {
@@ -20,12 +20,12 @@ sbar.default(
 			font = {
 				family = settings.font.text,
 				style = settings.font.style_map.SemiBold,
-				size = 14.0
+				size = 12.0
 			},
 			color = colors.lightgray
 		},
 		background = {
-			height = 30,
+			height = 26,
 			corner_radius = 6,
 			border_width = 0.5,
 			border_color = colors.bar.border,
@@ -36,13 +36,19 @@ sbar.default(
 
 		},
 		popup = {
-
+			icon = { drawing = false, },
 			label = {
+
+				font = {
+					family = settings.font.text,
+					style = settings.font.style_map.SemiBold,
+					size = 14.0
+				},
 				color = colors.bar.foreground_alt
 			},
 			background = {
 				border_width = 1,
-				corner_radius = 10,
+				corner_radius = 6,
 				border_color = colors.popup.border,
 				color = colors.popup.bg,
 				shadow = {
