@@ -1,4 +1,6 @@
 return {
+
+
     black = 0xff141414,
     white = 0xffcecece,
     foreground_light = 0xffa0a0a0,
@@ -26,6 +28,8 @@ return {
 
 
     transparent = 0x00000000,
+    semi_transparent = 0x40ffffff,
+    border_transparent = 0x33ffffff,
 
     hover = 0xffffffff,
     grey2 = 0xff626262,
@@ -72,29 +76,32 @@ return {
         platinum = 0xffe5e5e5,
     },
     bar = {
-        bg = 0xffffffff,
-        sub = 0xffb2bfc9,
-        selected = 0xff232323,
-        transparent = 0x00000000,
-        border = 0xff565656,
-        secondary = 0xff242424,
+        bg = 0xffeeeeee,
+        sub = 0xff575c5f,
+        active = 0xff9eaeb3,
+        selected = 0xff593c3c,
+        transparent = 0x40ffffff,
+        border = 0xffacacac,
+        secondary = 0xff61817f,
         white_transparent = 0x8faeaeae,
         inactive = 0xff727272,
         icons = 0xff61817f,
-        foreground_alt = 0xffb9c1cc,
-        foreground_dimmed = 0xff666b70,
+        foreground_alt = 0xff959697,
+        foreground_dimmed = 0xff404447,
         foreground_alt_blue = 0xff7c879e,
     },
     popup = {
-        bg = 0xd9191919,
-        border = 0xD93f3f3f,
-    },
-    bg1 = 0xff1c1c1c,
-    bg2 = 0xff242424,
-    with_alpha = function(color, alpha)
-        if alpha > 1.0 or alpha < 0.0 then
-            return color
+        bg = 0x66ffffff,
+        border = 0xffffff,
+        buttons = 0xff959697,
+
+        bg1 = 0xff1c1c1c,
+        bg2 = 0xff242424,
+        with_alpha = function(color, alpha)
+            if alpha > 1.0 or alpha < 0.0 then
+                return color
+            end
+            return (color and 0x001e1e1e) or (math.floor(alpha * 255.0) < 24)
         end
-        return (color and 0x001e1e1e) or (math.floor(alpha * 255.0) < 24)
-    end
+    }
 }

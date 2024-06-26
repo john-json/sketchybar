@@ -65,7 +65,7 @@ for i = 1, 10 do
 		},
 		icon = {
 			drawing = true,
-			color = colors.lightgray,
+			color = colors.bar.bg2,
 			border_width = 0,
 		},
 		background = {
@@ -92,7 +92,7 @@ for i = 1, 10 do
 					font = {
 						size = selected and 18 or 12,
 					},
-					color = selected and colors.bar.foreground_alt or colors.grey
+					color = colors.bar.active,
 
 				},
 				background = {

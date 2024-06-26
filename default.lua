@@ -25,7 +25,7 @@ sbar.default(
 			color = colors.lightgray
 		},
 		background = {
-			height = 28,
+			height = 26,
 			corner_radius = 6,
 			border_width = 0.5,
 			border_color = colors.bar.border,
@@ -36,9 +36,9 @@ sbar.default(
 
 		},
 		popup = {
-
-
+			icon = { drawing = false, },
 			label = {
+
 				font = {
 					family = settings.font.text,
 					style = settings.font.style_map.SemiBold,

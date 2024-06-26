@@ -60,7 +60,7 @@ sbar.add(
     {
         background = {
             alpha = 0,
-            color = colors.bg1
+            color = colors.bar.bg
         }
     }
 )

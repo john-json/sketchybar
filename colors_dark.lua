@@ -1,96 +1,102 @@
 return {
-    black = 0xff141414,
-    white = 0xffcecece,
-    foreground_light = 0xffa0a0a0,
-    foreground = 0xff444444,
-    inactive_foreground = 0xff5c5c5c,
+
+    ------------------colors ---------------------
+    ----------------------------------------------
 
 
+
+
+    black = 0xff000000,
+    white = 0xffffffff,
     red = 0xff814e4b,
-    red_faded = 0x66814e4b,
     green = 0xff717f66,
     yellow = 0xff898862,
     orange = 0xff8f6441,
-    orange_inactive = 0x4D8f6441,
-    orange_alt = 0xff975338,
     blue = 0xff333847,
     magenta = 0xff434253,
     grey = 0xff313131,
     lightgray = 0xff808080,
     metalsaurus = 0xff5d5d5d,
     metalsaurus2 = 0xff344156,
-    selected = 0xff3e3e3e,
     darkgrey = 0xff252525,
-    ebony = 0xff5d5d5d,
+
+    ------------------color pallettes-------------
+    ----------------------------------------------
+
+    pallette = {
 
 
 
-    transparent = 0x00000000,
+        grey2 = 0xff626262,
+        grey3 = 0xff4e4e4e,
+        grey4 = 0xff373737,
+        grey5 = 0xff232323,
 
-    hover = 0xffffffff,
-    grey2 = 0xff626262,
-    grey3 = 0xff4e4e4e,
-    grey4 = 0xff373737,
-    grey5 = 0xff232323,
 
-    stormcloud = {
-        one = 0xff516169,
-        two = 0xffadb9bf,
+        stormcloud_one = 0xff516169,
+        stormcloud_two = 0xffadb9bf,
+
+
+        indigo_one = 0xff667287,
+        indigo_two = 0xff424a57,
+        indigo_three = 0xff3b424d,
+        indigo_four = 0xff323841,
+        indigo_five = 0xff323c49,
+        indigo_six = 0xff272c33,
+
+
+
+        dimgray_one = 0xffb5b5b5,
+        dimgray_two = 0xff6d6d6b,
+
+
+
+        slategrey_one = 0xff73868f,
+        slategrey_two = 0xff5c6d75,
+        slategrey_three = 0xff49575e,
+        slategrey_four = 0xff39454a,
+
+
+
+        granit_one = 0xff64655e,
+        granit_two = 0xff4f514b,
+        granit_three = 0xff373935,
+        granit_four = 0xff272826,
+
+
+
+        seezalt_spanishgrey = 0xff8f969e,
+        seezalt_light = 0xffacaeb1,
+        seezalt_dark = 0xff545454,
+        seezalt_platinum = 0xffe5e5e5,
+
     },
-    indigo = {
-        one = 0xff667287,
-        two = 0xff424a57,
-        three = 0xff3b424d,
-        four = 0xff323841,
-        five = 0xff323c49,
-        six = 0xff272c33
-    },
 
-    dimgray = {
-        one = 0xffb5b5b5,
-        two = 0xff6d6d6b,
-    },
+    ------------------Basic colors-------------
+    -------------------------------------------
 
-    slategray = {
-        one = 0xff73868f,
-        two = 0xff5c6d75,
-        three = 0xff49575e,
-        four = 0xff39454a,
-    },
-
-    granit = {
-        one = 0xff64655e,
-        two = 0xff4f514b,
-        three = 0xff373935,
-        four = 0xff272826,
-    },
-
-    seezalt = {
-        spanishgrey = 0xff8f969e,
-        light = 0xffacaeb1,
-        dark = 0xff545454,
-        platinum = 0xffe5e5e5,
-    },
     bar = {
         bg = 0xff1c1c1c,
         sub = 0xffc5c5c5,
-        selected = 0xff232323,
+        selected = 0xff593c3c,
         transparent = 0x00000000,
-        border = 0xff565656,
-        secondary = 0xff242424,
+        border = 0xff32312f,
+        secondary = 0xff61817f,
         white_transparent = 0x8faeaeae,
         inactive = 0xff727272,
         icons = 0xff61817f,
-        foreground_alt = 0xffb9c1cc,
-        foreground_dimmed = 0xff666b70,
-        foreground_alt_blue = 0xff7c879e,
+        foreground_alt = 0xff61817f,
+        foreground_dimmed = 0xff654242,
+        bg2 = 0xff547573,
+        hover = 0x66ffffff,
     },
     popup = {
         bg = 0xd9191919,
         border = 0xD93f3f3f,
+        icons = 0xff547573,
+        slider = 0xff547573,
+        slider_bg = 0xff252525,
     },
-    bg1 = 0xff1c1c1c,
-    bg2 = 0xff242424,
     with_alpha = function(color, alpha)
         if alpha > 1.0 or alpha < 0.0 then
             return color

@@ -23,7 +23,7 @@ local function setup_media_items()
             padding_right = 10,
             drawing = true,
             string = "",
-            color = colors.bar.bg,
+            color = colors.grey,
 
         },
         drawing = true,
@@ -71,7 +71,7 @@ local function setup_media_items()
 
             width = "dynamic",
 
-            color = colors.white,
+            color = colors.grey,
             max_chars = 25,
             font = {
                 size = 12
@@ -100,13 +100,12 @@ local media_bracket =
             },
 
             background = {
-                height = 35,
-
+                height = 45,
                 color = colors.bar.bg
             },
             popup = {
-                padding_left = 10,
-                padding_right = 10,
+                padding_left = 20,
+                padding_right = 20,
                 align = "right"
             }
         }
@@ -124,9 +123,10 @@ local media_container = sbar.add("bracket", "media_bracket", { media_title.name 
 
 sbar.add("item", {
     position = "popup." .. media_cover.name,
-    padding_left = 10,
+    padding_left = 20,
 
     icon = {
+        color = colors.foreground_light,
         string = icons.media.back,
         font = {
             size = 12
@@ -142,6 +142,7 @@ sbar.add("item", {
 sbar.add("item", {
     position = "popup." .. media_cover.name,
     icon = {
+        color = colors.popup.icons,
         string = icons.media.play_pause,
         font = {
             size = 30
@@ -157,7 +158,7 @@ sbar.add("item", {
 sbar.add("item", {
     position = "popup." .. media_cover.name,
     icon = {
-
+        color = colors.grey3,
         string = icons.media.forward,
         font = {
             size = 12
