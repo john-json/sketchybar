@@ -4,7 +4,6 @@ return {
     black = 0xff141414,
     white = 0xffcecece,
     foreground_light = 0xffa0a0a0,
-    foreground = 0xff444444,
     inactive_foreground = 0xff5c5c5c,
 
 
@@ -56,10 +55,10 @@ return {
     },
 
     slategray = {
-        one = 0xff73868f,
-        two = 0xff5c6d75,
-        three = 0xff49575e,
-        four = 0xff39454a,
+        one = 0xffc5c5c5,
+        two = 0xff434343,
+        three = 0xff373737,
+        four = 0xff1e1e1e,
     },
 
     granit = {
@@ -76,24 +75,29 @@ return {
         platinum = 0xffe5e5e5,
     },
     bar = {
-        bg = 0xffeeeeee,
+        bg = 0xfff9f9f9,
         sub = 0xff575c5f,
         active = 0xff9eaeb3,
         selected = 0xff593c3c,
-        transparent = 0x40ffffff,
+        transparent = 0xccffffff,
         border = 0xffacacac,
         secondary = 0xff61817f,
         white_transparent = 0x8faeaeae,
         inactive = 0xff727272,
         icons = 0xff61817f,
-        foreground_alt = 0xff959697,
-        foreground_dimmed = 0xff404447,
-        foreground_alt_blue = 0xff7c879e,
+        foreground = 0xff454545,
+        foreground_alt = 0xff434343,
+        foreground_icon = 0xff486a68,
+        foreground_dimmed = 0xff848484,
+        foreground_alt_blue = 0xff486a68,
+        foreground_alt_blue_dimmed = 0xdd486a68,
     },
     popup = {
-        bg = 0x66ffffff,
-        border = 0xffffff,
+        bg = 0x66252525,
+        border = 0x000000,
         buttons = 0xff959697,
+        icons = 0xff486a68,
+
 
         bg1 = 0xff1c1c1c,
         bg2 = 0xff242424,

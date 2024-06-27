@@ -37,12 +37,12 @@ local volume_icon =
             padding_right = 0,
             padding_left = 5,
             icon = {
-                color = colors.blue,
+                color = colors.bar.foreground_alt_blue,
 
             },
             label = {
                 align = "right",
-                color = colors.bar.foreground_dimmed,
+                color = colors.bar.foreground_alt,
             }
             -- click_script = "osascript $CONFIG_DIR/items/scripts/openSoundMenu.scpt"
         }
@@ -130,7 +130,7 @@ volume_percent:subscribe(
 
         volume_icon:set(
             {
-                color = colors.slategray.one,
+                color = colors.bar.foreground_alt_blue,
                 label = icon
             }
         )
@@ -208,7 +208,7 @@ local function volume_toggle_details(env)
                                             size = 12
                                         },
                                         string = device,
-                                        color = colors.slategray.two
+                                        color = colors.bar.foreground_alt_blue,
                                     },
                                     click_script = 'SwitchAudioSource -s "' ..
                                         device ..

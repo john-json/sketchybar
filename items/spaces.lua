@@ -1,6 +1,7 @@
 local colors = require("colors")
 local icons = require("icons")
 local settings = require("settings")
+local app_icons = require("helpers.app_icons")
 
 
 
@@ -14,21 +15,21 @@ sbar.add("item", "menus.padding", {
 -------------------------------------------------
 
 local sf_icons_active = {
-	"􁽿", "􁽿", "􁽿", "􁽿", "􁽿", "􁽿", "􁽿", "􁽿", "􁽿", "􁽿",
+	"",
 
 }
 
 
 
 local sf_icons_inactive = {
-	"􁽾", "􁽾", "􁽾", "􁽾", "􁽾", "􁽾", "􁽾", "􁽾", "􁽾", "􁽾",
+	"",
 
 
 }
 
-local function getSpaceIcon(space, active)
+local function getSpaceIcon(space, active, app_name)
 	if active then
-		return sf_icons_active[space]
+		return app_icons[app_name]
 	else
 		return sf_icons_inactive[space]
 	end
@@ -55,21 +56,16 @@ end
 for i = 1, 10 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
-		position = "left",
+		position = "center",
 		label = {
 			drawing = false,
-			font = {
-				style = settings.font.style_map.Bold,
-				family = settings.font.text,
-			},
 		},
 		icon = {
-			drawing = true,
 			color = colors.bar.bg2,
 			border_width = 0,
 		},
 		background = {
-			color = colors.white,
+			color = colors.transparent,
 			height = 20,
 			corner_radius = 50,
 		}
@@ -82,28 +78,30 @@ for i = 1, 10 do
 		sbar.animate("elastic", 10, function()
 			space:set({
 				label = {
-					padding_left = 0
+					drawing = false,
 				},
 				icon = {
 					drawing = true,
-					padding_left = selected and 5 or 5,
-					padding_right = selected and 5 or 5,
+					padding_left = selected and 15 or 5,
+					padding_right = selected and 15 or 5,
 					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
+
 					font = {
-						size = selected and 18 or 12,
+						font = "sketchybar-app-font:Regular:16.0",
+						size = selected and 14 or 14,
 					},
-					color = colors.bar.active,
+					color = selected and colors.bar.bg or colors.transparent,
 
 				},
 				background = {
-					drawing = false,
-					border_color = selected and colors.blue or colors.grey,
-					corner_radius = selected and 50 or 25,
+					height = selected and 16 or 10,
+					width = selected and 10 or 4,
+					corner_radius = selected and 4 or 50,
+					color = selected and colors.bar.foreground or colors.bar.foreground_dimmed,
 
-					color = colors.transparent,
+					padding_left = selected and 10 or 5,
+					padding_right = selected and 10 or 5,
 
-					padding_left = selected and 5 or 5,
-					padding_right = selected and 5 or 5,
 				},
 
 			})
@@ -114,23 +112,27 @@ for i = 1, 10 do
 		local selected = env.SELECTED == "true"
 		sbar.animate("elastic", 10, function()
 			space:set({
+				label = {
+					drawing = false,
+
+				},
 				icon = {
-					align = "center",
 					corner_radius = 50,
-					border_width = 0,
 					drawing = true,
-					string = selected and "􀏪" or "􀯵",
-					color = selected and colors.bar.foreground_alt or colors.bar.foreground_alt,
+					color = selected and colors.bar.foreground_bar.bg or colors.bar.bg,
 					font = {
-						size = 18
+						size = selected and 20 or 14
 					},
 				},
 				background = {
-					border_width = 0,
-					corner_radius = 4,
-					color = colors.transparent,
-					padding_left = selected and 5 or 5,
-					padding_right = selected and 5 or 5,
+					border_width = 2,
+					border_color = colors.bar.bg,
+					height = selected and 16 or 8,
+					width = selected and 10 or 4,
+					corner_radius = selected and 4 or 25,
+					padding_left = selected and 10 or 10,
+					padding_right = selected and 10 or 10,
+
 				},
 			})
 		end)
@@ -140,20 +142,29 @@ for i = 1, 10 do
 		local selected = env.SELECTED == "true"
 		sbar.animate("elastic", 10, function()
 			space:set({
-				icon = {
-					font = {
-						size = selected and 16 or 14
-					},
-					drawing = selected and false or true,
-					style = settings.font.style_map.Regular,
+				label = {
+					drawing = false,
 
-					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-					color = selected and colors.bar.foreground_alt or colors.grey,
 				},
+				icon = {
+					drawing = true,
+					padding_left = selected and 15 or 4,
+					padding_right = selected and 15 or 4,
+					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
+
+					font = {
+						font = "sketchybar-app-font:Regular:16.0",
+						size = selected and 14 or 14,
+					},
+					color = selected and colors.bar.bg or colors.transparent,
+
+				},
+
 				background = {
-					border_width = 0,
+					height = selected and 16 or 8,
+					width = selected and 10 or 4,
 					corner_radius = 4,
-					color = colors.transparent,
+					color = selected and colors.bar.foreground or colors.bar.foreground_dimmed,
 					padding_left = selected and 5 or 5,
 					padding_right = selected and 5 or 5,
 				},

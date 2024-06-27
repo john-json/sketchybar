@@ -7,7 +7,7 @@ local function getAppIcon(app_name)
 end
 
 local front_icon = sbar.add("item", "front_app", {
-    position = "center",
+    position = "left",
     display = "active",
     icon = {
         drawing = false,

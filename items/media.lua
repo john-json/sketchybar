@@ -9,7 +9,7 @@ local whitelist = {
 local function setup_media_items()
     local media_cover = sbar.add("item", {
         background = {
-            color = colors.green,
+            color = colors.bar.bg,
         },
         position = "right",
         align = "left",
@@ -23,7 +23,7 @@ local function setup_media_items()
             padding_right = 10,
             drawing = true,
             string = "",
-            color = colors.grey,
+            color = colors.green,
 
         },
         drawing = true,
@@ -52,7 +52,7 @@ local function setup_media_items()
             font = {
                 size = 12
             },
-            color = colors.green,
+            color = colors.bar.bg,
             max_chars = 25,
             y_offset = 7
         },
@@ -71,7 +71,7 @@ local function setup_media_items()
 
             width = "dynamic",
 
-            color = colors.grey,
+            color = colors.lightgray,
             max_chars = 25,
             font = {
                 size = 12
@@ -126,7 +126,7 @@ sbar.add("item", {
     padding_left = 20,
 
     icon = {
-        color = colors.foreground_light,
+        color = colors.grey,
         string = icons.media.back,
         font = {
             size = 12
@@ -158,7 +158,7 @@ sbar.add("item", {
 sbar.add("item", {
     position = "popup." .. media_cover.name,
     icon = {
-        color = colors.grey3,
+        color = colors.bar.foreground_alt_blue,
         string = icons.media.forward,
         font = {
             size = 12

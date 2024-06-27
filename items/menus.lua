@@ -36,7 +36,7 @@ for i = 1, max_items, 1 do
                     drawing = false
                 },
                 background = {
-                    drawing = false
+                    drawing = true
                 },
                 label = {
                     padding_left = 5,
@@ -176,6 +176,10 @@ space_menu_swap:subscribe(
     end
 )
 
+
+-------------------MENU INDICATOR ICON-----------------
+-------------------------------------------------------
+
 local menu_indicator =
     sbar.add(
         "item",
@@ -185,13 +189,15 @@ local menu_indicator =
             icon = {
                 padding_left = 5,
                 padding_right = 3,
-                color = colors.bar.foreground_alt,
-                string = "􁍝",
+                color = colors.bar.foreground,
+                string = "􂀙",
                 font = {
-                    size = 14
+                    size = 14,
+                    style = settings.font.style_map.Bold
                 }
             },
             background = {
+                drawing = true,
                 color = colors.bar.bg,
                 corner_radius = 6,
 
@@ -211,17 +217,10 @@ menu_indicator:subscribe(
                 menu_indicator:set(
                     {
                         background = {
-                            color = {
-                                alpha = 1
-                            }
+                            drawing = true,
+
                         },
-                        icon = {
-                            string = "􁍝",
-                            color = colors.bar.foreground_alt,
-                            font = {
-                                size = 14
-                            }
-                        }
+
                     }
                 )
             end
@@ -243,16 +242,16 @@ menu_indicator:subscribe(
                                     }
                                 },
                                 label = {
-                                    color = colors.bar.foreground_alt,
+                                    color = colors.bar.bg,
                                     font = {
                                         size = 12,
                                         style = settings.font.style_map.SemiBold
                                     }
                                 },
                                 icon = {
-                                    color = colors.bar.foreground_alt,
+                                    color = icons.bar.bg,
                                     font = {
-                                        size = 14
+                                        size = 30
                                     }
                                 }
                             }
@@ -285,12 +284,15 @@ menu_indicator:subscribe(
                             }
                         },
                         icon = {
-                            string = "􁍝",
+                            padding_left = 5,
+                            padding_right = 3,
                             color = colors.bar.foreground_alt,
+                            string = "􂀙",
                             font = {
-                                size = 18
+                                size = 14,
+                                style = settings.font.style_map.Bold
                             }
-                        }
+                        },
                     }
                 )
             end
@@ -311,7 +313,7 @@ menu_indicator:subscribe(
                                     }
                                 },
                                 label = {
-                                    color = colors.bar.foreground_alt,
+                                    color = colors.bar.foreground,
                                     font = {
                                         size = 12,
                                         style = settings.font.style_map.SemiBold

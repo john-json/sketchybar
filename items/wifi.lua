@@ -115,7 +115,7 @@ local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
 				size = 12,
 
 			},
-			color = colors.yellow
+			color = colors.orange
 		},
 	}
 })

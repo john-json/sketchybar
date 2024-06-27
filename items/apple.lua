@@ -9,7 +9,7 @@ local apple = sbar.add("item", {
 			size = 12,
 		},
 		string = "􀆧",
-		color = colors.bar.foreground_alt,
+		color = colors.bar.foreground_alt_blue,
 		padding_right = 2,
 		padding_left = 6,
 	},
@@ -27,7 +27,7 @@ apple:subscribe("mouse.entered", function(env)
 	sbar.animate("elastic", 15, function()
 		apple:set({
 			background = {
-				color = colors.bar.foreground_alt,
+				color = colors.bar.foreground_alt_blue,
 			},
 			icon = {
 				color = colors.bar.bg,
@@ -48,7 +48,7 @@ apple:subscribe("mouse.exited", function(env)
 			icon = {
 
 				string = "􀆧",
-				color = colors.bar.foreground_alt,
+				color = colors.bar.foreground_alt_blue,
 				font = {
 					size = 12,
 				},

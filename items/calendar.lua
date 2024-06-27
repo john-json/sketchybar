@@ -23,6 +23,7 @@ local cal =
                 },
                 color = colors.bar.foreground_alt,
                 font = {
+
                     style = settings.font.style_map["Bold"],
                     size = 14
                 }
@@ -31,7 +32,7 @@ local cal =
                 padding_left = 10,
                 padding_right = 10,
                 align = "laft",
-                color = colors.white,
+                color = colors.bar.foreground_dimmed,
                 font = {
                     style = settings.font.style_map["Regualr"],
                     size = 12
@@ -40,12 +41,12 @@ local cal =
             update_freq = 30,
             background = {
                 border_width = 0.5,
-                border_color = colors.red,
-                color = colors.red_faded,
+                border_color = colors.bar.bg,
+                color = colors.bar.transparent,
 
             },
             blur_radius = 10,
-            color = colors.bar.bg2,
+            color = colors.bar.transparent,
             width = "dynamic",
 
         }
