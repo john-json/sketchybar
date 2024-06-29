@@ -72,8 +72,8 @@ for i = 1, 10 do
 					drawing = false,
 				},
 				icon = {
-					padding_left = selected and 15 or 5,
-					padding_right = selected and 15 or 5,
+					padding_left = selected and 15 or 4,
+					padding_right = selected and 15 or 4,
 					font = {
 						font = "sketchybar-app-font:Regular:16.0",
 						size = selected and 16 or 14,
@@ -81,11 +81,11 @@ for i = 1, 10 do
 					color = colors.transparent,
 				},
 				background = {
-					height = selected and 12 or 12,
+					height = selected and 10 or 8,
 					corner_radius = selected and 8 or 50,
-					color = colors.bar.foreground,
-					padding_left = selected and 10 or 6,
-					padding_right = selected and 10 or 6,
+					color = selected and colors.bar.foreground or colors.lightgray,
+					padding_left = selected and 10 or 10,
+					padding_right = selected and 10 or 10,
 				},
 			})
 		end)
@@ -100,14 +100,12 @@ for i = 1, 10 do
 				},
 				icon = {
 					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-					padding_left = selected and 20 or 8,
-					padding_right = selected and 20 or 8,
+					padding_left = selected and 20 or 10,
+					padding_right = selected and 20 or 10,
 				},
 				background = {
-					color = colors.bar.foreground,
-					border_width = 1,
-					border_color = getSpaceColor(i),
-					height = selected and 16 or 10,
+					color = getSpaceColor(i),
+					height = selected and 12 or 10,
 					width = selected and 10 or 4,
 					corner_radius = selected and 8 or 25,
 					padding_left = selected and 5 or 10,
@@ -126,8 +124,8 @@ for i = 1, 10 do
 				},
 				icon = {
 					drawing = true,
-					padding_left = selected and 15 or 5,
-					padding_right = selected and 15 or 5,
+					padding_left = selected and 15 or 6,
+					padding_right = selected and 15 or 6,
 					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
 					font = {
 						font = "sketchybar-app-font:Regular:16.0",
@@ -140,9 +138,9 @@ for i = 1, 10 do
 					border_color = getSpaceColor(i),
 					height = selected and 12 or 12,
 					corner_radius = selected and 8 or 50,
-					color = colors.bar.foreground,
-					padding_left = selected and 10 or 6,
-					padding_right = selected and 10 or 6,
+					color = selected and colors.bar.foreground or colors.lightgray,
+					padding_left = selected and 10 or 10,
+					padding_right = selected and 10 or 10,
 				},
 			})
 		end)

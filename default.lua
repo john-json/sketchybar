@@ -11,7 +11,7 @@ sbar.default(
 			font = {
 				family = settings.font.text,
 				style = settings.font.style_map.Bold,
-				size = 14.0
+				size = 12.0
 			},
 		},
 		label = {
@@ -25,7 +25,7 @@ sbar.default(
 			color = colors.bar.foreground
 		},
 		background = {
-			height = 30,
+			height = 26,
 			corner_radius = 8,
 			border_width = 0.5,
 			border_color = colors.bar.border,

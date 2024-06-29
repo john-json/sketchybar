@@ -52,7 +52,7 @@ local function setup_media_items()
             font = {
                 size = 12
             },
-            color = colors.bar.bg,
+            color = colors.bar.foreground,
             max_chars = 25,
             y_offset = 7
         },
@@ -126,7 +126,7 @@ sbar.add("item", {
     padding_left = 20,
 
     icon = {
-        color = colors.grey,
+        color = colors.bar.foreground_alt_blue,
         string = icons.media.back,
         font = {
             size = 12
