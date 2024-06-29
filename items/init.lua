@@ -6,15 +6,15 @@ require("items.wifi")
 require("items.media")
 
 -- require("items.app_launcher")
+require("items.spaces")
 
 
 require("items.apple")
 require("items.menus")
-require("items.spaces")
+
 
 
 require("items.front_app")
-require("items.front_icon")
 
 
 

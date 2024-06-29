@@ -3,28 +3,29 @@ local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
-
-
-
--- Background around the cpu item
-sbar.add("item", "menus.padding", {
-	position = "left",
-	width = settings.group_paddings
-})
---------- SPACES --------------------------------
--------------------------------------------------
-
-local sf_icons_active = {
-	"",
-
+local space_colors = {
+	colors.green,     -- Color for space 1
+	colors.yellow,    -- Color for space 2
+	colors.orange,    -- Color for space 3
+	colors.red,       -- Color for space 4
+	colors.magenta,   -- Color for space 5
+	colors.blue,      -- Color for space 6
+	colors.grey,      -- Color for space 7
+	colors.lightgray, -- Color for space 8
+	colors.metalsaurus, -- Color for space 9
+	colors.metalsaurus2, -- Color for space 10
 }
 
+local function getSpaceColor(spaceNumber)
+	return space_colors[spaceNumber]
+end
 
+local sf_icons_active = {
+	"+", -- Add icons for active spaces if needed
+}
 
 local sf_icons_inactive = {
-	"",
-
-
+	"", -- Add icons for inactive spaces if needed
 }
 
 local function getSpaceIcon(space, active, app_name)
@@ -34,8 +35,6 @@ local function getSpaceIcon(space, active, app_name)
 		return sf_icons_inactive[space]
 	end
 end
-
-
 
 local spaces = {}
 
@@ -52,24 +51,16 @@ local function switchToSpace(spaceNumber)
 	log("Result: " .. tostring(result))
 end
 
--- Create space items
+-- Add padding before the first space
+local padding_left = sbar.add("item", "padding.left", {
+	position = "left",
+	width = 10,
+})
+
 for i = 1, 10 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
 		position = "center",
-		label = {
-			drawing = false,
-		},
-		icon = {
-			color = colors.bar.bg2,
-			border_width = 0,
-		},
-		background = {
-			color = colors.transparent,
-			height = 20,
-			corner_radius = 50,
-		}
-
 	})
 	spaces[i] = space
 
@@ -81,29 +72,21 @@ for i = 1, 10 do
 					drawing = false,
 				},
 				icon = {
-					drawing = true,
 					padding_left = selected and 15 or 5,
 					padding_right = selected and 15 or 5,
-					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-
 					font = {
 						font = "sketchybar-app-font:Regular:16.0",
-						size = selected and 14 or 14,
+						size = selected and 16 or 14,
 					},
-					color = selected and colors.bar.bg or colors.transparent,
-
+					color = colors.transparent,
 				},
 				background = {
-					height = selected and 16 or 10,
-					width = selected and 10 or 4,
-					corner_radius = selected and 4 or 50,
-					color = selected and colors.bar.foreground or colors.bar.foreground_dimmed,
-
-					padding_left = selected and 10 or 5,
-					padding_right = selected and 10 or 5,
-
+					height = selected and 12 or 12,
+					corner_radius = selected and 8 or 50,
+					color = colors.bar.foreground,
+					padding_left = selected and 10 or 6,
+					padding_right = selected and 10 or 6,
 				},
-
 			})
 		end)
 	end)
@@ -114,25 +97,21 @@ for i = 1, 10 do
 			space:set({
 				label = {
 					drawing = false,
-
 				},
 				icon = {
-					corner_radius = 50,
-					drawing = true,
-					color = selected and colors.bar.foreground_bar.bg or colors.bar.bg,
-					font = {
-						size = selected and 20 or 14
-					},
+					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
+					padding_left = selected and 20 or 8,
+					padding_right = selected and 20 or 8,
 				},
 				background = {
-					border_width = 2,
-					border_color = colors.bar.bg,
-					height = selected and 16 or 8,
+					color = colors.bar.foreground,
+					border_width = 1,
+					border_color = getSpaceColor(i),
+					height = selected and 16 or 10,
 					width = selected and 10 or 4,
-					corner_radius = selected and 4 or 25,
-					padding_left = selected and 10 or 10,
-					padding_right = selected and 10 or 10,
-
+					corner_radius = selected and 8 or 25,
+					padding_left = selected and 5 or 10,
+					padding_right = selected and 5 or 10,
 				},
 			})
 		end)
@@ -144,29 +123,26 @@ for i = 1, 10 do
 			space:set({
 				label = {
 					drawing = false,
-
 				},
 				icon = {
 					drawing = true,
-					padding_left = selected and 15 or 4,
-					padding_right = selected and 15 or 4,
+					padding_left = selected and 15 or 5,
+					padding_right = selected and 15 or 5,
 					string = selected and getSpaceIcon(i, true) or getSpaceIcon(i, false),
-
 					font = {
 						font = "sketchybar-app-font:Regular:16.0",
-						size = selected and 14 or 14,
+						size = selected and 16 or 14,
 					},
-					color = selected and colors.bar.bg or colors.transparent,
-
+					color = colors.transparent,
 				},
-
 				background = {
-					height = selected and 16 or 8,
-					width = selected and 10 or 4,
-					corner_radius = 4,
-					color = selected and colors.bar.foreground or colors.bar.foreground_dimmed,
-					padding_left = selected and 5 or 5,
-					padding_right = selected and 5 or 5,
+					border_width = 0,
+					border_color = getSpaceColor(i),
+					height = selected and 12 or 12,
+					corner_radius = selected and 8 or 50,
+					color = colors.bar.foreground,
+					padding_left = selected and 10 or 6,
+					padding_right = selected and 10 or 6,
 				},
 			})
 		end)
@@ -182,77 +158,25 @@ for i = 1, 10 do
 	end)
 end
 
-
-
--- -- ADD SPACE BUTTON---------------------------
--- ----------------------------------------------
-
--- local add_space = sbar.add("item", {
--- 	position = "left",
--- 	icon = {
--- 		padding_left = settings.group_paddings,
--- 		padding_right = settings.group_paddings,
--- 		font = {
--- 			size = 12,
--- 		},
--- 		string = icons.plus,
-
--- 	},
--- 	label = {
--- 		drawing = false,
--- 		string = "]"
-
--- 	},
--- 	background = {
-
--- 		color = colors.bar.bg,
--- 	},
--- })
-
--- add_space:subscribe("mouse.entered", function(env)
--- 	sbar.animate("elastic", 10, function()
--- 		add_space:set({
--- 			icon = {
--- 				string = "Add",
--- 				color = colors.white,
--- 				font = {
--- 					size = 12,
--- 				},
--- 			},
--- 		})
--- 	end)
--- end)
-
--- add_space:subscribe("mouse.exited", function(env)
--- 	sbar.animate("elastic", 10, function()
--- 		add_space:set({
--- 			icon = {
--- 				string = icons.plus,
--- 				color = colors.stormcloud.two,
--- 				font = {
--- 					size = 12,
--- 				},
--- 			},
--- 		})
--- 	end)
--- end)
-
--- add_space:subscribe("mouse.clicked", function(env)
--- 	sbar.exec('osascript "$CONFIG_DIR/items/scripts/newSpace.scpt"')
--- end)
-
+-- Add padding after the last space
+local padding_right = sbar.add("item", "padding.right", {
+	position = "right",
+	width = 10,
+})
 
 local space_names = {}
 for i = 1, 10 do
 	table.insert(space_names, spaces[i].name)
 end
 
-sbar.add("bracket", space_names, add_space, {
-
+sbar.add("bracket", space_names, {
 	background = {
 		margin = 0,
-
 		color = colors.bar.bg,
-		corner_radius = 6, -- Adjust the corner radius as needed
+		corner_radius = 8,
 	},
 })
+
+-- Insert padding items into the bracket
+table.insert(space_names, 1, padding_left.name)
+table.insert(space_names, padding_right.name)

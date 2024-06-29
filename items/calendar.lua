@@ -21,7 +21,7 @@ local cal =
                     height = 28,
                     corner_radius = 6,
                 },
-                color = colors.bar.foreground_alt,
+
                 font = {
 
                     style = settings.font.style_map["Bold"],

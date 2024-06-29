@@ -22,11 +22,11 @@ sbar.default(
 				style = settings.font.style_map.SemiBold,
 				size = 12.0
 			},
-			color = colors.lightgray
+			color = colors.bar.foreground
 		},
 		background = {
-			height = 26,
-			corner_radius = 6,
+			height = 30,
+			corner_radius = 8,
 			border_width = 0.5,
 			border_color = colors.bar.border,
 			image = {
@@ -48,7 +48,7 @@ sbar.default(
 			},
 			background = {
 				border_width = 1,
-				corner_radius = 6,
+				corner_radius = 8,
 				border_color = colors.popup.border,
 				color = colors.popup.bg,
 				shadow = {

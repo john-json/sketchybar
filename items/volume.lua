@@ -80,17 +80,17 @@ local volume_slider =
         {
             position = "popup." .. volume_bracket.name,
             slider = {
-                highlight_color = colors.slategray.two,
+                highlight_color = colors.grey,
                 y_offset = 5,
                 background = {
 
                     height = 15,
                     corner_radius = 6,
-                    color = colors.slategray.four,
+                    color = colors.grey5,
                 },
                 knob = {
 
-                    color = colors.slategray.one,
+                    color = colors.white,
                     border = {
                         size = 2,
                         color = colors.white

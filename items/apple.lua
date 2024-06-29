@@ -4,14 +4,19 @@ local settings = require("settings")
 
 
 local apple = sbar.add("item", {
+	label = {
+		string = "",
+		padding_right = 0,
+		padding_left = 10,
+	},
 	icon = {
+		padding_left = 10,
 		font = {
-			size = 12,
+			size = 14,
 		},
-		string = "􀆧",
-		color = colors.bar.foreground_alt_blue,
-		padding_right = 2,
-		padding_left = 6,
+		string = "􀆈",
+		color = colors.bar.foreground,
+
 	},
 
 	background = {
@@ -24,15 +29,25 @@ local apple = sbar.add("item", {
 
 apple:subscribe("mouse.entered", function(env)
 	local selected = env.SELECTED == "true"
-	sbar.animate("elastic", 15, function()
+	sbar.animate("elastic", 10, function()
 		apple:set({
-			background = {
-				color = colors.bar.foreground_alt_blue,
+
+
+
+			label = {
+				color = colors.bar.foreground,
+				padding_right = 12,
+				drawing = true,
+				string = "open",
+				padding_left = 10,
 			},
 			icon = {
-				color = colors.bar.bg,
+
+
+				color = colors.bar.foreground_dimmed,
+				string = "􀆈",
 				font = {
-					size = 18,
+					size = 14,
 				},
 			},
 		})
@@ -40,18 +55,21 @@ apple:subscribe("mouse.entered", function(env)
 end)
 
 apple:subscribe("mouse.exited", function(env)
-	sbar.animate("elastic", 15, function()
+	sbar.animate("elastic", 10, function()
 		apple:set({
-			background = {
-				color = colors.bar.bg,
+			label = {
+				string = "",
+				padding_right = 0,
+				padding_left = 10,
 			},
 			icon = {
-
-				string = "􀆧",
-				color = colors.bar.foreground_alt_blue,
+				padding_left = 10,
 				font = {
-					size = 12,
+					size = 14,
 				},
+				string = "􀆈",
+				color = colors.bar.foreground,
+
 			},
 		})
 	end)
